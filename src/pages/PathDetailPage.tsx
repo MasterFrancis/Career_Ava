@@ -38,8 +38,11 @@ export function PathDetailPage() {
     <div>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12, flexWrap: 'wrap' }}>
         <div style={{ minWidth: 0 }}>
-          <h1 className="h1">{path.name}</h1>
-          <p className="lead">{path.oneLiner}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+            <h1 className="h1" style={{ margin: 0, fontSize: 28 }}>{path.name}</h1>
+            <div className="pathCadence">{path.cadence}</div>
+          </div>
+          <p className="lead" style={{ margin: 0 }}>{path.oneLiner}</p>
         </div>
         <div className="btnRow" style={{ marginTop: 0 }}>
           <Link to="/paths" className="btn btnGhost" style={{ textDecoration: 'none' }}>

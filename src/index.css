@@ -721,9 +721,13 @@ details[open] .accordionChevron {
   gap: 10px;
 }
 
-.pathCardCTA {
-  border-top: 1px solid rgba(14, 38, 61, 0.10);
-  padding-top: 10px;
+.pathCadence {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 13px;
+  background: rgba(37, 99, 235, 0.08);
+  padding: 4px 10px;
+  border-radius: 6px;
 }
 
 .noteArea {

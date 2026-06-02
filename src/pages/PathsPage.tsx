@@ -42,9 +42,9 @@ export function PathsPage() {
               <div className="cardBody" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 16 }}>
                 <div>
                   <div style={{ minWidth: 0 }}>
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                       <div className="pathName" style={{ fontSize: 18 }}>{p.name}</div>
-                      <div className="meta">{p.cadence}</div>
+                      <div className="pathCadence">{p.cadence}</div>
                     </div>
                     <div style={{ marginTop: 8, color: 'var(--text)', fontSize: 14, fontWeight: 500, lineHeight: 1.5 }}>
                       {p.oneLiner}
@@ -75,7 +75,6 @@ export function PathsPage() {
                         </div>
                       </div>
                     </div>
-                    <div className="pathCardCTA meta" style={{ marginTop: 4 }}>点击卡片 → 查看详情、完整对比与路线图</div>
                   </div>
                 </div>
                 
