@@ -799,6 +799,38 @@ details[open] .accordionChevron {
   outline: none;
 }
 
+.segmentGroup {
+  display: inline-flex;
+  background: rgba(14, 38, 61, 0.05);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.segmentBtn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--muted);
+  transition: all 120ms ease;
+}
+
+.segmentBtn:hover {
+  color: var(--text);
+  background: rgba(14, 38, 61, 0.05);
+}
+
+.segmentBtnActive {
+  background: #fff;
+  color: var(--accent);
+  box-shadow: 0 2px 6px rgba(14, 38, 61, 0.08);
+}
+
 .rankRow {
   border: 1px solid rgba(14, 38, 61, 0.10);
   border-radius: 16px;
