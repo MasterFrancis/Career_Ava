@@ -882,13 +882,6 @@ details[open] .accordionChevron {
   gap: 24px;
 }
 
-@media (min-width: 1100px) {
-  .splitChartXL {
-    grid-template-columns: 300px 1fr;
-    align-items: start;
-  }
-}
-
 .splitChart {
   display: grid;
   grid-template-columns: 1fr;

@@ -60,20 +60,19 @@ export function PathDetailPage() {
         <div className="card">
           <div className="cardHeader">
             <div className="cardTitleRow">
-              <h2 className="cardTitle">用户 vs 岗位画像（大图对比）</h2>
+              <h2 className="cardTitle">用户 vs 岗位画像</h2>
               <div className="meta">青=你 · 粉=岗位倾向</div>
             </div>
           </div>
           <div className="cardBody splitChartXL" style={{ display: 'grid', gap: 24 }}>
-            <div className="chartWrap">
+            <div className="chartWrap" style={{ position: 'relative', top: 'auto', background: 'transparent', padding: 0 }}>
               <RadarChart size={280} values={state.dimensionScores} compareValues={roleProfile} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div className="card cardSub">
                 <div className="cardBody">
                   <div className="cardTitleRow">
-                    <h3 className="cardTitle">匹配解释（2–4 句）</h3>
-                    <div className="meta">不是只有一个分数</div>
+                    <h3 className="cardTitle">匹配解释</h3>
                   </div>
                   <div className="divider" />
                   <div style={{ display: 'grid', gap: 8 }}>
@@ -103,21 +102,6 @@ export function PathDetailPage() {
               <div className="card cardSub">
                 <div className="cardBody">
                   <div className="cardTitleRow">
-                    <h3 className="cardTitle">个人备注（本地保存）</h3>
-                    <div className="meta">写下你的证据与疑问</div>
-                  </div>
-                  <textarea
-                    value={state.notes[safePathId] ?? ''}
-                    onChange={(e) => dispatch({ type: 'notes/set', pathId: safePathId, text: e.target.value })}
-                    placeholder="例如：我最愿意尝试的行业/公司、最担心的短板、下一个验证动作…"
-                    className="noteArea"
-                  />
-                </div>
-              </div>
-
-              <div className="card cardSub">
-                <div className="cardBody">
-                  <div className="cardTitleRow">
                     <h3 className="cardTitle">岗位速览</h3>
                   </div>
                   <div className="tagRow" style={{ marginTop: 12 }}>
@@ -127,6 +111,20 @@ export function PathDetailPage() {
                   </div>
                 </div>
               </div>
+
+              <div className="card cardSub">
+                <div className="cardBody">
+                  <div className="cardTitleRow">
+                    <h3 className="cardTitle">个人备注</h3>
+                  </div>
+                  <textarea
+                    value={state.notes[safePathId] ?? ''}
+                    onChange={(e) => dispatch({ type: 'notes/set', pathId: safePathId, text: e.target.value })}
+                    placeholder="例如：我最愿意尝试的行业/公司、最担心的短板、下一个验证动作…"
+                    className="noteArea"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -134,7 +132,7 @@ export function PathDetailPage() {
         <div className="card">
           <div className="cardHeader">
             <div className="cardTitleRow">
-              <h2 className="cardTitle">岗位信息（逐层展开）</h2>
+              <h2 className="cardTitle">岗位信息</h2>
               <button
                 type="button"
                 className="linkBtn meta"
@@ -146,7 +144,7 @@ export function PathDetailPage() {
             </div>
           </div>
           <div className="cardBody">
-            <Accordion title="岗位内核（是什么）" forceOpen={allExpanded}>
+            <Accordion title="岗位内核" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.kernel.map((t) => (
                   <li key={t}>{t}</li>
@@ -154,7 +152,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="岗位名称变体（英国常见）" forceOpen={allExpanded}>
+            <Accordion title="岗位名称变体" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.titleVariants.map((t) => (
                   <li key={t}>{t}</li>
@@ -162,7 +160,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="典型工作流（怎么做）" forceOpen={allExpanded}>
+            <Accordion title="典型工作流" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.workflow.map((t) => (
                   <li key={t}>{t}</li>
@@ -170,7 +168,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="技能树（需要什么能力）" forceOpen={allExpanded}>
+            <Accordion title="技能树" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.skillTree.map((t) => (
                   <li key={t}>{t}</li>
@@ -178,7 +176,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="市场与薪资（方向性参考）" forceOpen={allExpanded}>
+            <Accordion title="市场与薪资" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.marketSalary.map((t) => (
                   <li key={t}>{t}</li>
@@ -194,7 +192,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="验证型行动建议（尽快做出证据）" forceOpen={allExpanded}>
+            <Accordion title="验证型行动建议" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.actionAdvice.map((t) => (
                   <li key={t}>{t}</li>
@@ -202,7 +200,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="路线图 / 计划方案（只读参考）" forceOpen={allExpanded}>
+            <Accordion title="路线图 / 计划方案" forceOpen={allExpanded}>
               <div style={{ display: 'grid', gap: 10 }}>
                 {path.sections.roadmap.map((s) => (
                   <div key={s.phase} className="roadPhase">
