@@ -39,8 +39,8 @@ export function PathsPage() {
                 position: 'relative',
               }}
             >
-              <div className="cardBody">
-                <div className="pathCardHead">
+              <div className="cardBody" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 16 }}>
+                <div>
                   <div style={{ minWidth: 0 }}>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
                       <div className="pathName">{p.name}</div>
@@ -51,43 +51,43 @@ export function PathsPage() {
                     </div>
                   </div>
 
-                  <div className="miniViz">
-                    <RadarChart size={118} values={state.dimensionScores} compareValues={roleProfile} showLabels={false} />
+                  <div className="tagRow">
+                    {insight.advantage.map((k) => (
+                      <span key={`a-${k}`} className="tag tagGood">
+                        优势 {k}·{DIMENSIONS[k].shortName}
+                      </span>
+                    ))}
+                    {insight.risk.map((k) => (
+                      <span key={`r-${k}`} className="tag tagRisk">
+                        风险 {k}·{DIMENSIONS[k].shortName}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="pathCardLines">
+                    <div className="pathCardLineBlock">
+                      <div className="meta" style={{ marginBottom: 6 }}>
+                        解释（简版）
+                      </div>
+                      <div style={{ display: 'grid', gap: 6 }}>
+                        {lines.advantageLines.slice(0, 2).map((t) => (
+                          <div key={t} className="meta">
+                            {t}
+                          </div>
+                        ))}
+                        {lines.riskLines.slice(0, 2).map((t) => (
+                          <div key={t} className="meta">
+                            {t}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="pathCardCTA meta">点击卡片 → 查看详情、完整对比与路线图</div>
                   </div>
                 </div>
-
-                <div className="tagRow">
-                  {insight.advantage.map((k) => (
-                    <span key={`a-${k}`} className="tag tagGood">
-                      优势 {k}·{DIMENSIONS[k].shortName}
-                    </span>
-                  ))}
-                  {insight.risk.map((k) => (
-                    <span key={`r-${k}`} className="tag tagRisk">
-                      风险 {k}·{DIMENSIONS[k].shortName}
-                    </span>
-                  ))}
-                </div>
-
-                <div className="pathCardLines">
-                  <div className="pathCardLineBlock">
-                    <div className="meta" style={{ marginBottom: 6 }}>
-                      解释（简版）
-                    </div>
-                    <div style={{ display: 'grid', gap: 6 }}>
-                      {lines.advantageLines.slice(0, 2).map((t) => (
-                        <div key={t} className="meta">
-                          {t}
-                        </div>
-                      ))}
-                      {lines.riskLines.slice(0, 2).map((t) => (
-                        <div key={t} className="meta">
-                          {t}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="pathCardCTA meta">点击卡片 → 查看详情、完整对比与路线图</div>
+                
+                <div className="miniViz" style={{ alignSelf: 'start' }}>
+                  <RadarChart size={118} values={state.dimensionScores} compareValues={roleProfile} showLabels={false} />
                 </div>
               </div>
             </Link>
