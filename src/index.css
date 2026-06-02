@@ -1,25 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,350..900&family=Recursive:wght@300..1000&display=swap');
 
 :root {
-  --bg0: #f6faf7;
-  --bg1: #eef6f1;
+  --bg0: #f4f8fb;
+  --bg1: #ecf3f9;
   --paper: #ffffff;
   --card: rgba(255, 255, 255, 0.92);
   --card2: rgba(255, 255, 255, 0.74);
-  --stroke: rgba(16, 43, 35, 0.10);
-  --stroke2: rgba(16, 43, 35, 0.16);
-  --text: rgba(9, 24, 20, 0.92);
-  --muted: rgba(9, 24, 20, 0.72);
-  --faint: rgba(9, 24, 20, 0.52);
+  --stroke: rgba(14, 38, 61, 0.10);
+  --stroke2: rgba(14, 38, 61, 0.16);
+  --text: rgba(14, 38, 61, 0.92);
+  --muted: rgba(14, 38, 61, 0.72);
+  --faint: rgba(14, 38, 61, 0.52);
 
-  --accent: #16a34a;
-  --accent2: #f97316;
-  --accent3: #f59e0b;
+  --accent: #0284c7; /* 淡蓝色系中的主调，满足 WCAG AA */
+  --accent2: #ea580c; /* 淡橙色系中的主调，满足 WCAG AA */
+  --accent3: #d97706;
   --danger: #e11d48;
-  --ok: #16a34a;
+  --ok: #0284c7;
 
-  --shadow: 0 26px 80px rgba(12, 28, 24, 0.10);
-  --shadow2: 0 12px 30px rgba(12, 28, 24, 0.10);
+  --shadow: 0 26px 80px rgba(14, 38, 61, 0.10);
+  --shadow2: 0 12px 30px rgba(14, 38, 61, 0.10);
   --radius-xl: 24px;
   --radius-lg: 18px;
   --radius-md: 14px;
@@ -31,24 +31,24 @@
   --page: 100%;
   --max-content: 1120px;
 
-  --chart-grid: rgba(16, 43, 35, 0.10);
-  --chart-axis: rgba(16, 43, 35, 0.08);
-  --chart-label: rgba(16, 43, 35, 0.58);
-  --chart-user-fill-1: rgba(34, 197, 94, 0.34);
-  --chart-user-fill-2: rgba(34, 197, 94, 0.12);
-  --chart-user-stroke-1: rgba(22, 163, 74, 0.95);
-  --chart-user-stroke-2: rgba(22, 163, 74, 0.55);
-  --chart-role-fill-1: rgba(249, 115, 22, 0.30);
-  --chart-role-fill-2: rgba(249, 115, 22, 0.12);
+  --chart-grid: rgba(14, 38, 61, 0.10);
+  --chart-axis: rgba(14, 38, 61, 0.08);
+  --chart-label: rgba(14, 38, 61, 0.58);
+  --chart-user-fill-1: rgba(2, 132, 199, 0.34);
+  --chart-user-fill-2: rgba(2, 132, 199, 0.12);
+  --chart-user-stroke-1: rgba(2, 132, 199, 0.95);
+  --chart-user-stroke-2: rgba(2, 132, 199, 0.55);
+  --chart-role-fill-1: rgba(234, 88, 12, 0.30);
+  --chart-role-fill-2: rgba(234, 88, 12, 0.12);
   --chart-role-stroke-1: rgba(234, 88, 12, 0.92);
   --chart-role-stroke-2: rgba(234, 88, 12, 0.55);
 
   font: 16px/155% var(--sans);
   letter-spacing: 0.2px;
   color: var(--text);
-  background: radial-gradient(1200px 680px at 20% 0%, rgba(34, 197, 94, 0.12), transparent 62%),
-    radial-gradient(980px 620px at 92% 8%, rgba(249, 115, 22, 0.10), transparent 58%),
-    radial-gradient(900px 640px at 50% 100%, rgba(245, 158, 11, 0.10), transparent 62%),
+  background: radial-gradient(1200px 680px at 20% 0%, rgba(2, 132, 199, 0.12), transparent 62%),
+    radial-gradient(980px 620px at 92% 8%, rgba(234, 88, 12, 0.10), transparent 58%),
+    radial-gradient(900px 640px at 50% 100%, rgba(217, 119, 6, 0.10), transparent 62%),
     linear-gradient(180deg, var(--bg0), var(--bg1));
   color-scheme: light;
   font-synthesis: none;
@@ -115,8 +115,8 @@ a {
   width: 34px;
   height: 34px;
   border-radius: 12px;
-  background: radial-gradient(circle at 30% 30%, rgba(34, 197, 94, 0.85), rgba(249, 115, 22, 0.55));
-  box-shadow: 0 0 0 1px rgba(16, 43, 35, 0.10) inset, 0 10px 26px rgba(34, 197, 94, 0.12);
+  background: radial-gradient(circle at 30% 30%, rgba(2, 132, 199, 0.85), rgba(249, 115, 22, 0.55));
+  box-shadow: 0 0 0 1px rgba(14, 38, 61, 0.10) inset, 0 10px 26px rgba(2, 132, 199, 0.12);
 }
 
 .brandTitle {
@@ -146,7 +146,7 @@ a {
 }
 
 .pill {
-  padding: 8px 10px;
+  padding: 8px 16px;
   border-radius: 999px;
   border: 1px solid transparent;
   text-decoration: none;
@@ -164,8 +164,8 @@ a {
 
 .pillActive {
   color: rgba(255, 255, 255, 0.95);
-  border-color: rgba(22, 163, 74, 0.35);
-  background: linear-gradient(180deg, rgba(34, 197, 94, 0.98), rgba(22, 163, 74, 0.86));
+  border-color: rgba(3, 105, 161, 0.35);
+  background: linear-gradient(180deg, rgba(2, 132, 199, 0.98), rgba(3, 105, 161, 0.86));
 }
 
 .page {
@@ -222,7 +222,7 @@ a {
   border: 1px solid var(--stroke);
   border-radius: var(--radius-lg);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.84));
-  box-shadow: 0 4px 20px rgba(12, 28, 24, 0.05);
+  box-shadow: 0 4px 20px rgba(14, 38, 61, 0.05);
   overflow: hidden;
 }
 
@@ -265,32 +265,32 @@ a {
   appearance: none;
   cursor: pointer;
   border-radius: 14px;
-  padding: 10px 14px;
+  padding: 10px 20px;
   font-weight: 720;
   letter-spacing: 0.3px;
   font-size: 14px;
   background: rgba(255, 255, 255, 0.96);
   color: var(--text);
   border: 1px solid var(--stroke2);
-  box-shadow: 0 1px 0 rgba(12, 28, 24, 0.04), 0 10px 24px rgba(12, 28, 24, 0.08);
+  box-shadow: 0 1px 0 rgba(14, 38, 61, 0.04), 0 10px 24px rgba(14, 38, 61, 0.08);
   transition: 120ms ease;
 }
 
 .btn:hover {
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 1);
-  border-color: rgba(22, 163, 74, 0.32);
-  box-shadow: 0 1px 0 rgba(12, 28, 24, 0.04), 0 14px 30px rgba(12, 28, 24, 0.12);
+  border-color: rgba(3, 105, 161, 0.32);
+  box-shadow: 0 1px 0 rgba(14, 38, 61, 0.04), 0 14px 30px rgba(14, 38, 61, 0.12);
 }
 
 .btnPrimary {
-  background: linear-gradient(180deg, rgba(34, 197, 94, 0.98), rgba(22, 163, 74, 0.88));
+  background: linear-gradient(180deg, rgba(2, 132, 199, 0.98), rgba(3, 105, 161, 0.88));
   color: rgba(255, 255, 255, 0.95);
-  border-color: rgba(22, 163, 74, 0.35);
+  border-color: rgba(3, 105, 161, 0.35);
 }
 
 .btnPrimary:hover {
-  background: linear-gradient(180deg, rgba(34, 197, 94, 1), rgba(22, 163, 74, 0.9));
+  background: linear-gradient(180deg, rgba(2, 132, 199, 1), rgba(3, 105, 161, 0.9));
 }
 
 .btnGhost {
@@ -314,20 +314,20 @@ a {
 }
 
 .tagGood {
-  border-color: rgba(22, 163, 74, 0.25);
-  background: rgba(34, 197, 94, 0.12);
-  color: rgba(9, 24, 20, 0.88);
+  border-color: rgba(2, 132, 199, 0.25);
+  background: rgba(2, 132, 199, 0.12);
+  color: rgba(14, 38, 61, 0.88);
 }
 
 .tagRisk {
-  border-color: rgba(225, 29, 72, 0.24);
-  background: rgba(225, 29, 72, 0.10);
-  color: rgba(9, 24, 20, 0.88);
+  border-color: rgba(234, 88, 12, 0.24);
+  background: rgba(234, 88, 12, 0.10);
+  color: rgba(14, 38, 61, 0.88);
 }
 
 .divider {
   height: 1px;
-  background: rgba(16, 43, 35, 0.10);
+  background: rgba(14, 38, 61, 0.10);
   margin: 18px 0;
 }
 
@@ -345,7 +345,7 @@ a {
   background: transparent;
   border: 0;
   cursor: pointer;
-  color: rgba(9, 24, 20, 0.78);
+  color: rgba(14, 38, 61, 0.78);
   text-decoration: underline;
   text-underline-offset: 3px;
   padding: 0;
@@ -353,7 +353,7 @@ a {
 }
 
 .linkBtn:hover {
-  color: rgba(9, 24, 20, 0.92);
+  color: rgba(14, 38, 61, 0.92);
 }
 
 .modalOverlay {
@@ -371,7 +371,7 @@ a {
   border-radius: var(--radius-xl);
   border: 1px solid var(--stroke2);
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 36px 120px rgba(12, 28, 24, 0.18);
+  box-shadow: 0 36px 120px rgba(14, 38, 61, 0.18);
   overflow: hidden;
 }
 
@@ -444,7 +444,7 @@ a {
 }
 
 details[open] .accordionHint {
-  color: rgba(22, 163, 74, 0.95);
+  color: rgba(2, 132, 199, 0.9);
 }
 
 .accordionChevron {
@@ -453,12 +453,12 @@ details[open] .accordionHint {
 
 details[open] .accordionChevron {
   transform: rotate(180deg);
-  color: rgba(22, 163, 74, 0.95);
+  color: rgba(3, 105, 161, 0.95);
 }
 
 .accordionBody {
   padding: 12px;
-  border-top: 1px solid rgba(16, 43, 35, 0.10);
+  border-top: 1px solid rgba(14, 38, 61, 0.10);
   color: var(--muted);
 }
 
@@ -498,7 +498,7 @@ details[open] .accordionChevron {
 }
 
 .stepperNum {
-  color: rgba(22, 163, 74, 0.95);
+  color: rgba(2, 132, 199, 0.95);
 }
 
 .stepperDots {
@@ -519,7 +519,7 @@ details[open] .accordionChevron {
   width: 10px;
   height: 10px;
   border-radius: 999px;
-  border: 1px solid rgba(16, 43, 35, 0.18);
+  border: 1px solid rgba(14, 38, 61, 0.18);
   background: rgba(255, 255, 255, 0.8);
   cursor: pointer;
   transition: 120ms ease;
@@ -527,12 +527,12 @@ details[open] .accordionChevron {
 
 .stepDot:hover {
   transform: translateY(-1px);
-  border-color: rgba(22, 163, 74, 0.35);
+  border-color: rgba(2, 132, 199, 0.35);
 }
 
 .stepDotDone {
-  background: rgba(34, 197, 94, 0.28);
-  border-color: rgba(22, 163, 74, 0.22);
+  background: rgba(2, 132, 199, 0.28);
+  border-color: rgba(3, 105, 161, 0.22);
 }
 
 .stepDotActive {
@@ -545,7 +545,7 @@ details[open] .accordionChevron {
   font-size: 26px;
   letter-spacing: -0.6px;
   line-height: 1.15;
-  color: rgba(9, 24, 20, 0.92);
+  color: rgba(14, 38, 61, 0.92);
   animation: fadeUp 240ms ease both;
 }
 
@@ -587,14 +587,14 @@ details[open] .accordionChevron {
 
 .quizScaleBtn:hover {
   transform: translateY(-1px);
-  border-color: rgba(22, 163, 74, 0.28);
+  border-color: rgba(2, 132, 199, 0.28);
   background: rgba(255, 255, 255, 1);
 }
 
 .quizScaleBtnActive {
   color: rgba(255, 255, 255, 0.95);
-  border-color: rgba(22, 163, 74, 0.35);
-  background: linear-gradient(180deg, rgba(34, 197, 94, 0.98), rgba(22, 163, 74, 0.86));
+  border-color: rgba(3, 105, 161, 0.35);
+  background: linear-gradient(180deg, rgba(2, 132, 199, 0.98), rgba(3, 105, 161, 0.86));
 }
 
 .quizScaleHint {
@@ -617,7 +617,7 @@ details[open] .accordionChevron {
   border-radius: 12px;
   border: 1px solid var(--stroke2);
   background: rgba(255, 255, 255, 0.86);
-  color: rgba(9, 24, 20, 0.86);
+  color: rgba(14, 38, 61, 0.86);
   cursor: pointer;
   font-weight: 780;
   transition: 120ms ease;
@@ -626,12 +626,12 @@ details[open] .accordionChevron {
 .quizGridBtn:hover {
   transform: translateY(-1px);
   background: rgba(255, 255, 255, 1);
-  border-color: rgba(22, 163, 74, 0.25);
+  border-color: rgba(2, 132, 199, 0.25);
 }
 
 .quizGridBtnDone {
-  border-color: rgba(22, 163, 74, 0.25);
-  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(2, 132, 199, 0.25);
+  background: rgba(2, 132, 199, 0.12);
 }
 
 .quizGridBtnActive {
@@ -640,7 +640,7 @@ details[open] .accordionChevron {
 }
 
 .dimRow {
-  border: 1px solid rgba(16, 43, 35, 0.10);
+  border: 1px solid rgba(14, 38, 61, 0.10);
   border-radius: 16px;
   padding: 10px 10px 12px;
   background: rgba(255, 255, 255, 0.72);
@@ -678,21 +678,21 @@ details[open] .accordionChevron {
 .dimScore {
   text-align: right;
   font-weight: 860;
-  color: rgba(9, 24, 20, 0.86);
+  color: rgba(14, 38, 61, 0.86);
 }
 
 .dimBar {
   margin-top: 10px;
   height: 8px;
   border-radius: 999px;
-  border: 1px solid rgba(16, 43, 35, 0.12);
-  background: rgba(16, 43, 35, 0.05);
+  border: 1px solid rgba(14, 38, 61, 0.12);
+  background: rgba(14, 38, 61, 0.05);
   overflow: hidden;
 }
 
 .dimBarFill {
   height: 100%;
-  background: linear-gradient(90deg, rgba(34, 197, 94, 0.75), rgba(249, 115, 22, 0.5));
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.75), rgba(234, 88, 12, 0.5));
 }
 
 .breakRow {
@@ -702,13 +702,13 @@ details[open] .accordionChevron {
   align-items: center;
   padding: 10px;
   border-radius: 14px;
-  border: 1px solid rgba(16, 43, 35, 0.10);
+  border: 1px solid rgba(14, 38, 61, 0.10);
   background: rgba(255, 255, 255, 0.72);
 }
 
 .breakKey {
   font-weight: 900;
-  color: rgba(9, 24, 20, 0.88);
+  color: rgba(14, 38, 61, 0.88);
 }
 
 .breakNums {
@@ -727,7 +727,7 @@ details[open] .accordionChevron {
 
 .miniViz {
   border-radius: 16px;
-  border: 1px solid rgba(16, 43, 35, 0.10);
+  border: 1px solid rgba(14, 38, 61, 0.10);
   background: rgba(255, 255, 255, 0.82);
   padding: 8px;
 }
@@ -739,7 +739,7 @@ details[open] .accordionChevron {
 }
 
 .pathCardCTA {
-  border-top: 1px solid rgba(16, 43, 35, 0.10);
+  border-top: 1px solid rgba(14, 38, 61, 0.10);
   padding-top: 10px;
 }
 
@@ -750,20 +750,20 @@ details[open] .accordionChevron {
   resize: vertical;
   border-radius: 16px;
   padding: 12px;
-  border: 1px solid rgba(16, 43, 35, 0.16);
+  border: 1px solid rgba(14, 38, 61, 0.16);
   background: rgba(255, 255, 255, 0.92);
-  color: rgba(9, 24, 20, 0.9);
+  color: rgba(14, 38, 61, 0.9);
   font: inherit;
   outline: none;
 }
 
 .noteArea:focus {
-  border-color: rgba(22, 163, 74, 0.35);
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.16);
+  border-color: rgba(3, 105, 161, 0.35);
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.16);
 }
 
 .roadPhase {
-  border: 1px solid rgba(16, 43, 35, 0.10);
+  border: 1px solid rgba(14, 38, 61, 0.10);
   border-radius: 16px;
   padding: 12px;
   background: rgba(255, 255, 255, 0.72);
@@ -771,7 +771,7 @@ details[open] .accordionChevron {
 
 .roadPhaseTitle {
   font-weight: 860;
-  color: rgba(9, 24, 20, 0.9);
+  color: rgba(14, 38, 61, 0.9);
 }
 
 .matrixTable {
@@ -783,7 +783,7 @@ details[open] .accordionChevron {
 
 .matrixTh,
 .matrixTd {
-  border-bottom: 1px solid rgba(16, 43, 35, 0.10);
+  border-bottom: 1px solid rgba(14, 38, 61, 0.10);
   padding: 12px 10px;
   vertical-align: top;
 }
@@ -794,7 +794,7 @@ details[open] .accordionChevron {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
   z-index: 1;
-  color: rgba(9, 24, 20, 0.9);
+  color: rgba(14, 38, 61, 0.9);
 }
 
 .matrixName {
@@ -805,15 +805,15 @@ details[open] .accordionChevron {
   width: 100%;
   border-radius: 12px;
   padding: 9px 10px;
-  border: 1px solid rgba(16, 43, 35, 0.16);
+  border: 1px solid rgba(14, 38, 61, 0.16);
   background: rgba(255, 255, 255, 0.92);
-  color: rgba(9, 24, 20, 0.9);
+  color: rgba(14, 38, 61, 0.9);
   font: inherit;
   outline: none;
 }
 
 .rankRow {
-  border: 1px solid rgba(16, 43, 35, 0.10);
+  border: 1px solid rgba(14, 38, 61, 0.10);
   border-radius: 16px;
   padding: 12px;
   background: rgba(255, 255, 255, 0.72);
@@ -829,14 +829,14 @@ details[open] .accordionChevron {
   margin-top: 10px;
   height: 10px;
   border-radius: 999px;
-  border: 1px solid rgba(16, 43, 35, 0.12);
-  background: rgba(16, 43, 35, 0.05);
+  border: 1px solid rgba(14, 38, 61, 0.12);
+  background: rgba(14, 38, 61, 0.05);
   overflow: hidden;
 }
 
 .rankBarFill {
   height: 100%;
-  background: linear-gradient(90deg, rgba(34, 197, 94, 0.75), rgba(249, 115, 22, 0.55));
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.75), rgba(234, 88, 12, 0.55));
 }
 
 .clickCard {
@@ -845,13 +845,13 @@ details[open] .accordionChevron {
 
 .clickCard:hover {
   transform: translateY(-2px);
-  border-color: rgba(22, 163, 74, 0.22);
-  box-shadow: 0 18px 52px rgba(12, 28, 24, 0.14);
+  border-color: rgba(3, 105, 161, 0.22);
+  box-shadow: 0 18px 52px rgba(14, 38, 61, 0.14);
 }
 
 .pathName {
   font-weight: 900;
-  color: rgba(9, 24, 20, 0.92);
+  color: rgba(14, 38, 61, 0.92);
 }
 
 .cardSub {
@@ -896,7 +896,7 @@ details[open] .accordionChevron {
   background: transparent;
   padding: 20px 0;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;
   gap: 24px;
 }
 
@@ -912,7 +912,7 @@ details[open] .accordionChevron {
   gap: 10px;
   padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(16, 43, 35, 0.12);
+  border: 1px solid rgba(14, 38, 61, 0.12);
   background: rgba(255, 255, 255, 0.72);
   color: var(--muted);
   font-size: 12px;
@@ -926,7 +926,7 @@ details[open] .accordionChevron {
   font-weight: 850;
   font-size: 50px;
   line-height: 1.02;
-  color: rgba(9, 24, 20, 0.96);
+  color: rgba(14, 38, 61, 0.96);
 }
 
 @media (max-width: 720px) {
@@ -937,7 +937,7 @@ details[open] .accordionChevron {
 
 .homeSub {
   margin-top: 12px;
-  color: rgba(9, 24, 20, 0.70);
+  color: rgba(14, 38, 61, 0.70);
   font-size: 15px;
   max-width: 60ch;
 }
@@ -960,21 +960,19 @@ details[open] .accordionChevron {
 .chip {
   border-radius: 999px;
   padding: 8px 12px;
-  border: 1px solid rgba(16, 43, 35, 0.10);
+  border: 1px solid rgba(14, 38, 61, 0.10);
   background: rgba(255, 255, 255, 0.74);
-  color: rgba(9, 24, 20, 0.76);
+  color: rgba(14, 38, 61, 0.76);
   font-size: 12px;
 }
 
 .homeHeroRight {
-  display: grid;
-  gap: 12px;
-  align-content: start;
+  display: none;
 }
 
 .homeStat {
   border-radius: 18px;
-  border: 1px solid rgba(16, 43, 35, 0.10);
+  border: 1px solid rgba(14, 38, 61, 0.10);
   background: rgba(255, 255, 255, 0.78);
   padding: 14px;
   display: grid;
@@ -986,37 +984,63 @@ details[open] .accordionChevron {
   font-weight: 850;
   letter-spacing: -0.8px;
   font-size: 36px;
-  color: rgba(9, 24, 20, 0.94);
+  color: rgba(14, 38, 61, 0.94);
 }
 
 .homeStatText {
-  color: rgba(9, 24, 20, 0.66);
+  color: rgba(14, 38, 61, 0.66);
   font-size: 13px;
 }
 
-.dimExplainGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+.dimExplainScroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
 
-@media (max-width: 720px) {
-  .dimExplainGrid {
-    grid-template-columns: 1fr;
-  }
+.dimExplainScroll::-webkit-scrollbar {
+  height: 6px;
+}
+.dimExplainScroll::-webkit-scrollbar-track {
+  background: rgba(14, 38, 61, 0.04);
+  border-radius: 999px;
+}
+.dimExplainScroll::-webkit-scrollbar-thumb {
+  background: rgba(14, 38, 61, 0.12);
+  border-radius: 999px;
 }
 
-.dimExplainCard {
-  border: 1px solid rgba(16, 43, 35, 0.10);
-  border-radius: 16px;
-  padding: 12px;
-  background: rgba(255, 255, 255, 0.72);
+.dimExplainCardScroll {
+  flex: 0 0 260px;
+  scroll-snap-align: start;
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  background: var(--card2);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .dimExplainHead {
-  display: grid;
-  grid-template-columns: 34px 1fr;
-  gap: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.dimExplainIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(234, 88, 12, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
 }
 
 .dimExplainKey {
@@ -1027,16 +1051,16 @@ details[open] .accordionChevron {
   place-items: center;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.95);
-  background: linear-gradient(180deg, rgba(34, 197, 94, 0.98), rgba(22, 163, 74, 0.86));
+  background: linear-gradient(180deg, rgba(2, 132, 199, 0.98), rgba(3, 105, 161, 0.86));
 }
 
 .dimExplainName {
   font-weight: 860;
-  color: rgba(9, 24, 20, 0.92);
+  color: rgba(14, 38, 61, 0.92);
 }
 
 .dimExplainText {
   margin-top: 4px;
-  color: rgba(9, 24, 20, 0.62);
+  color: rgba(14, 38, 61, 0.62);
   font-size: 12px;
 }

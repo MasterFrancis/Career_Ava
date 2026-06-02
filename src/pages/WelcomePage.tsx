@@ -1,8 +1,23 @@
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { DIMENSION_ORDER, DIMENSIONS } from '../domain/dimensions'
 import { isQuizComplete } from '../domain/quiz'
 import { useStore } from '../state/useStore'
+import { 
+  Box, Search, Users, Mic, 
+  LineChart, Clock, Shield, Target 
+} from 'lucide-react'
+
+const DIM_ICONS: Record<string, React.ReactNode> = {
+  A: <Box size={18} />,
+  B: <Search size={18} />,
+  C: <Users size={18} />,
+  D: <Mic size={18} />,
+  E: <LineChart size={18} />,
+  F: <Clock size={18} />,
+  G: <Shield size={18} />,
+  H: <Target size={18} />
+}
 
 export function WelcomePage() {
   const { state } = useStore()
@@ -22,7 +37,7 @@ export function WelcomePage() {
           <div className="homeKicker">Career Flow · UK</div>
           <h1 className="homeTitle">把职业选择变成一条可走的路</h1>
           <p className="homeSub">
-            24 题 → 8 维度画像 → 可解释推荐 → 用户画像 vs 岗位倾向对比。
+            专为在英国求职的定性研究与社会学背景量身定制的职业路径探索工具。通过 24 题自我评估，匹配 6 大高壁垒岗位，提供透明的可解释推荐与路线图。
           </p>
 
           <div className="homeActions">
@@ -35,12 +50,6 @@ export function WelcomePage() {
               </button>
             )}
             {answeredCount > 0 && !complete && <span className="meta">已答 {answeredCount}/24</span>}
-          </div>
-
-          <div className="homeChips">
-            <span className="chip">无后端 · 全本地存储</span>
-            <span className="chip">推荐可复现可拆解</span>
-            <span className="chip">对比可视化解释匹配来源</span>
           </div>
         </div>
 
@@ -60,47 +69,23 @@ export function WelcomePage() {
         </div>
       </div>
 
-      <div style={{ marginTop: 14 }}>
-        <details className="accordion">
-          <summary className="accordionSummary">
-            <span>展开查看 8 维度说明</span>
-            <span className="accordionRight">
-              <span className="accordionHint">展开</span>
-              <svg
-                className="accordionChevron"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                role="presentation"
-                aria-hidden="true"
-              >
-                <path
-                  d="M7 10l5 5 5-5"
-                  stroke="currentColor"
-                  strokeWidth="2.25"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
-          </summary>
-          <div className="accordionBody">
-            <div className="dimExplainGrid">
-              {DIMENSION_ORDER.map((k) => (
-                <div key={k} className="dimExplainCard">
-                  <div className="dimExplainHead">
-                    <div className="dimExplainKey">{k}</div>
-                    <div>
-                      <div className="dimExplainName">{DIMENSIONS[k].name}</div>
-                      <div className="dimExplainText">{DIMENSIONS[k].oneLiner}</div>
-                    </div>
+      <div className="homeDesc">
+        <div className="dimExplainScroll">
+          {DIMENSION_ORDER.map(key => {
+            const d = DIMENSIONS[key as keyof typeof DIMENSIONS]
+            return (
+              <div key={key} className="dimExplainCardScroll">
+                <div className="dimExplainHead">
+                  <div className="dimExplainIcon">{DIM_ICONS[key]}</div>
+                  <div>
+                    <div className="dimExplainName">{d.name}</div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </details>
+                <div className="dimExplainText">{d.oneLiner}</div>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
