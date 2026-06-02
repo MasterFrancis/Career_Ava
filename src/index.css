@@ -838,19 +838,26 @@ details[open] .accordionChevron {
 
 .splitChart {
   display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 14px;
+  grid-template-columns: 1fr;
+  gap: 24px;
 }
 
-.splitChartXL {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 14px;
+@media (min-width: 921px) {
+  .splitChart {
+    grid-template-columns: 1fr;
+  }
 }
 
 .chartWrap {
   display: grid;
   place-items: center;
+  position: sticky;
+  top: 80px;
+  z-index: 10;
+  background: var(--card);
+  padding: 10px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 10px;
 }
 
 .chartSide {
@@ -859,8 +866,7 @@ details[open] .accordionChevron {
 }
 
 @media (max-width: 920px) {
-  .splitChart,
-  .splitChartXL {
+  .splitChart {
     grid-template-columns: 1fr;
   }
 }

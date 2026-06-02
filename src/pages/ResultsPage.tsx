@@ -4,6 +4,22 @@ import { getPathById, PATH_WEIGHTS } from '../domain/paths'
 import { useStore } from '../state/useStore'
 import { RadarChart } from '../ui/charts/RadarChart'
 import { Accordion } from '../ui/Accordion'
+import { 
+  Box, Search, Users, Mic, 
+  LineChart, Clock, Shield, Target 
+} from 'lucide-react'
+import React from 'react'
+
+const DIM_ICONS: Record<string, React.ReactNode> = {
+  A: <Box size={18} />,
+  B: <Search size={18} />,
+  C: <Users size={18} />,
+  D: <Mic size={18} />,
+  E: <LineChart size={18} />,
+  F: <Clock size={18} />,
+  G: <Shield size={18} />,
+  H: <Target size={18} />
+}
 
 export function ResultsPage() {
   const { state } = useStore()
@@ -28,7 +44,7 @@ export function ResultsPage() {
             </div>
           </div>
           <div className="cardBody splitChart">
-            <div className="chartWrap">
+            <div className="chartWrap" style={{ gridRow: 1 }}>
               <RadarChart size={240} values={state.dimensionScores} />
             </div>
             <div className="chartSide">
@@ -37,7 +53,7 @@ export function ResultsPage() {
                 return (
                   <div key={k} className="dimRow">
                     <div className="dimHead">
-                      <div className="dimKey">{k}</div>
+                      <div className="dimKey">{DIM_ICONS[k]}</div>
                       <div style={{ minWidth: 0 }}>
                         <div className="dimName">{DIMENSIONS[k].name}</div>
                         <div className="dimDesc">{DIMENSIONS[k].oneLiner}</div>
@@ -108,10 +124,7 @@ export function ResultsPage() {
                           </Link>
                         </div>
 
-                        <Accordion title="查看可复现计算（维度贡献拆解）">
-                          <div className="meta">
-                            weight 取值 0–3；dimScore 取值 0–15；贡献 = dimScore × weight。
-                          </div>
+                        <Accordion title="维度贡献拆解">
                           <div style={{ marginTop: 10, display: 'grid', gap: 8 }}>
                             {DIMENSION_ORDER.map((k) => {
                               const w = PATH_WEIGHTS[r.pathId][k]
@@ -119,7 +132,7 @@ export function ResultsPage() {
                               const c = s * w
                               return (
                                 <div key={k} className="breakRow">
-                                  <div className="breakKey">{k}</div>
+                                  <div className="breakKey">{DIM_ICONS[k]}</div>
                                   <div className="breakMid">
                                     <span className="meta">{DIMENSIONS[k].name}</span>
                                   </div>
@@ -142,18 +155,17 @@ export function ResultsPage() {
               </div>
             )}
 
-            <div className="divider" />
-
-            <div className="btnRow">
-              <button type="button" className="btn" onClick={() => navigate('/paths')}>
-                进入岗位浏览（对比可视化）
-              </button>
-              <button type="button" className="btn" onClick={() => navigate('/matrix')}>
-                打开决策矩阵（把权衡显性化）
-              </button>
-            </div>
           </div>
         </div>
+      </div>
+      
+      <div className="btnRow" style={{ marginTop: 24, justifyContent: 'center', gap: 16 }}>
+        <button type="button" className="btn btnPrimary" style={{ padding: '14px 28px', fontSize: 16 }} onClick={() => navigate('/paths')}>
+          进入岗位浏览（对比可视化）
+        </button>
+        <button type="button" className="btn" style={{ padding: '14px 28px', fontSize: 16 }} onClick={() => navigate('/matrix')}>
+          打开决策矩阵（把权衡显性化）
+        </button>
       </div>
     </div>
   )
