@@ -61,7 +61,7 @@ export function QuizPage() {
         </div>
       </div>
 
-      <div style={{ marginTop: 14, maxWidth: 640 }}>
+      <div style={{ marginTop: 14 }}>
         <div className="card">
           <div className="cardHeader">
             <div className="cardTitleRow">
