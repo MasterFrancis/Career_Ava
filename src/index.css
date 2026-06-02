@@ -12,11 +12,11 @@
   --muted: rgba(14, 38, 61, 0.72);
   --faint: rgba(14, 38, 61, 0.52);
 
-  --accent: #0284c7; /* 淡蓝色系中的主调，满足 WCAG AA */
+  --accent: #2563eb; /* 更纯的蓝色，满足 WCAG AA */
   --accent2: #ea580c; /* 淡橙色系中的主调，满足 WCAG AA */
   --accent3: #d97706;
   --danger: #e11d48;
-  --ok: #0284c7;
+  --ok: #2563eb;
 
   --shadow: 0 26px 80px rgba(14, 38, 61, 0.10);
   --shadow2: 0 12px 30px rgba(14, 38, 61, 0.10);
@@ -87,16 +87,19 @@ a {
 .appShell {
   width: var(--page);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
 }
 
 .topBar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 16px;
   padding: 16px 24px;
   border-bottom: 1px solid var(--stroke);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   flex-wrap: wrap;
   position: sticky;
@@ -141,6 +144,8 @@ a {
 .navPills {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
   gap: 10px;
   flex-wrap: wrap;
 }
@@ -152,24 +157,24 @@ a {
   text-decoration: none;
   color: var(--muted);
   background: rgba(255, 255, 255, 0.7);
-  transition: 120ms ease;
+  transition: background 120ms ease, color 120ms ease;
   font-size: 13px;
 }
 
 .pill:hover {
   color: var(--text);
-  border-color: var(--stroke2);
   background: rgba(255, 255, 255, 0.92);
 }
 
 .pillActive {
   color: rgba(255, 255, 255, 0.95);
-  border-color: rgba(3, 105, 161, 0.35);
-  background: linear-gradient(180deg, rgba(2, 132, 199, 0.98), rgba(3, 105, 161, 0.86));
+  background: var(--accent);
 }
 
 .page {
+  flex: 1;
   padding: 32px 24px 60px;
+  width: 100%;
   max-width: var(--max-content);
   margin: 0 auto;
 }
@@ -273,24 +278,22 @@ a {
   color: var(--text);
   border: 1px solid var(--stroke2);
   box-shadow: 0 1px 0 rgba(14, 38, 61, 0.04), 0 10px 24px rgba(14, 38, 61, 0.08);
-  transition: 120ms ease;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 1);
-  border-color: rgba(3, 105, 161, 0.32);
-  box-shadow: 0 1px 0 rgba(14, 38, 61, 0.04), 0 14px 30px rgba(14, 38, 61, 0.12);
+  background: #f8fafc;
+  border-color: rgba(14, 38, 61, 0.25);
 }
 
 .btnPrimary {
-  background: linear-gradient(180deg, rgba(2, 132, 199, 0.98), rgba(3, 105, 161, 0.88));
+  background: var(--accent);
   color: rgba(255, 255, 255, 0.95);
-  border-color: rgba(3, 105, 161, 0.35);
+  border-color: transparent;
 }
 
 .btnPrimary:hover {
-  background: linear-gradient(180deg, rgba(2, 132, 199, 1), rgba(3, 105, 161, 0.9));
+  background: #1d4ed8; /* Darker pure blue */
 }
 
 .btnGhost {
@@ -332,13 +335,17 @@ a {
 }
 
 .footer {
-  margin-top: 18px;
+  margin-top: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   color: var(--faint);
-  font-size: 12px;
+  font-size: 13px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(4px);
 }
 
 .linkBtn {
@@ -399,8 +406,7 @@ a {
 }
 
 .btn:disabled,
-.quizScaleBtn:disabled,
-.quizGridBtn:disabled {
+.quizScaleBtn:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   transform: none;
@@ -522,22 +528,21 @@ details[open] .accordionChevron {
   border: 1px solid rgba(14, 38, 61, 0.18);
   background: rgba(255, 255, 255, 0.8);
   cursor: pointer;
-  transition: 120ms ease;
+  transition: border-color 120ms ease, background 120ms ease;
 }
 
 .stepDot:hover {
-  transform: translateY(-1px);
-  border-color: rgba(2, 132, 199, 0.35);
+  border-color: var(--accent);
 }
 
 .stepDotDone {
-  background: rgba(2, 132, 199, 0.28);
-  border-color: rgba(3, 105, 161, 0.22);
+  background: rgba(37, 99, 235, 0.3); /* accent */
+  border-color: rgba(37, 99, 235, 0.4);
 }
 
 .stepDotActive {
-  background: rgba(249, 115, 22, 0.30);
-  border-color: rgba(234, 88, 12, 0.28);
+  background: var(--accent2);
+  border-color: var(--accent2);
 }
 
 .quizStatement {
@@ -582,19 +587,18 @@ details[open] .accordionChevron {
   font-weight: 820;
   font-size: 16px;
   cursor: pointer;
-  transition: 120ms ease;
+  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
 }
 
 .quizScaleBtn:hover {
-  transform: translateY(-1px);
-  border-color: rgba(2, 132, 199, 0.28);
+  border-color: var(--accent);
   background: rgba(255, 255, 255, 1);
 }
 
 .quizScaleBtnActive {
   color: rgba(255, 255, 255, 0.95);
-  border-color: rgba(3, 105, 161, 0.35);
-  background: linear-gradient(180deg, rgba(2, 132, 199, 0.98), rgba(3, 105, 161, 0.86));
+  border-color: transparent;
+  background: var(--accent);
 }
 
 .quizScaleHint {
@@ -606,38 +610,7 @@ details[open] .accordionChevron {
   font-size: 12px;
 }
 
-.quizGrid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 10px;
-}
 
-.quizGridBtn {
-  padding: 10px 0;
-  border-radius: 12px;
-  border: 1px solid var(--stroke2);
-  background: rgba(255, 255, 255, 0.86);
-  color: rgba(14, 38, 61, 0.86);
-  cursor: pointer;
-  font-weight: 780;
-  transition: 120ms ease;
-}
-
-.quizGridBtn:hover {
-  transform: translateY(-1px);
-  background: rgba(255, 255, 255, 1);
-  border-color: rgba(2, 132, 199, 0.25);
-}
-
-.quizGridBtnDone {
-  border-color: rgba(2, 132, 199, 0.25);
-  background: rgba(2, 132, 199, 0.12);
-}
-
-.quizGridBtnActive {
-  border-color: rgba(234, 88, 12, 0.25);
-  background: rgba(249, 115, 22, 0.12);
-}
 
 .dimRow {
   border: 1px solid rgba(14, 38, 61, 0.10);
@@ -661,7 +634,7 @@ details[open] .accordionChevron {
   place-items: center;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.95);
-  background: linear-gradient(180deg, rgba(249, 115, 22, 0.95), rgba(234, 88, 12, 0.82));
+  background: var(--accent2);
 }
 
 .dimName {
@@ -692,7 +665,7 @@ details[open] .accordionChevron {
 
 .dimBarFill {
   height: 100%;
-  background: linear-gradient(90deg, rgba(2, 132, 199, 0.75), rgba(234, 88, 12, 0.5));
+  background: var(--accent);
 }
 
 .breakRow {
@@ -836,16 +809,15 @@ details[open] .accordionChevron {
 
 .rankBarFill {
   height: 100%;
-  background: linear-gradient(90deg, rgba(2, 132, 199, 0.75), rgba(234, 88, 12, 0.55));
+  background: var(--accent);
 }
 
 .clickCard {
-  transition: 140ms ease;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
 }
 
 .clickCard:hover {
-  transform: translateY(-2px);
-  border-color: rgba(3, 105, 161, 0.22);
+  border-color: var(--accent);
   box-shadow: 0 18px 52px rgba(14, 38, 61, 0.14);
 }
 
@@ -1035,7 +1007,7 @@ details[open] .accordionChevron {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(2, 132, 199, 0.15), rgba(234, 88, 12, 0.1));
+  background: rgba(37, 99, 235, 0.12); /* var(--accent) with opacity */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1051,7 +1023,7 @@ details[open] .accordionChevron {
   place-items: center;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.95);
-  background: linear-gradient(180deg, rgba(2, 132, 199, 0.98), rgba(3, 105, 161, 0.86));
+  background: var(--accent);
 }
 
 .dimExplainName {

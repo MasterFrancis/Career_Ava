@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { QUIZ_QUESTIONS, isQuizComplete, type QuizAnswer } from '../domain/quiz'
+import { DIMENSIONS } from '../domain/dimensions'
 import { useStore } from '../state/useStore'
 
 function clamp(v: number, min: number, max: number) {
@@ -60,12 +61,12 @@ export function QuizPage() {
         </div>
       </div>
 
-      <div className="grid2" style={{ marginTop: 14, gridTemplateColumns: '1.15fr 0.85fr' }}>
+      <div style={{ marginTop: 14, maxWidth: 640 }}>
         <div className="card">
           <div className="cardHeader">
             <div className="cardTitleRow">
               <h2 className="cardTitle">
-                第 {q.index} 题 · 维度 {q.dimension}
+                第 {q.index} 题 · {DIMENSIONS[q.dimension as keyof typeof DIMENSIONS].name}
               </h2>
               <div className="meta">{answer ? `已选 ${answer}` : '未作答'}</div>
             </div>
@@ -122,48 +123,6 @@ export function QuizPage() {
                   </button>
                 )}
               </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="card">
-          <div className="cardHeader">
-            <div className="cardTitleRow">
-              <h2 className="cardTitle">题号跳转</h2>
-              <div className="meta">点选可直达</div>
-            </div>
-          </div>
-          <div className="cardBody">
-            <button
-              type="button"
-              className="btn"
-              onClick={() => {
-                if (firstEmpty === -1) return
-                setCursor(firstEmpty)
-              }}
-              disabled={firstEmpty === -1}
-            >
-              跳到第一个未答题
-            </button>
-
-            <div className="divider" />
-
-            <div className="quizGrid">
-              {QUIZ_QUESTIONS.map((qq, idx) => {
-                const a = state.quizAnswers[idx]
-                const active = idx === cursor
-                const done = a != null
-                return (
-                  <button
-                    key={qq.index}
-                    type="button"
-                    className={`quizGridBtn ${active ? 'quizGridBtnActive' : ''} ${done ? 'quizGridBtnDone' : ''}`}
-                    onClick={() => setCursor(idx)}
-                  >
-                    {qq.index}
-                  </button>
-                )
-              })}
             </div>
           </div>
         </div>
