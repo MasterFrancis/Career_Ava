@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { DIMENSIONS } from '../domain/dimensions'
 import { buildMatchExplanation, getMatchInsight } from '../domain/compare'
@@ -31,6 +31,8 @@ export function PathDetailPage() {
     [roleProfile, safePathId, state.dimensionScores],
   )
   const explain = useMemo(() => buildMatchExplanation(insight), [insight])
+
+  const [allExpanded, setAllExpanded] = useState(true)
 
   if (invalid) return <Navigate to="/paths" replace />
 
@@ -122,19 +124,26 @@ export function PathDetailPage() {
           <div className="cardHeader">
             <div className="cardTitleRow">
               <h2 className="cardTitle">岗位信息（逐层展开）</h2>
-              <div className="meta">总览 → 折叠详情</div>
+              <button 
+                type="button" 
+                className="linkBtn meta" 
+                onClick={() => setAllExpanded(!allExpanded)}
+                style={{ fontSize: 13 }}
+              >
+                {allExpanded ? '折叠全部' : '展开全部'}
+              </button>
             </div>
           </div>
           <div className="cardBody">
-            <div className="tagRow">
-              <span className="tag">交付物：{path.deliverables.slice(0, 2).join('、')}…</span>
-              <span className="tag">入门证据：{path.entryEvidence}</span>
-              <span className="tag">WLB 风险：{path.wlbRisk}</span>
+            <div className="tagRow" style={{ marginTop: 0 }}>
+              <span className="tag" style={{ width: 'fit-content' }}>交付物：{path.deliverables.slice(0, 2).join('、')}…</span>
+              <span className="tag" style={{ width: 'fit-content' }}>入门证据：{path.entryEvidence}</span>
+              <span className="tag" style={{ width: 'fit-content' }}>WLB 风险：{path.wlbRisk}</span>
             </div>
 
-            <div className="divider" />
+            <div className="divider" style={{ marginTop: 20 }} />
 
-            <Accordion title="岗位内核（是什么）" defaultOpen>
+            <Accordion title="岗位内核（是什么）" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.kernel.map((t) => (
                   <li key={t}>{t}</li>
@@ -142,7 +151,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="岗位名称变体（英国常见）">
+            <Accordion title="岗位名称变体（英国常见）" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.titleVariants.map((t) => (
                   <li key={t}>{t}</li>
@@ -150,7 +159,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="典型工作流（怎么做）">
+            <Accordion title="典型工作流（怎么做）" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.workflow.map((t) => (
                   <li key={t}>{t}</li>
@@ -158,7 +167,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="技能树（需要什么能力）">
+            <Accordion title="技能树（需要什么能力）" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.skillTree.map((t) => (
                   <li key={t}>{t}</li>
@@ -166,7 +175,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="市场与薪资（方向性参考）">
+            <Accordion title="市场与薪资（方向性参考）" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.marketSalary.map((t) => (
                   <li key={t}>{t}</li>
@@ -174,7 +183,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="优缺点与 WLB">
+            <Accordion title="优缺点与 WLB" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.prosConsWlb.map((t) => (
                   <li key={t}>{t}</li>
@@ -182,7 +191,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="验证型行动建议（尽快做出证据）">
+            <Accordion title="验证型行动建议（尽快做出证据）" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.actionAdvice.map((t) => (
                   <li key={t}>{t}</li>
@@ -190,7 +199,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="路线图 / 计划方案（只读参考）">
+            <Accordion title="路线图 / 计划方案（只读参考）" forceOpen={allExpanded}>
               <div style={{ display: 'grid', gap: 10 }}>
                 {path.sections.roadmap.map((s) => (
                   <div key={s.phase} className="roadPhase">

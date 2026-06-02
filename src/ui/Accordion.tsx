@@ -1,21 +1,30 @@
-import { useId, type ReactNode } from 'react'
+import { useId, useEffect, useRef, type ReactNode } from 'react'
 
 export function Accordion({
   title,
   children,
   defaultOpen = false,
+  forceOpen,
 }: {
-  title: string
+  title: ReactNode
   children: ReactNode
   defaultOpen?: boolean
+  forceOpen?: boolean
 }) {
   const id = useId()
+  const detailsRef = useRef<HTMLDetailsElement>(null)
+  
+  useEffect(() => {
+    if (detailsRef.current && forceOpen !== undefined) {
+      detailsRef.current.open = forceOpen
+    }
+  }, [forceOpen])
+
   return (
-    <details className="accordion" open={defaultOpen}>
+    <details className="accordion" open={defaultOpen} ref={detailsRef}>
       <summary className="accordionSummary" aria-controls={id}>
         <span>{title}</span>
         <span className="accordionRight">
-          <span className="accordionHint">展开</span>
           <svg
             className="accordionChevron"
             width="18"

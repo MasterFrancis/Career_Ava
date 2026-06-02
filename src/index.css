@@ -498,7 +498,7 @@ details[open] .accordionChevron {
 .ul {
   margin: 0;
   padding-left: 20px;
-  color: rgba(255, 255, 255, 0.74);
+  color: var(--text);
 }
 
 .ul li + li {
