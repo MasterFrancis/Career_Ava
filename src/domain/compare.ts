@@ -47,20 +47,20 @@ export function getMatchInsight(
 
 export function buildMatchExplanation(
   insight: MatchInsight,
-): { advantageLines: string[]; riskLines: string[] } {
-  const advantageLines =
+): { advantageLine: string; riskLine: string } {
+  const advantageLine =
     insight.advantage.length === 0
-      ? ['优势维度不突出：更像“均衡型适配”，需要用行动验证来确认。']
-      : insight.advantage.map((k) => `优势：${DIMENSIONS[k].name}更贴近岗位倾向。`)
+      ? '未见明显短板：属于均衡适配，可优先考虑。'
+      : `核心优势：在${insight.advantage.map(k => DIMENSIONS[k].name).join('与')}维度上表现突出，与该岗位高要求极度吻合。`
 
-  const riskLines =
+  const riskLine =
     insight.risk.length === 0
-      ? ['风险维度较少：主要不适感更可能来自具体团队/行业，而非能力画像本身。']
-      : insight.risk.map((k) => `风险：岗位更偏${DIMENSIONS[k].name}，低分时容易觉得费力。`)
+      ? '画像匹配度高：能力倾向与岗位需求基本对齐。'
+      : `潜在风险：该岗位较看重${insight.risk.map(k => DIMENSIONS[k].name).join('与')}，可能在相关工作流中感到费力或需要额外精力适应。`
 
   return {
-    advantageLines: advantageLines.slice(0, 4),
-    riskLines: riskLines.slice(0, 4),
+    advantageLine,
+    riskLine,
   }
 }
 

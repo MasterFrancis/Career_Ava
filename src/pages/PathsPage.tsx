@@ -66,23 +66,16 @@ export function PathsPage() {
 
                   <div className="pathCardLines">
                     <div className="pathCardLineBlock">
-                      <div className="meta" style={{ marginBottom: 6 }}>
-                        解释（简版）
-                      </div>
-                      <div style={{ display: 'grid', gap: 6 }}>
-                        {lines.advantageLines.slice(0, 2).map((t) => (
-                          <div key={t} className="meta">
-                            {t}
-                          </div>
-                        ))}
-                        {lines.riskLines.slice(0, 2).map((t) => (
-                          <div key={t} className="meta">
-                            {t}
-                          </div>
-                        ))}
+                      <div style={{ display: 'grid', gap: 8 }}>
+                        <div className="textAdvantage">
+                          {lines.advantageLine}
+                        </div>
+                        <div className="textRisk">
+                          {lines.riskLine}
+                        </div>
                       </div>
                     </div>
-                    <div className="pathCardCTA meta">点击卡片 → 查看详情、完整对比与路线图</div>
+                    <div className="pathCardCTA meta" style={{ marginTop: 4 }}>点击卡片 → 查看详情、完整对比与路线图</div>
                   </div>
                 </div>
                 

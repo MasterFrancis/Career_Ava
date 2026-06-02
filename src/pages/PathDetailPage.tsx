@@ -72,16 +72,12 @@ export function PathDetailPage() {
                   </div>
                   <div className="divider" />
                   <div style={{ display: 'grid', gap: 8 }}>
-                    {explain.advantageLines.map((t) => (
-                      <div key={t} className="meta">
-                        {t}
-                      </div>
-                    ))}
-                    {explain.riskLines.map((t) => (
-                      <div key={t} className="meta">
-                        {t}
-                      </div>
-                    ))}
+                    <div className="textAdvantage">
+                      {explain.advantageLine}
+                    </div>
+                    <div className="textRisk">
+                      {explain.riskLine}
+                    </div>
                   </div>
 
                   <div className="tagRow">
