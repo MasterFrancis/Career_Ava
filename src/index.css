@@ -419,23 +419,27 @@ a {
 }
 
 .accordion {
-  border: 1px solid var(--stroke);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
+  border-top: 1px solid var(--stroke);
   overflow: hidden;
-  margin-top: 10px;
+  margin-top: 16px;
 }
 
 .accordionSummary {
   list-style: none;
   cursor: pointer;
-  padding: 12px 12px;
+  padding: 12px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 13px;
+  transition: color 120ms ease;
+}
+
+.accordionSummary:hover {
   color: var(--text);
-  font-weight: 760;
 }
 
 .accordionSummary::-webkit-details-marker {
@@ -456,21 +460,20 @@ a {
 }
 
 details[open] .accordionHint {
-  color: rgba(2, 132, 199, 0.9);
+  color: var(--accent);
 }
 
 .accordionChevron {
-  transition: 160ms ease;
+  transition: transform 160ms ease, color 160ms ease;
 }
 
 details[open] .accordionChevron {
   transform: rotate(180deg);
-  color: rgba(3, 105, 161, 0.95);
+  color: var(--accent);
 }
 
 .accordionBody {
-  padding: 12px;
-  border-top: 1px solid rgba(14, 38, 61, 0.10);
+  padding: 8px 0 16px;
   color: var(--muted);
 }
 
