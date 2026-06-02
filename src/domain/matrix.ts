@@ -14,14 +14,14 @@ export type MatrixColumn = {
   name: string
 }
 
-export const MATRIX_COLUMNS: MatrixColumn[] = [
+export const MATRIX_COLUMNS: { id: MatrixColumnId; name: string; desc?: string }[] = [
   { id: 'interest', name: '兴趣/投入感' },
-  { id: 'transfer', name: '能力迁移度（已有优势）' },
-  { id: 'learningCost', name: '学习成本（需要补齐的短板）' },
-  { id: 'entryBarrier', name: '进入门槛（作品/经验）' },
+  { id: 'transfer', name: '能力迁移度', desc: '已有优势' },
+  { id: 'learningCost', name: '学习成本', desc: '需要补齐的短板' },
+  { id: 'entryBarrier', name: '进入门槛', desc: '作品/经验' },
   { id: 'wlb', name: 'WLB/压力可承受度' },
-  { id: 'market', name: '市场机会/岗位数量' },
-  { id: 'values', name: '价值对齐（是否重要）' },
+  { id: 'market', name: '市场机会', desc: '岗位数量' },
+  { id: 'values', name: '价值对齐', desc: '是否重要' },
 ]
 
 export type MatrixWeight = 1 | 2 | 3

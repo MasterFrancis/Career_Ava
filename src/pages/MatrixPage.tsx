@@ -1,15 +1,22 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { computeMatrixRanking, MATRIX_COLUMNS, type MatrixScore, type MatrixWeight } from '../domain/matrix'
 import { PATHS } from '../domain/paths'
 import { useStore } from '../state/useStore'
 import { Accordion } from '../ui/Accordion'
+import { Info, ArrowUpDown } from 'lucide-react'
 
 export function MatrixPage() {
   const { state, dispatch } = useStore()
   const navigate = useNavigate()
 
   const ranking = useMemo(() => computeMatrixRanking(state.matrix), [state.matrix])
+  const [order, setOrder] = useState(() => PATHS.map(p => p.id))
+
+  const handleSort = () => {
+    setOrder(ranking.map(r => r.pathId))
+  }
+
   // const maxTotal = ranking[0]?.total ?? 1
 
   return (
@@ -31,56 +38,67 @@ export function MatrixPage() {
         <div className="cardHeader">
           <div className="cardTitleRow">
             <h2 className="cardTitle">矩阵表</h2>
-            <div className="meta">本地自动保存，实时重新排序</div>
+            <div className="meta">本地自动保存，点击排序按钮更新顺序</div>
           </div>
         </div>
         <div className="cardBody" style={{ overflowX: 'auto' }}>
           <table className="matrixTable">
             <thead>
               <tr>
-                <th className="matrixTh">排名</th>
+                <th className="matrixTh">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                    排名
+                    <button type="button" className="btn" style={{ padding: '4px 8px', fontSize: 12, display: 'flex', alignItems: 'center', gap: 4 }} onClick={handleSort} title="按当前总分重新排序">
+                      <ArrowUpDown size={14} />
+                      排序
+                    </button>
+                  </div>
+                </th>
                 <th className="matrixTh">路径</th>
                 {MATRIX_COLUMNS.map((c) => (
                   <th key={c.id} className="matrixTh">
                     <div style={{ display: 'grid', gap: 8 }}>
-                      <div style={{ fontWeight: 760 }}>{c.name}</div>
-                      <div className="segmentGroup">
-                        {[1, 2, 3].map((v) => {
-                          const active = state.matrix.columnWeights[c.id] === v
-                          return (
-                            <button
-                              key={v}
-                              type="button"
-                              className={`segmentBtn ${active ? 'segmentBtnActive' : ''}`}
-                              onClick={() =>
-                                dispatch({
-                                  type: 'matrix/setWeight',
-                                  columnId: c.id,
-                                  weight: v as MatrixWeight,
-                                })
-                              }
-                            >
-                              权重 {v}
-                            </button>
-                          )
-                        })}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontWeight: 760 }}>
+                        {c.name}
+                        {c.desc && (
+                          <div title={c.desc} style={{ color: 'var(--muted)', display: 'flex', cursor: 'help' }}>
+                            <Info size={14} />
+                          </div>
+                        )}
                       </div>
+                      <select
+                        className="matrixSelect"
+                        value={state.matrix.columnWeights[c.id]}
+                        onChange={(e) =>
+                          dispatch({
+                            type: 'matrix/setWeight',
+                            columnId: c.id,
+                            weight: Number(e.target.value) as MatrixWeight,
+                          })
+                        }
+                      >
+                        <option value={1}>1 - 不太重要</option>
+                        <option value={2}>2 - 一般</option>
+                        <option value={3}>3 - 非常重要</option>
+                      </select>
                     </div>
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {ranking.map((r, idx) => {
-                const p = PATHS.find((pp) => pp.id === r.pathId)!
+              {order.map((pathId) => {
+                const p = PATHS.find((pp) => pp.id === pathId)!
+                const rankIndex = ranking.findIndex(r => r.pathId === pathId)
+                const rankInfo = ranking[rankIndex]
                 return (
                   <tr key={p.id}>
                     <td className="matrixTd">
                       <div className="tag" style={{ padding: '4px 8px', width: 'fit-content', fontWeight: 800 }}>
-                        #{idx + 1}
+                        #{rankIndex + 1}
                       </div>
                       <div className="meta" style={{ marginTop: 6, fontWeight: 700 }}>
-                        {r.total} 分
+                        {rankInfo.total} 分
                       </div>
                     </td>
                     <td className="matrixTd matrixName">
