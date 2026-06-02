@@ -60,9 +60,6 @@ export function ResultsPage() {
                       </div>
                       <div className="dimScore">{v}/15</div>
                     </div>
-                    <div className="dimBar">
-                      <div className="dimBarFill" style={{ width: `${(v / 15) * 100}%` }} />
-                    </div>
                   </div>
                 )
               })}

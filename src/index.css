@@ -619,9 +619,9 @@ details[open] .accordionChevron {
 
 
 .dimRow {
-  border: 1px solid rgba(14, 38, 61, 0.10);
+  border: 1px solid var(--stroke);
   border-radius: 16px;
-  padding: 10px 10px 12px;
+  padding: 14px;
   background: rgba(255, 255, 255, 0.72);
 }
 
@@ -658,20 +658,6 @@ details[open] .accordionChevron {
   text-align: right;
   font-weight: 860;
   color: rgba(14, 38, 61, 0.86);
-}
-
-.dimBar {
-  margin-top: 10px;
-  height: 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(14, 38, 61, 0.12);
-  background: rgba(14, 38, 61, 0.05);
-  overflow: hidden;
-}
-
-.dimBarFill {
-  height: 100%;
-  background: var(--accent);
 }
 
 .breakRow {
