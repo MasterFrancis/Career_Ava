@@ -64,11 +64,11 @@ export function PathDetailPage() {
               <div className="meta">青=你 · 粉=岗位倾向</div>
             </div>
           </div>
-          <div className="cardBody splitChartXL">
+          <div className="cardBody splitChartXL" style={{ display: 'grid', gap: 24 }}>
             <div className="chartWrap">
               <RadarChart size={280} values={state.dimensionScores} compareValues={roleProfile} />
             </div>
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div className="card cardSub">
                 <div className="cardBody">
                   <div className="cardTitleRow">
@@ -100,8 +100,6 @@ export function PathDetailPage() {
                 </div>
               </div>
 
-              <div className="divider" />
-
               <div className="card cardSub">
                 <div className="cardBody">
                   <div className="cardTitleRow">
@@ -116,6 +114,19 @@ export function PathDetailPage() {
                   />
                 </div>
               </div>
+
+              <div className="card cardSub">
+                <div className="cardBody">
+                  <div className="cardTitleRow">
+                    <h3 className="cardTitle">岗位速览</h3>
+                  </div>
+                  <div className="tagRow" style={{ marginTop: 12 }}>
+                    <span className="tag" style={{ width: 'fit-content' }}>交付物：{path.deliverables.slice(0, 2).join('、')}…</span>
+                    <span className="tag" style={{ width: 'fit-content' }}>入门证据：{path.entryEvidence}</span>
+                    <span className="tag" style={{ width: 'fit-content' }}>WLB 风险：{path.wlbRisk}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -124,9 +135,9 @@ export function PathDetailPage() {
           <div className="cardHeader">
             <div className="cardTitleRow">
               <h2 className="cardTitle">岗位信息（逐层展开）</h2>
-              <button 
-                type="button" 
-                className="linkBtn meta" 
+              <button
+                type="button"
+                className="linkBtn meta"
                 onClick={() => setAllExpanded(!allExpanded)}
                 style={{ fontSize: 13 }}
               >
@@ -135,14 +146,6 @@ export function PathDetailPage() {
             </div>
           </div>
           <div className="cardBody">
-            <div className="tagRow" style={{ marginTop: 0 }}>
-              <span className="tag" style={{ width: 'fit-content' }}>交付物：{path.deliverables.slice(0, 2).join('、')}…</span>
-              <span className="tag" style={{ width: 'fit-content' }}>入门证据：{path.entryEvidence}</span>
-              <span className="tag" style={{ width: 'fit-content' }}>WLB 风险：{path.wlbRisk}</span>
-            </div>
-
-            <div className="divider" style={{ marginTop: 20 }} />
-
             <Accordion title="岗位内核（是什么）" forceOpen={allExpanded}>
               <ul className="ul">
                 {path.sections.kernel.map((t) => (
