@@ -70,21 +70,23 @@ export function WelcomePage() {
       </div>
 
       <div className="homeDesc">
-        <div className="dimExplainScroll">
-          {DIMENSION_ORDER.map(key => {
-            const d = DIMENSIONS[key as keyof typeof DIMENSIONS]
-            return (
-              <div key={key} className="dimExplainCardScroll">
-                <div className="dimExplainHead">
-                  <div className="dimExplainIcon">{DIM_ICONS[key]}</div>
-                  <div>
-                    <div className="dimExplainName">{d.name}</div>
+        <div className="marqueeContainer">
+          <div className="marqueeContent">
+            {[...DIMENSION_ORDER, ...DIMENSION_ORDER].map((key, index) => {
+              const d = DIMENSIONS[key as keyof typeof DIMENSIONS]
+              return (
+                <div key={`${key}-${index}`} className="dimExplainCardScroll">
+                  <div className="dimExplainHead">
+                    <div className="dimExplainIcon">{DIM_ICONS[key]}</div>
+                    <div>
+                      <div className="dimExplainName">{d.name}</div>
+                    </div>
                   </div>
+                  <div className="dimExplainText">{d.oneLiner}</div>
                 </div>
-                <div className="dimExplainText">{d.oneLiner}</div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
       </div>
     </div>

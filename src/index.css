@@ -964,37 +964,50 @@ details[open] .accordionChevron {
   font-size: 13px;
 }
 
-.dimExplainScroll {
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding-bottom: 12px;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
+.marqueeContainer {
+  overflow: hidden;
+  width: 100%;
+  padding: 16px 0;
+  position: relative;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
-.dimExplainScroll::-webkit-scrollbar {
-  height: 6px;
+.marqueeContent {
+  display: flex;
+  width: max-content;
+  gap: 16px;
+  animation: marqueeScroll 40s linear infinite;
 }
-.dimExplainScroll::-webkit-scrollbar-track {
-  background: rgba(14, 38, 61, 0.04);
-  border-radius: 999px;
+
+.marqueeContent:hover {
+  animation-play-state: paused;
 }
-.dimExplainScroll::-webkit-scrollbar-thumb {
-  background: rgba(14, 38, 61, 0.12);
-  border-radius: 999px;
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 8px)); } /* 8px is half the gap of 16px */
 }
 
 .dimExplainCardScroll {
   flex: 0 0 260px;
-  scroll-snap-align: start;
   border: 1px solid var(--stroke);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  background: var(--card2);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   gap: 12px;
+  transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1), border-color 300ms ease;
+  cursor: default;
+}
+
+.dimExplainCardScroll:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.3);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .dimExplainHead {
