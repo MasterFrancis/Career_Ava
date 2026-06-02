@@ -1,40 +1,55 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,350..900&family=Recursive:wght@300..1000&display=swap');
 
 :root {
-  --bg0: #0b0c10;
-  --bg1: #0f1320;
-  --card: rgba(255, 255, 255, 0.06);
-  --card2: rgba(255, 255, 255, 0.08);
-  --stroke: rgba(255, 255, 255, 0.12);
-  --stroke2: rgba(255, 255, 255, 0.18);
-  --text: rgba(255, 255, 255, 0.84);
-  --muted: rgba(255, 255, 255, 0.62);
-  --faint: rgba(255, 255, 255, 0.46);
+  --bg0: #f6faf7;
+  --bg1: #eef6f1;
+  --paper: #ffffff;
+  --card: rgba(255, 255, 255, 0.92);
+  --card2: rgba(255, 255, 255, 0.74);
+  --stroke: rgba(16, 43, 35, 0.10);
+  --stroke2: rgba(16, 43, 35, 0.16);
+  --text: rgba(9, 24, 20, 0.92);
+  --muted: rgba(9, 24, 20, 0.72);
+  --faint: rgba(9, 24, 20, 0.52);
 
-  --accent: #8cfffe;
-  --accent2: #ff5cf6;
-  --accent3: #ffd166;
-  --danger: #ff4d6d;
-  --ok: #7cff6b;
+  --accent: #16a34a;
+  --accent2: #f97316;
+  --accent3: #f59e0b;
+  --danger: #e11d48;
+  --ok: #16a34a;
 
-  --shadow: 0 22px 70px rgba(0, 0, 0, 0.55);
-  --radius-xl: 22px;
-  --radius-lg: 16px;
-  --radius-md: 12px;
-  --radius-sm: 10px;
+  --shadow: 0 26px 80px rgba(12, 28, 24, 0.10);
+  --shadow2: 0 12px 30px rgba(12, 28, 24, 0.10);
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+  --radius-sm: 12px;
 
   --sans: 'Recursive', ui-sans-serif, system-ui, sans-serif;
   --display: 'Fraunces', ui-serif, Georgia, serif;
 
-  --page: min(1120px, calc(100% - 48px));
+  --page: min(1120px, calc(100% - 44px));
+
+  --chart-grid: rgba(16, 43, 35, 0.10);
+  --chart-axis: rgba(16, 43, 35, 0.08);
+  --chart-label: rgba(16, 43, 35, 0.58);
+  --chart-user-fill-1: rgba(34, 197, 94, 0.34);
+  --chart-user-fill-2: rgba(34, 197, 94, 0.12);
+  --chart-user-stroke-1: rgba(22, 163, 74, 0.95);
+  --chart-user-stroke-2: rgba(22, 163, 74, 0.55);
+  --chart-role-fill-1: rgba(249, 115, 22, 0.30);
+  --chart-role-fill-2: rgba(249, 115, 22, 0.12);
+  --chart-role-stroke-1: rgba(234, 88, 12, 0.92);
+  --chart-role-stroke-2: rgba(234, 88, 12, 0.55);
 
   font: 16px/155% var(--sans);
   letter-spacing: 0.2px;
   color: var(--text);
-  background: radial-gradient(1200px 700px at 20% 0%, rgba(140, 255, 254, 0.18), transparent 60%),
-    radial-gradient(1000px 650px at 90% 20%, rgba(255, 92, 246, 0.18), transparent 55%),
-    radial-gradient(1000px 700px at 50% 100%, rgba(255, 209, 102, 0.11), transparent 60%),
+  background: radial-gradient(1200px 680px at 20% 0%, rgba(34, 197, 94, 0.12), transparent 62%),
+    radial-gradient(980px 620px at 92% 8%, rgba(249, 115, 22, 0.10), transparent 58%),
+    radial-gradient(900px 640px at 50% 100%, rgba(245, 158, 11, 0.10), transparent 62%),
     linear-gradient(180deg, var(--bg0), var(--bg1));
+  color-scheme: light;
   font-synthesis: none;
   text-rendering: geometricPrecision;
   -webkit-font-smoothing: antialiased;
@@ -43,7 +58,7 @@
 
 @media (max-width: 720px) {
   :root {
-    --page: calc(100% - 28px);
+    --page: calc(100% - 24px);
     font-size: 15px;
   }
 }
@@ -83,9 +98,10 @@ a {
   padding: 14px 16px;
   border: 1px solid var(--stroke);
   border-radius: var(--radius-xl);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82));
   box-shadow: var(--shadow);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(10px);
+  flex-wrap: wrap;
 }
 
 .brand {
@@ -99,8 +115,8 @@ a {
   width: 34px;
   height: 34px;
   border-radius: 12px;
-  background: radial-gradient(circle at 30% 30%, rgba(140, 255, 254, 0.9), rgba(255, 92, 246, 0.55));
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14) inset, 0 10px 28px rgba(255, 92, 246, 0.12);
+  background: radial-gradient(circle at 30% 30%, rgba(34, 197, 94, 0.85), rgba(249, 115, 22, 0.55));
+  box-shadow: 0 0 0 1px rgba(16, 43, 35, 0.10) inset, 0 10px 26px rgba(34, 197, 94, 0.12);
 }
 
 .brandTitle {
@@ -126,6 +142,7 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .pill {
@@ -134,31 +151,30 @@ a {
   border: 1px solid transparent;
   text-decoration: none;
   color: var(--muted);
-  background: transparent;
+  background: rgba(255, 255, 255, 0.7);
   transition: 120ms ease;
   font-size: 13px;
 }
 
 .pill:hover {
   color: var(--text);
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--stroke2);
+  background: rgba(255, 255, 255, 0.92);
 }
 
 .pillActive {
-  color: rgba(0, 0, 0, 0.86);
-  border-color: rgba(140, 255, 254, 0.4);
-  background: linear-gradient(180deg, rgba(140, 255, 254, 0.92), rgba(140, 255, 254, 0.68));
+  color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(22, 163, 74, 0.35);
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.98), rgba(22, 163, 74, 0.86));
 }
 
 .page {
   margin-top: 18px;
   border: 1px solid var(--stroke);
   border-radius: var(--radius-xl);
-  background: radial-gradient(1200px 500px at 20% 0%, rgba(255, 255, 255, 0.06), transparent 55%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.04));
-  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(14px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.88));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
   overflow: hidden;
 }
 
@@ -209,8 +225,8 @@ a {
 .card {
   border: 1px solid var(--stroke);
   border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.045));
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.84));
+  box-shadow: var(--shadow2);
   overflow: hidden;
 }
 
@@ -233,7 +249,7 @@ a {
   margin: 0;
   font-size: 16px;
   letter-spacing: 0.2px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
   font-weight: 720;
 }
 
@@ -251,37 +267,38 @@ a {
 
 .btn {
   appearance: none;
-  border: 0;
   cursor: pointer;
   border-radius: 14px;
   padding: 10px 14px;
   font-weight: 720;
   letter-spacing: 0.3px;
   font-size: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text);
+  border: 1px solid var(--stroke2);
+  box-shadow: 0 1px 0 rgba(12, 28, 24, 0.04), 0 10px 24px rgba(12, 28, 24, 0.08);
   transition: 120ms ease;
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(22, 163, 74, 0.32);
+  box-shadow: 0 1px 0 rgba(12, 28, 24, 0.04), 0 14px 30px rgba(12, 28, 24, 0.12);
 }
 
 .btnPrimary {
-  background: linear-gradient(180deg, rgba(140, 255, 254, 0.92), rgba(140, 255, 254, 0.64));
-  color: rgba(0, 0, 0, 0.86);
-  border-color: rgba(140, 255, 254, 0.45);
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.98), rgba(22, 163, 74, 0.88));
+  color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(22, 163, 74, 0.35);
 }
 
 .btnPrimary:hover {
-  background: linear-gradient(180deg, rgba(140, 255, 254, 1), rgba(140, 255, 254, 0.7));
+  background: linear-gradient(180deg, rgba(34, 197, 94, 1), rgba(22, 163, 74, 0.9));
 }
 
 .btnGhost {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .tagRow {
@@ -292,29 +309,29 @@ a {
 }
 
 .tag {
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--stroke);
   border-radius: 999px;
   padding: 6px 10px;
   font-size: 12px;
   color: var(--muted);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .tagGood {
-  border-color: rgba(124, 255, 107, 0.35);
-  background: rgba(124, 255, 107, 0.12);
-  color: rgba(216, 255, 212, 0.95);
+  border-color: rgba(22, 163, 74, 0.25);
+  background: rgba(34, 197, 94, 0.12);
+  color: rgba(9, 24, 20, 0.88);
 }
 
 .tagRisk {
-  border-color: rgba(255, 77, 109, 0.35);
-  background: rgba(255, 77, 109, 0.12);
-  color: rgba(255, 224, 228, 0.95);
+  border-color: rgba(225, 29, 72, 0.24);
+  background: rgba(225, 29, 72, 0.10);
+  color: rgba(9, 24, 20, 0.88);
 }
 
 .divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(16, 43, 35, 0.10);
   margin: 18px 0;
 }
 
@@ -332,7 +349,7 @@ a {
   background: transparent;
   border: 0;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(9, 24, 20, 0.78);
   text-decoration: underline;
   text-underline-offset: 3px;
   padding: 0;
@@ -340,13 +357,13 @@ a {
 }
 
 .linkBtn:hover {
-  color: rgba(255, 255, 255, 0.95);
+  color: rgba(9, 24, 20, 0.92);
 }
 
 .modalOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(10, 20, 18, 0.35);
   display: grid;
   place-items: center;
   padding: 18px;
@@ -356,9 +373,9 @@ a {
 .modal {
   width: min(520px, 100%);
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: linear-gradient(180deg, rgba(18, 22, 34, 0.92), rgba(8, 9, 14, 0.88));
-  box-shadow: 0 36px 120px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--stroke2);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 36px 120px rgba(12, 28, 24, 0.18);
   overflow: hidden;
 }
 
@@ -394,9 +411,9 @@ a {
 }
 
 .accordion {
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--stroke);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
   overflow: hidden;
   margin-top: 10px;
 }
@@ -409,7 +426,7 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--text);
   font-weight: 760;
 }
 
@@ -417,21 +434,36 @@ a {
   display: none;
 }
 
+.accordionRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--faint);
+}
+
 .accordionHint {
-  color: rgba(255, 255, 255, 0.55);
   font-size: 12px;
   font-weight: 720;
   letter-spacing: 0.2px;
 }
 
 details[open] .accordionHint {
-  color: rgba(140, 255, 254, 0.9);
+  color: rgba(22, 163, 74, 0.95);
+}
+
+.accordionChevron {
+  transition: 160ms ease;
+}
+
+details[open] .accordionChevron {
+  transform: rotate(180deg);
+  color: rgba(22, 163, 74, 0.95);
 }
 
 .accordionBody {
   padding: 12px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.78);
+  border-top: 1px solid rgba(16, 43, 35, 0.10);
+  color: var(--muted);
 }
 
 .ul {
@@ -444,20 +476,72 @@ details[open] .accordionHint {
   margin-top: 6px;
 }
 
-.quizProgress {
+.stepper {
   margin-top: 14px;
-  height: 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.18);
-  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.75);
+  padding: 12px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-.quizProgressBar {
-  height: 100%;
-  background: linear-gradient(90deg, rgba(140, 255, 254, 0.95), rgba(255, 92, 246, 0.65));
-  border-right: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+.stepperLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stepperTitle {
+  font-family: var(--display);
+  letter-spacing: -0.6px;
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.stepperNum {
+  color: rgba(22, 163, 74, 0.95);
+}
+
+.stepperDots {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 10px;
+  gap: 7px;
+  overflow-x: auto;
+  padding: 6px 4px;
+  scrollbar-width: none;
+}
+
+.stepperDots::-webkit-scrollbar {
+  display: none;
+}
+
+.stepDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 43, 35, 0.18);
+  background: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: 120ms ease;
+}
+
+.stepDot:hover {
+  transform: translateY(-1px);
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+.stepDotDone {
+  background: rgba(34, 197, 94, 0.28);
+  border-color: rgba(22, 163, 74, 0.22);
+}
+
+.stepDotActive {
+  background: rgba(249, 115, 22, 0.30);
+  border-color: rgba(234, 88, 12, 0.28);
 }
 
 .quizStatement {
@@ -465,7 +549,7 @@ details[open] .accordionHint {
   font-size: 26px;
   letter-spacing: -0.6px;
   line-height: 1.15;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(9, 24, 20, 0.92);
   animation: fadeUp 240ms ease both;
 }
 
@@ -496,9 +580,9 @@ details[open] .accordionHint {
 .quizScaleBtn {
   border-radius: 14px;
   padding: 14px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--stroke2);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
   font-weight: 820;
   font-size: 16px;
   cursor: pointer;
@@ -507,14 +591,14 @@ details[open] .accordionHint {
 
 .quizScaleBtn:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(22, 163, 74, 0.28);
+  background: rgba(255, 255, 255, 1);
 }
 
 .quizScaleBtnActive {
-  color: rgba(0, 0, 0, 0.86);
-  border-color: rgba(140, 255, 254, 0.45);
-  background: linear-gradient(180deg, rgba(140, 255, 254, 0.96), rgba(140, 255, 254, 0.62));
+  color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(22, 163, 74, 0.35);
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.98), rgba(22, 163, 74, 0.86));
 }
 
 .quizScaleHint {
@@ -522,7 +606,7 @@ details[open] .accordionHint {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--faint);
   font-size: 12px;
 }
 
@@ -535,9 +619,9 @@ details[open] .accordionHint {
 .quizGridBtn {
   padding: 10px 0;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.05);
-  color: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--stroke2);
+  background: rgba(255, 255, 255, 0.86);
+  color: rgba(9, 24, 20, 0.86);
   cursor: pointer;
   font-weight: 780;
   transition: 120ms ease;
@@ -545,24 +629,25 @@ details[open] .accordionHint {
 
 .quizGridBtn:hover {
   transform: translateY(-1px);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 1);
+  border-color: rgba(22, 163, 74, 0.25);
 }
 
 .quizGridBtnDone {
-  border-color: rgba(124, 255, 107, 0.22);
-  background: rgba(124, 255, 107, 0.1);
+  border-color: rgba(22, 163, 74, 0.25);
+  background: rgba(34, 197, 94, 0.12);
 }
 
 .quizGridBtnActive {
-  border-color: rgba(140, 255, 254, 0.4);
-  background: rgba(140, 255, 254, 0.14);
+  border-color: rgba(234, 88, 12, 0.25);
+  background: rgba(249, 115, 22, 0.12);
 }
 
 .dimRow {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(16, 43, 35, 0.10);
   border-radius: 16px;
   padding: 10px 10px 12px;
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .dimHead {
@@ -579,39 +664,39 @@ details[open] .accordionHint {
   display: grid;
   place-items: center;
   font-weight: 900;
-  color: rgba(0, 0, 0, 0.82);
-  background: linear-gradient(180deg, rgba(255, 209, 102, 0.95), rgba(255, 209, 102, 0.55));
+  color: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(180deg, rgba(249, 115, 22, 0.95), rgba(234, 88, 12, 0.82));
 }
 
 .dimName {
   font-weight: 860;
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--text);
 }
 
 .dimDesc {
   margin-top: 4px;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.58);
+  color: var(--faint);
 }
 
 .dimScore {
   text-align: right;
   font-weight: 860;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(9, 24, 20, 0.86);
 }
 
 .dimBar {
   margin-top: 10px;
   height: 8px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(16, 43, 35, 0.12);
+  background: rgba(16, 43, 35, 0.05);
   overflow: hidden;
 }
 
 .dimBarFill {
   height: 100%;
-  background: linear-gradient(90deg, rgba(140, 255, 254, 0.8), rgba(255, 92, 246, 0.6));
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.75), rgba(249, 115, 22, 0.5));
 }
 
 .breakRow {
@@ -621,13 +706,13 @@ details[open] .accordionHint {
   align-items: center;
   padding: 10px;
   border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(16, 43, 35, 0.10);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .breakKey {
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(9, 24, 20, 0.88);
 }
 
 .breakNums {
@@ -646,8 +731,8 @@ details[open] .accordionHint {
 
 .miniViz {
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.14);
+  border: 1px solid rgba(16, 43, 35, 0.10);
+  background: rgba(255, 255, 255, 0.82);
   padding: 8px;
 }
 
@@ -658,7 +743,7 @@ details[open] .accordionHint {
 }
 
 .pathCardCTA {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(16, 43, 35, 0.10);
   padding-top: 10px;
 }
 
@@ -669,28 +754,28 @@ details[open] .accordionHint {
   resize: vertical;
   border-radius: 16px;
   padding: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(0, 0, 0, 0.18);
-  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(16, 43, 35, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+  color: rgba(9, 24, 20, 0.9);
   font: inherit;
   outline: none;
 }
 
 .noteArea:focus {
-  border-color: rgba(140, 255, 254, 0.35);
-  box-shadow: 0 0 0 3px rgba(140, 255, 254, 0.12);
+  border-color: rgba(22, 163, 74, 0.35);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.16);
 }
 
 .roadPhase {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(16, 43, 35, 0.10);
   border-radius: 16px;
   padding: 12px;
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .roadPhaseTitle {
   font-weight: 860;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(9, 24, 20, 0.9);
 }
 
 .matrixTable {
@@ -702,7 +787,7 @@ details[open] .accordionHint {
 
 .matrixTh,
 .matrixTd {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(16, 43, 35, 0.10);
   padding: 12px 10px;
   vertical-align: top;
 }
@@ -710,10 +795,10 @@ details[open] .accordionHint {
 .matrixTh {
   position: sticky;
   top: 0;
-  background: rgba(13, 15, 23, 0.88);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(8px);
   z-index: 1;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(9, 24, 20, 0.9);
 }
 
 .matrixName {
@@ -724,18 +809,18 @@ details[open] .accordionHint {
   width: 100%;
   border-radius: 12px;
   padding: 9px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(0, 0, 0, 0.2);
-  color: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(16, 43, 35, 0.16);
+  background: rgba(255, 255, 255, 0.92);
+  color: rgba(9, 24, 20, 0.9);
   font: inherit;
   outline: none;
 }
 
 .rankRow {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(16, 43, 35, 0.10);
   border-radius: 16px;
   padding: 12px;
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .rankHead {
@@ -748,12 +833,219 @@ details[open] .accordionHint {
   margin-top: 10px;
   height: 10px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(16, 43, 35, 0.12);
+  background: rgba(16, 43, 35, 0.05);
   overflow: hidden;
 }
 
 .rankBarFill {
   height: 100%;
-  background: linear-gradient(90deg, rgba(140, 255, 254, 0.75), rgba(255, 92, 246, 0.5));
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.75), rgba(249, 115, 22, 0.55));
+}
+
+.clickCard {
+  transition: 140ms ease;
+}
+
+.clickCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(22, 163, 74, 0.22);
+  box-shadow: 0 18px 52px rgba(12, 28, 24, 0.14);
+}
+
+.pathName {
+  font-weight: 900;
+  color: rgba(9, 24, 20, 0.92);
+}
+
+.cardSub {
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.splitChart {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 14px;
+}
+
+.splitChartXL {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 14px;
+}
+
+.chartWrap {
+  display: grid;
+  place-items: center;
+}
+
+.chartSide {
+  display: grid;
+  gap: 10px;
+}
+
+@media (max-width: 920px) {
+  .splitChart,
+  .splitChartXL {
+    grid-template-columns: 1fr;
+  }
+}
+
+.homeHero {
+  padding: 6px 0;
+}
+
+.homeHeroGrid {
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-xl);
+  background: radial-gradient(1100px 520px at 10% 0%, rgba(34, 197, 94, 0.12), transparent 60%),
+    radial-gradient(980px 520px at 92% 10%, rgba(249, 115, 22, 0.10), transparent 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.86));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 16px;
+}
+
+@media (max-width: 920px) {
+  .homeHeroGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.homeKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(16, 43, 35, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--muted);
+  font-size: 12px;
+  width: fit-content;
+}
+
+.homeTitle {
+  margin: 14px 0 0;
+  font-family: var(--display);
+  letter-spacing: -1.2px;
+  font-weight: 850;
+  font-size: 50px;
+  line-height: 1.02;
+  color: rgba(9, 24, 20, 0.96);
+}
+
+@media (max-width: 720px) {
+  .homeTitle {
+    font-size: 38px;
+  }
+}
+
+.homeSub {
+  margin-top: 12px;
+  color: rgba(9, 24, 20, 0.70);
+  font-size: 15px;
+  max-width: 60ch;
+}
+
+.homeActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.homeChips {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  border-radius: 999px;
+  padding: 8px 12px;
+  border: 1px solid rgba(16, 43, 35, 0.10);
+  background: rgba(255, 255, 255, 0.74);
+  color: rgba(9, 24, 20, 0.76);
+  font-size: 12px;
+}
+
+.homeHeroRight {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.homeStat {
+  border-radius: 18px;
+  border: 1px solid rgba(16, 43, 35, 0.10);
+  background: rgba(255, 255, 255, 0.78);
+  padding: 14px;
+  display: grid;
+  gap: 4px;
+}
+
+.homeStatNum {
+  font-family: var(--display);
+  font-weight: 850;
+  letter-spacing: -0.8px;
+  font-size: 36px;
+  color: rgba(9, 24, 20, 0.94);
+}
+
+.homeStatText {
+  color: rgba(9, 24, 20, 0.66);
+  font-size: 13px;
+}
+
+.dimExplainGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 720px) {
+  .dimExplainGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dimExplainCard {
+  border: 1px solid rgba(16, 43, 35, 0.10);
+  border-radius: 16px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.dimExplainHead {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+}
+
+.dimExplainKey {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.98), rgba(22, 163, 74, 0.86));
+}
+
+.dimExplainName {
+  font-weight: 860;
+  color: rgba(9, 24, 20, 0.92);
+}
+
+.dimExplainText {
+  margin-top: 4px;
+  color: rgba(9, 24, 20, 0.62);
+  font-size: 12px;
 }

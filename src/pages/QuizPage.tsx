@@ -20,7 +20,7 @@ export function QuizPage() {
 
   const q = QUIZ_QUESTIONS[cursor]
   const answer = state.quizAnswers[cursor]
-  const progress = state.quizAnswers.filter((a) => a != null).length / 24
+  const doneCount = state.quizAnswers.filter((a) => a != null).length
   const complete = isQuizComplete(state.quizAnswers)
 
   const setAnswer = (a: QuizAnswer) => {
@@ -35,11 +35,29 @@ export function QuizPage() {
         逐题作答（1–5 分）。每次选择会立即保存到本地；你可以刷新或下次打开继续。
       </p>
 
-      <div className="quizProgress">
-        <div className="quizProgressBar" style={{ width: `${Math.round(progress * 100)}%` }} />
-      </div>
-      <div className="meta" style={{ marginTop: 10 }}>
-        已完成 {Math.round(progress * 100)}% · {state.quizAnswers.filter((a) => a != null).length}/24
+      <div className="stepper">
+        <div className="stepperLeft">
+          <div className="stepperTitle">
+            Step <span className="stepperNum">{q.index}</span> / 24
+          </div>
+          <div className="meta">已答 {doneCount}/24</div>
+        </div>
+        <div className="stepperDots" aria-label="Progress">
+          {QUIZ_QUESTIONS.map((qq, idx) => {
+            const v = state.quizAnswers[idx]
+            const active = idx === cursor
+            const done = v != null
+            return (
+              <button
+                key={qq.index}
+                type="button"
+                className={`stepDot ${active ? 'stepDotActive' : ''} ${done ? 'stepDotDone' : ''}`}
+                onClick={() => setCursor(idx)}
+                aria-label={`Go to question ${qq.index}`}
+              />
+            )
+          })}
+        </div>
       </div>
 
       <div className="grid2" style={{ marginTop: 14, gridTemplateColumns: '1.15fr 0.85fr' }}>
@@ -116,6 +134,20 @@ export function QuizPage() {
             </div>
           </div>
           <div className="cardBody">
+            <button
+              type="button"
+              className="btn"
+              onClick={() => {
+                if (firstEmpty === -1) return
+                setCursor(firstEmpty)
+              }}
+              disabled={firstEmpty === -1}
+            >
+              跳到第一个未答题
+            </button>
+
+            <div className="divider" />
+
             <div className="quizGrid">
               {QUIZ_QUESTIONS.map((qq, idx) => {
                 const a = state.quizAnswers[idx]
@@ -133,20 +165,6 @@ export function QuizPage() {
                 )
               })}
             </div>
-
-            <div className="divider" />
-
-            <button
-              type="button"
-              className="btn"
-              onClick={() => {
-                if (firstEmpty === -1) return
-                setCursor(firstEmpty)
-              }}
-              disabled={firstEmpty === -1}
-            >
-              跳到第一个未答题
-            </button>
           </div>
         </div>
       </div>

@@ -58,20 +58,20 @@ export function RadarChart({
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
       <defs>
         <linearGradient id="uFill" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="rgba(140,255,254,0.65)" />
-          <stop offset="1" stopColor="rgba(140,255,254,0.18)" />
+          <stop offset="0" stopColor="var(--chart-user-fill-1)" />
+          <stop offset="1" stopColor="var(--chart-user-fill-2)" />
         </linearGradient>
         <linearGradient id="uStroke" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="rgba(140,255,254,0.95)" />
-          <stop offset="1" stopColor="rgba(140,255,254,0.55)" />
+          <stop offset="0" stopColor="var(--chart-user-stroke-1)" />
+          <stop offset="1" stopColor="var(--chart-user-stroke-2)" />
         </linearGradient>
         <linearGradient id="rFill" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="rgba(255,92,246,0.45)" />
-          <stop offset="1" stopColor="rgba(255,92,246,0.16)" />
+          <stop offset="0" stopColor="var(--chart-role-fill-1)" />
+          <stop offset="1" stopColor="var(--chart-role-fill-2)" />
         </linearGradient>
         <linearGradient id="rStroke" x1="1" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="rgba(255,92,246,0.9)" />
-          <stop offset="1" stopColor="rgba(255,92,246,0.5)" />
+          <stop offset="0" stopColor="var(--chart-role-stroke-1)" />
+          <stop offset="1" stopColor="var(--chart-role-stroke-2)" />
         </linearGradient>
       </defs>
 
@@ -86,7 +86,7 @@ export function RadarChart({
             key={i}
             d={d}
             fill="none"
-            stroke="rgba(255,255,255,0.10)"
+            stroke="var(--chart-grid)"
             strokeWidth="1"
           />
         )
@@ -98,7 +98,7 @@ export function RadarChart({
           <path
             key={idx}
             d={`M ${cx} ${cy} L ${p.x} ${p.y}`}
-            stroke="rgba(255,255,255,0.08)"
+            stroke="var(--chart-axis)"
             strokeWidth="1"
           />
         )
@@ -123,7 +123,7 @@ export function RadarChart({
               y={p.y}
               textAnchor={anchor}
               dominantBaseline="middle"
-              fill="rgba(255,255,255,0.62)"
+              fill="var(--chart-label)"
               fontSize="11"
               fontFamily="Recursive, system-ui, sans-serif"
             >
@@ -134,4 +134,3 @@ export function RadarChart({
     </svg>
   )
 }
-

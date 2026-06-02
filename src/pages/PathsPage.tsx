@@ -32,7 +32,7 @@ export function PathsPage() {
             <Link
               key={p.id}
               to={`/paths/${p.id}`}
-              className="card"
+              className="card clickCard"
               style={{
                 textDecoration: 'none',
                 display: 'block',
@@ -43,7 +43,7 @@ export function PathsPage() {
                 <div className="pathCardHead">
                   <div style={{ minWidth: 0 }}>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-                      <div style={{ fontWeight: 900, color: 'rgba(255,255,255,0.92)' }}>{p.name}</div>
+                      <div className="pathName">{p.name}</div>
                       <div className="meta">{p.cadence}</div>
                     </div>
                     <div className="meta" style={{ marginTop: 8 }}>

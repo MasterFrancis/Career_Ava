@@ -59,12 +59,12 @@ export function PathDetailPage() {
               <div className="meta">青=你 · 粉=岗位倾向</div>
             </div>
           </div>
-          <div className="cardBody" style={{ display: 'grid', gridTemplateColumns: '320px 1fr', gap: 14 }}>
-            <div style={{ display: 'grid', placeItems: 'center' }}>
-              <RadarChart size={320} values={state.dimensionScores} compareValues={roleProfile} />
+          <div className="cardBody splitChartXL">
+            <div className="chartWrap">
+              <RadarChart size={280} values={state.dimensionScores} compareValues={roleProfile} />
             </div>
             <div>
-              <div className="card" style={{ background: 'rgba(255,255,255,0.04)' }}>
+              <div className="card cardSub">
                 <div className="cardBody">
                   <div className="cardTitleRow">
                     <h3 className="cardTitle">匹配解释（2–4 句）</h3>
@@ -101,7 +101,7 @@ export function PathDetailPage() {
 
               <div className="divider" />
 
-              <div className="card" style={{ background: 'rgba(255,255,255,0.04)' }}>
+              <div className="card cardSub">
                 <div className="cardBody">
                   <div className="cardTitleRow">
                     <h3 className="cardTitle">个人备注（本地保存）</h3>

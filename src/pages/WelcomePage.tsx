@@ -16,70 +16,91 @@ export function WelcomePage() {
   const complete = isQuizComplete(state.quizAnswers)
 
   return (
-    <div>
-      <h1 className="h1">职业路径 Web App · 强引导版</h1>
-      <p className="lead">
-        这是你提供的报告的“逐层展开”交互化版本：先用 24 题得到 8 维度画像，再用透明算法给出可解释推荐，并在岗位浏览阶段用“用户画像 vs 岗位倾向”帮助你理解匹配度来源。
-      </p>
+    <div className="homeHero">
+      <div className="homeHeroGrid">
+        <div className="homeHeroLeft">
+          <div className="homeKicker">Career Flow · UK</div>
+          <h1 className="homeTitle">把职业选择变成一条可走的路</h1>
+          <p className="homeSub">
+            24 题 → 8 维度画像 → 可解释推荐 → 用户画像 vs 岗位倾向对比。
+          </p>
 
-      <div className="grid2">
-        <div className="card">
-          <div className="cardHeader">
-            <div className="cardTitleRow">
-              <h2 className="cardTitle">你将经历的流程</h2>
-              <div className="meta">本地存储 · 可随时继续</div>
-            </div>
-          </div>
-          <div className="cardBody">
-            <div className="tagRow">
-              <span className="tag">欢迎页</span>
-              <span className="tag">问卷（逐题）</span>
-              <span className="tag">结果总览（8维）</span>
-              <span className="tag">岗位浏览（对比可视化）</span>
-              <span className="tag">岗位详情</span>
-              <span className="tag">路线图（只读）</span>
-            </div>
-
-            <div className="divider" />
-
-            <div className="btnRow">
-              <button type="button" className="btn btnPrimary" onClick={() => navigate('/quiz')}>
-                {answeredCount === 0 ? '开始问卷' : '继续问卷'}
+          <div className="homeActions">
+            <button type="button" className="btn btnPrimary" onClick={() => navigate('/quiz')}>
+              {answeredCount === 0 ? '开始问卷' : '继续问卷'}
+            </button>
+            {complete && (
+              <button type="button" className="btn" onClick={() => navigate('/results')}>
+                查看上次结果
               </button>
-              {complete && (
-                <button type="button" className="btn" onClick={() => navigate('/results')}>
-                  查看上次结果
-                </button>
-              )}
-              {answeredCount > 0 && !complete && (
-                <span className="meta">已答 {answeredCount}/24</span>
-              )}
-            </div>
+            )}
+            {answeredCount > 0 && !complete && <span className="meta">已答 {answeredCount}/24</span>}
+          </div>
+
+          <div className="homeChips">
+            <span className="chip">无后端 · 全本地存储</span>
+            <span className="chip">推荐可复现可拆解</span>
+            <span className="chip">对比可视化解释匹配来源</span>
           </div>
         </div>
 
-        <div className="card">
-          <div className="cardHeader">
-            <div className="cardTitleRow">
-              <h2 className="cardTitle">8 维度速览</h2>
-              <div className="meta">A–H · 每维 3 题</div>
-            </div>
+        <div className="homeHeroRight">
+          <div className="homeStat">
+            <div className="homeStatNum">8</div>
+            <div className="homeStatText">维度画像</div>
           </div>
-          <div className="cardBody">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 10 }}>
+          <div className="homeStat">
+            <div className="homeStatNum">6</div>
+            <div className="homeStatText">路径对比</div>
+          </div>
+          <div className="homeStat">
+            <div className="homeStatNum">1</div>
+            <div className="homeStatText">决策矩阵</div>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: 14 }}>
+        <details className="accordion">
+          <summary className="accordionSummary">
+            <span>展开查看 8 维度说明</span>
+            <span className="accordionRight">
+              <span className="accordionHint">展开</span>
+              <svg
+                className="accordionChevron"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                role="presentation"
+                aria-hidden="true"
+              >
+                <path
+                  d="M7 10l5 5 5-5"
+                  stroke="currentColor"
+                  strokeWidth="2.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </summary>
+          <div className="accordionBody">
+            <div className="dimExplainGrid">
               {DIMENSION_ORDER.map((k) => (
-                <div key={k} className="tag" style={{ borderRadius: 14, padding: 10 }}>
-                  <div style={{ fontWeight: 760, color: 'rgba(255,255,255,0.9)' }}>
-                    {k} · {DIMENSIONS[k].name}
-                  </div>
-                  <div style={{ marginTop: 6, color: 'rgba(255,255,255,0.6)', fontSize: 12 }}>
-                    {DIMENSIONS[k].oneLiner}
+                <div key={k} className="dimExplainCard">
+                  <div className="dimExplainHead">
+                    <div className="dimExplainKey">{k}</div>
+                    <div>
+                      <div className="dimExplainName">{DIMENSIONS[k].name}</div>
+                      <div className="dimExplainText">{DIMENSIONS[k].oneLiner}</div>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        </div>
+        </details>
       </div>
     </div>
   )

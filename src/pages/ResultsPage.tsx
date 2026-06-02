@@ -27,11 +27,11 @@ export function ResultsPage() {
               <div className="meta">每维 3–15 分</div>
             </div>
           </div>
-          <div className="cardBody" style={{ display: 'grid', gridTemplateColumns: '260px 1fr', gap: 14 }}>
-            <div style={{ display: 'grid', placeItems: 'center' }}>
-              <RadarChart size={260} values={state.dimensionScores} />
+          <div className="cardBody splitChart">
+            <div className="chartWrap">
+              <RadarChart size={240} values={state.dimensionScores} />
             </div>
-            <div style={{ display: 'grid', gap: 10 }}>
+            <div className="chartSide">
               {DIMENSION_ORDER.map((k) => {
                 const v = state.dimensionScores[k]
                 return (
@@ -69,7 +69,7 @@ export function ResultsPage() {
                 {rec.map((r, idx) => {
                   const path = getPathById(r.pathId)
                   return (
-                    <div key={r.pathId} className="card" style={{ background: 'rgba(255,255,255,0.04)' }}>
+                    <div key={r.pathId} className="card cardSub">
                       <div className="cardBody">
                         <div className="cardTitleRow">
                           <div style={{ minWidth: 0 }}>
@@ -77,7 +77,7 @@ export function ResultsPage() {
                               <div className="tag" style={{ borderRadius: 999, fontSize: 12 }}>
                                 Top {idx + 1}
                               </div>
-                              <div style={{ fontWeight: 820, color: 'rgba(255,255,255,0.92)' }}>{path.name}</div>
+                              <div className="pathName">{path.name}</div>
                             </div>
                             <div className="meta" style={{ marginTop: 6 }}>
                               {path.oneLiner}

@@ -119,7 +119,7 @@ export function MatrixPage() {
                     <div className="tag" style={{ padding: '4px 8px' }}>
                       #{idx + 1}
                     </div>
-                    <div style={{ fontWeight: 860, color: 'rgba(255,255,255,0.92)' }}>{p.name}</div>
+                    <div className="pathName">{p.name}</div>
                     <div className="meta" style={{ marginLeft: 'auto' }}>
                       {r.total}
                     </div>
