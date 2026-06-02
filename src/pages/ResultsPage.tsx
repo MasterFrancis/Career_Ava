@@ -90,9 +90,9 @@ export function ResultsPage() {
                               <div className="tag" style={{ borderRadius: 999, fontSize: 12 }}>
                                 Top {idx + 1}
                               </div>
-                              <div className="pathName">{path.name}</div>
+                              <div className="pathName" style={{ fontSize: 18 }}>{path.name}</div>
                             </div>
-                            <div className="meta" style={{ marginTop: 6 }}>
+                            <div style={{ marginTop: 8, color: 'var(--text)', fontSize: 14, fontWeight: 500, lineHeight: 1.5 }}>
                               {path.oneLiner}
                             </div>
                           </div>

@@ -43,10 +43,10 @@ export function PathsPage() {
                 <div>
                   <div style={{ minWidth: 0 }}>
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
-                      <div className="pathName">{p.name}</div>
+                      <div className="pathName" style={{ fontSize: 18 }}>{p.name}</div>
                       <div className="meta">{p.cadence}</div>
                     </div>
-                    <div className="meta" style={{ marginTop: 8 }}>
+                    <div style={{ marginTop: 8, color: 'var(--text)', fontSize: 14, fontWeight: 500, lineHeight: 1.5 }}>
                       {p.oneLiner}
                     </div>
                   </div>
