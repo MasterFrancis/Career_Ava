@@ -41,7 +41,7 @@ export function RadarChart({
   maxValue?: number
   showLabels?: boolean
 }) {
-  const padding = showLabels ? 30 : 10
+  const padding = showLabels ? 42 : 10
   const cx = size / 2
   const cy = size / 2
   const r = size / 2 - padding
@@ -55,7 +55,7 @@ export function RadarChart({
     : null
 
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+    <svg width="100%" height="100%" viewBox={`0 0 ${size} ${size}`} style={{ overflow: 'visible' }}>
       <defs>
         <linearGradient id="uFill" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="var(--chart-user-fill-1)" />
@@ -113,9 +113,9 @@ export function RadarChart({
 
       {showLabels &&
         DIMENSION_ORDER.map((k, idx) => {
-          const p = polarToCartesian(cx, cy, r + 16, start + idx * step)
+          const p = polarToCartesian(cx, cy, r + 20, start + idx * step)
           const label = `${k} · ${DIMENSIONS[k].shortName}`
-          const anchor = p.x < cx - 8 ? 'end' : p.x > cx + 8 ? 'start' : 'middle'
+          const anchor = p.x < cx - 12 ? 'end' : p.x > cx + 12 ? 'start' : 'middle'
           return (
             <text
               key={k}
