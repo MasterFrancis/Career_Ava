@@ -51,7 +51,7 @@ export function MatrixPage() {
                     排序
                   </button>
                 </th>
-                <th className="matrixTh">路径</th>
+                <th className="matrixTh" style={{ textAlign: 'left' }}>路径</th>
                 {MATRIX_COLUMNS.map((c) => (
                   <th key={c.id} className="matrixTh">
                     <div style={{ display: 'grid', gap: 8 }}>
