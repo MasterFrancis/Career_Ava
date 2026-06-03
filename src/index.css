@@ -1307,7 +1307,7 @@ body {
 }
 .stepperTitle, .quizStatement {
   text-shadow: none !important;
-  color: #ffffff !important;
+  color: var(--text) !important;
 }
 
 .brandMark {
@@ -1372,17 +1372,17 @@ body::after {
 }
 
 .pageInner {
-  color: #ffffff;
+  color: var(--text);
 }
 .lead, .homeSub {
   color: #e9d5ff;
 }
 .h1, .homeTitle {
-  color: #ffffff;
+  color: var(--text);
   text-shadow: 2px 2px 0 var(--stroke);
 }
 .stepperTitle, .quizStatement {
-  color: #ffffff;
+  color: var(--text);
   text-shadow: none !important;
 }
 
@@ -1483,6 +1483,6 @@ body::after {
 }
 
 .quizScaleHint span {
-  color: #e9d5ff !important; /* Make it bright purple so it's readable on dark bg */
+  color: #2e1065 !important; /* Deep purple for light bg */
   font-weight: 600;
 }
