@@ -1204,33 +1204,11 @@ details[open] .accordionChevron {
   pointer-events: none;
   z-index: 9999;
   transition: all 0.2s;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   border: 1px solid var(--border);
 }
 
-.tooltipWrap .tooltipContent::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 6px;
-  border-style: solid;
-  border-color: var(--border) transparent transparent transparent;
-}
-
-.tooltipWrap .tooltipContent::before {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: var(--bg) transparent transparent transparent;
-  z-index: 2;
-}
+/* Removed tooltip arrows */
 
 .tooltipWrap:hover .tooltipContent {
   visibility: visible;
