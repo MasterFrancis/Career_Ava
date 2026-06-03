@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&family=Silkscreen&family=ZCOOL+KuaiLe&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root {
   --bg0: #6b46c1; /* Deep purple */
@@ -32,8 +32,8 @@
   --radius-md: 0px;
   --radius-sm: 0px;
 
-  --sans: 'DotGothic16', 'Silkscreen', 'ZCOOL KuaiLe', 'Courier New', monospace;
-  --display: 'Press Start 2P', 'DotGothic16', 'ZCOOL KuaiLe', cursive;
+  --sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --display: 'Chivo Mono', 'IBM Plex Sans', monospace;
 
   --page: 100%;
   --max-content: 1400px;
@@ -70,8 +70,8 @@
   
   color-scheme: light;
   font-synthesis: none;
-  text-rendering: pixelated;
-  -webkit-font-smoothing: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   image-rendering: pixelated;
 }
@@ -1419,8 +1419,8 @@ body::after {
 
 /* Force pixelated rendering globally */
 * {
-  -webkit-font-smoothing: none !important;
-  font-smooth: never !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-smooth: always !important;
 }
 
 /* Fix Tag colors for Advantage (Good) vs Risk */
