@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { DIMENSIONS } from '../domain/dimensions'
 import { buildMatchExplanation, getMatchInsight } from '../domain/compare'
-import { getPathById, type PathId } from '../domain/paths'
+import { getPathById, PATHS, type PathId } from '../domain/paths'
 import { useStore } from '../state/useStore'
 import { Accordion } from '../ui/Accordion'
 import { RadarChart } from '../ui/charts/RadarChart'
@@ -32,12 +32,30 @@ export function PathDetailPage() {
   )
   const explain = useMemo(() => buildMatchExplanation(insight), [insight])
 
-  const [allExpanded, setAllExpanded] = useState(true)
+  const [allOpen, setAllOpen] = useState(false)
+  const [forceOpen, setForceOpen] = useState<boolean | undefined>(undefined)
 
   if (invalid) return <Navigate to="/paths" replace />
 
   return (
     <div>
+      <div
+        className="navPills"
+        aria-label="岗位切换"
+        style={{ justifyContent: 'flex-start', overflowX: 'auto', paddingBottom: 4 }}
+      >
+        {PATHS.map((p) => (
+          <Link
+            key={p.id}
+            to={`/paths/${p.id}`}
+            className={`pill ${p.id === safePathId ? 'pillActive' : ''}`}
+            style={{ flex: '0 0 auto' }}
+          >
+            {p.name}
+          </Link>
+        ))}
+      </div>
+
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12, flexWrap: 'wrap' }}>
         <div style={{ minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
@@ -136,15 +154,19 @@ export function PathDetailPage() {
               <button
                 type="button"
                 className="linkBtn meta"
-                onClick={() => setAllExpanded(!allExpanded)}
+                onClick={() => {
+                  const next = !allOpen
+                  setAllOpen(next)
+                  setForceOpen(next)
+                }}
                 style={{ fontSize: 13 }}
               >
-                {allExpanded ? '折叠全部' : '展开全部'}
+                {allOpen ? '折叠全部' : '展开全部'}
               </button>
             </div>
           </div>
           <div className="cardBody">
-            <Accordion title="岗位内核" forceOpen={allExpanded}>
+            <Accordion title="岗位内核" defaultOpen forceOpen={forceOpen}>
               <ul className="ul">
                 {path.sections.kernel.map((t) => (
                   <li key={t}>{t}</li>
@@ -152,7 +174,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="岗位名称变体" forceOpen={allExpanded}>
+            <Accordion title="岗位名称变体" defaultOpen forceOpen={forceOpen}>
               <ul className="ul">
                 {path.sections.titleVariants.map((t) => (
                   <li key={t}>{t}</li>
@@ -160,7 +182,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="典型工作流" forceOpen={allExpanded}>
+            <Accordion title="典型工作流" defaultOpen forceOpen={forceOpen}>
               <ul className="ul">
                 {path.sections.workflow.map((t) => (
                   <li key={t}>{t}</li>
@@ -168,7 +190,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="技能树" forceOpen={allExpanded}>
+            <Accordion title="技能树" defaultOpen forceOpen={forceOpen}>
               <ul className="ul">
                 {path.sections.skillTree.map((t) => (
                   <li key={t}>{t}</li>
@@ -176,7 +198,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="市场与薪资" forceOpen={allExpanded}>
+            <Accordion title="市场与薪资" defaultOpen forceOpen={forceOpen}>
               <ul className="ul">
                 {path.sections.marketSalary.map((t) => (
                   <li key={t}>{t}</li>
@@ -184,7 +206,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="优缺点与 WLB" forceOpen={allExpanded}>
+            <Accordion title="优缺点与 WLB" defaultOpen forceOpen={forceOpen}>
               <ul className="ul">
                 {path.sections.prosConsWlb.map((t) => (
                   <li key={t}>{t}</li>
@@ -192,7 +214,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="验证型行动建议" forceOpen={allExpanded}>
+            <Accordion title="验证型行动建议" forceOpen={forceOpen}>
               <ul className="ul">
                 {path.sections.actionAdvice.map((t) => (
                   <li key={t}>{t}</li>
@@ -200,7 +222,7 @@ export function PathDetailPage() {
               </ul>
             </Accordion>
 
-            <Accordion title="路线图 / 计划方案" forceOpen={allExpanded}>
+            <Accordion title="路线图 / 计划方案" forceOpen={forceOpen}>
               <div style={{ display: 'grid', gap: 10 }}>
                 {path.sections.roadmap.map((s) => (
                   <div key={s.phase} className="roadPhase">
