@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&family=Silkscreen&family=ZCOOL+KuaiLe&display=swap');
 
 :root {
   --bg0: #6b46c1; /* Deep purple */
@@ -32,8 +32,8 @@
   --radius-md: 0px;
   --radius-sm: 0px;
 
-  --sans: 'DM Sans', system-ui, -apple-system, sans-serif;
-  --display: 'Bricolage Grotesque', 'Press Start 2P', system-ui, sans-serif;
+  --sans: 'DotGothic16', 'Silkscreen', 'ZCOOL KuaiLe', 'Courier New', monospace;
+  --display: 'Press Start 2P', 'DotGothic16', 'ZCOOL KuaiLe', cursive;
 
   --page: 100%;
   --max-content: 1400px;
@@ -70,8 +70,8 @@
   
   color-scheme: light;
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  text-rendering: pixelated;
+  -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
   image-rendering: pixelated;
 }
@@ -1415,4 +1415,61 @@ body::after {
 }
 .meta, .dimDesc {
   color: #4c1d95; /* Darker purple for meta text inside cards */
+}
+
+/* Force pixelated rendering globally */
+* {
+  -webkit-font-smoothing: none !important;
+  font-smooth: never !important;
+}
+
+/* Fix Tag colors for Advantage (Good) vs Risk */
+.tagGood {
+  background: #fdf4ff !important;
+  color: #2e1065 !important;
+  border-color: #2e1065 !important;
+  box-shadow: 2px 2px 0 #10b981 !important; /* Green shadow for good */
+}
+
+.tagRisk {
+  background: #fdf4ff !important;
+  color: #2e1065 !important;
+  border-color: #2e1065 !important;
+  box-shadow: 2px 2px 0 #e11d48 !important; /* Red/Pink shadow for risk */
+}
+
+/* Also color the text for risk and advantage inside the cards */
+.textAdvantage {
+  color: #10b981 !important; /* Green */
+}
+.textRisk {
+  color: #e11d48 !important; /* Red */
+}
+
+/* Ensure the big tags in PathDetail look distinct */
+
+
+
+.tagGood {
+  background: rgba(16, 185, 129, 0.1) !important;
+  color: #065f46 !important;
+  border-color: #047857 !important;
+  box-shadow: 2px 2px 0 #059669 !important;
+}
+
+.tagRisk {
+  background: rgba(225, 29, 72, 0.1) !important;
+  color: #881337 !important;
+  border-color: #be123c !important;
+  box-shadow: 2px 2px 0 #e11d48 !important;
+}
+
+.textAdvantage {
+  color: #059669 !important; /* Distinct Green */
+  text-shadow: 1px 1px 0 rgba(16, 185, 129, 0.2) !important;
+}
+
+.textRisk {
+  color: #be123c !important; /* Distinct Red */
+  text-shadow: 1px 1px 0 rgba(225, 29, 72, 0.2) !important;
 }
