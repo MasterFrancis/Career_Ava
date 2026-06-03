@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=DotGothic16&display=swap');
 
 :root {
   --bg0: #6b46c1; /* Deep purple */
@@ -14,8 +14,8 @@
   
   --text: #2e1065; /* Dark text for light backgrounds (WCAG compliant) */
   --text-inverse: #ffffff; /* Light text for dark backgrounds */
-  --muted: #5b21b6;
-  --faint: #7c3aed;
+  --muted: #e9d5ff;
+  --faint: #d8b4e2;
 
   --accent: #f472b6; /* Pink from the clouds */
   --accent2: #fbcfe8; /* Light pink */
@@ -32,8 +32,8 @@
   --radius-md: 0px;
   --radius-sm: 0px;
 
-  --sans: 'VT323', monospace;
-  --display: 'Press Start 2P', cursive;
+  --sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --display: 'Bricolage Grotesque', 'Press Start 2P', system-ui, sans-serif;
 
   --page: 100%;
   --max-content: 1400px;
@@ -70,8 +70,8 @@
   
   color-scheme: light;
   font-synthesis: none;
-  text-rendering: pixelated;
-  -webkit-font-smoothing: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   image-rendering: pixelated;
 }
@@ -1302,7 +1302,7 @@ body {
 }
 
 .h1, .homeTitle, .stepperTitle, .quizStatement {
-  text-shadow: 4px 4px 0 var(--stroke);
+  text-shadow: 2px 2px 0 var(--stroke);
   color: var(--accent); text-shadow: 2px 2px 0 var(--stroke);
 }
 
@@ -1365,4 +1365,54 @@ body::after {
 }
 .topBar .pathTab:hover, .topBar .pathTabActive {
   color: var(--accent2);
+}
+
+.pageInner {
+  color: #ffffff;
+}
+.lead, .homeSub {
+  color: #e9d5ff;
+}
+.h1, .homeTitle, .stepperTitle, .quizStatement {
+  color: #ffffff;
+  text-shadow: 2px 2px 0 var(--stroke);
+}
+
+.cardBody, .card, .dimRow, .rankRow, .roadPhase {
+  color: var(--text);
+}
+.textAdvantage {
+  color: #be185d; /* Darker pink for better contrast on light pink bg */
+  font-weight: bold;
+  text-shadow: none;
+}
+.textRisk {
+  color: #be123c; /* Darker red/pink for better contrast */
+  font-weight: bold;
+  text-shadow: none;
+}
+.cardSub {
+  color: var(--text);
+}
+.tag {
+  color: var(--text);
+  background: var(--paper);
+}
+
+.sectionLink {
+  color: var(--text);
+}
+
+.pill {
+  color: var(--text);
+}
+.pathTab {
+  color: #e9d5ff !important;
+}
+.pathTabActive {
+  color: #ffffff !important;
+  border-bottom-color: #ffffff !important;
+}
+.meta, .dimDesc {
+  color: #4c1d95; /* Darker purple for meta text inside cards */
 }
