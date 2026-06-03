@@ -450,7 +450,7 @@ a {
   background: transparent;
   border: 0;
   cursor: pointer;
-  color: #fbcfe8;
+  color: #db2777; /* 深粉色 Deep Pink */
   font-weight: bold;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -459,7 +459,7 @@ a {
 }
 
 .linkBtn:hover {
-  color: #ffffff;
+  color: #9d174d; /* Even deeper pink on hover */
 }
 
 .modalOverlay {
