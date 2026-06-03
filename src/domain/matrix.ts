@@ -15,13 +15,13 @@ export type MatrixColumn = {
 }
 
 export const MATRIX_COLUMNS: { id: MatrixColumnId; name: string; desc?: string }[] = [
-  { id: 'interest', name: '兴趣/投入感' },
-  { id: 'transfer', name: '能力迁移度', desc: '已有优势' },
-  { id: 'learningCost', name: '学习成本', desc: '需要补齐的短板' },
-  { id: 'entryBarrier', name: '进入门槛', desc: '作品/经验' },
-  { id: 'wlb', name: 'WLB/压力可承受度' },
-  { id: 'market', name: '市场机会', desc: '岗位数量' },
-  { id: 'values', name: '价值对齐', desc: '是否重要' },
+  { id: 'interest', name: '兴趣', desc: '做这件事的投入感与热情' },
+  { id: 'transfer', name: '迁移度', desc: '已有优势或经验的可复用程度' },
+  { id: 'learningCost', name: '学习成本', desc: '需要补齐的短板与时间精力' },
+  { id: 'entryBarrier', name: '门槛', desc: '作品、学历或经验的硬性要求' },
+  { id: 'wlb', name: 'WLB', desc: '工作生活平衡与压力可承受度' },
+  { id: 'market', name: '市场', desc: '相关岗位数量与市场需求热度' },
+  { id: 'values', name: '价值观', desc: '工作意义与个人价值观的对齐程度' },
 ]
 
 export type MatrixWeight = 1 | 2 | 3

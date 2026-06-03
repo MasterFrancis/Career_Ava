@@ -58,8 +58,9 @@ export function MatrixPage() {
                       <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontWeight: 760 }}>
                         {c.name}
                         {c.desc && (
-                          <div title={c.desc} style={{ color: 'var(--muted)', display: 'flex', cursor: 'help' }}>
+                          <div className="tooltipWrap" style={{ color: 'var(--muted)' }}>
                             <Info size={14} />
+                            <div className="tooltipContent">{c.desc}</div>
                           </div>
                         )}
                       </div>
