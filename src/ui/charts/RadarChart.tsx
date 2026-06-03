@@ -8,17 +8,16 @@ function pointsForValues(
   values: Record<DimensionKey, number>,
   maxValue: number,
   size: number,
-  padding: number,
+  radius: number,
 ) {
   const cx = size / 2
   const cy = size / 2
-  const r = size / 2 - padding
   const step = (Math.PI * 2) / DIMENSION_ORDER.length
   const start = -Math.PI / 2
 
   return DIMENSION_ORDER.map((k, i) => {
     const v = Math.max(0, Math.min(maxValue, values[k]))
-    const rr = (v / maxValue) * r
+    const rr = (v / maxValue) * radius
     return polarToCartesian(cx, cy, rr, start + i * step)
   })
 }
@@ -41,17 +40,20 @@ export function RadarChart({
   maxValue?: number
   showLabels?: boolean
 }) {
-  const padding = showLabels ? 72 : 10
+  const paddingX = showLabels ? 62 : 10
+  const paddingY = showLabels ? 24 : 10
   const cx = size / 2
   const cy = size / 2
-  const r = Math.max(10, size / 2 - padding)
+  const rx = Math.max(10, size / 2 - paddingX)
+  const ry = Math.max(10, size / 2 - paddingY)
+  const r = showLabels ? Math.min(rx, ry) + 12 : rx
   const step = (Math.PI * 2) / DIMENSION_ORDER.length
   const start = -Math.PI / 2
 
   const gridLevels = 4
-  const userPath = toPath(pointsForValues(values, maxValue, size, padding))
+  const userPath = toPath(pointsForValues(values, maxValue, size, r))
   const rolePath = compareValues
-    ? toPath(pointsForValues(compareValues, maxValue, size, padding))
+    ? toPath(pointsForValues(compareValues, maxValue, size, r))
     : null
 
   return (
@@ -113,7 +115,7 @@ export function RadarChart({
 
       {showLabels &&
         DIMENSION_ORDER.map((k, idx) => {
-          const p = polarToCartesian(cx, cy, r + 20, start + idx * step)
+          const p = polarToCartesian(cx, cy, r + 18, start + idx * step)
           const label = `${k} · ${DIMENSIONS[k].shortName}`
           const anchor = p.x < cx - 12 ? 'end' : p.x > cx + 12 ? 'start' : 'middle'
           return (
