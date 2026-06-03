@@ -1193,18 +1193,18 @@ details[open] .accordionChevron {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(4px);
-  background: var(--text);
-  color: var(--bg);
-  padding: 6px 10px;
-  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 99px;
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
   pointer-events: none;
   z-index: 100;
   transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  margin-bottom: 6px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  margin-bottom: 8px;
 }
 
 .tooltipWrap .tooltipContent::after {
@@ -1213,9 +1213,9 @@ details[open] .accordionChevron {
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 5px;
+  border-width: 6px;
   border-style: solid;
-  border-color: var(--text) transparent transparent transparent;
+  border-color: var(--bg) transparent transparent transparent;
 }
 
 .tooltipWrap:hover .tooltipContent {
