@@ -65,7 +65,7 @@ export function PathsPage() {
           风险少
         </button>
         <button type="button" className={`segmentBtn ${filter === 'agency' ? 'segmentBtnActive' : ''}`} onClick={() => setFilter('agency')}>
-          乙方/咨询
+          乙方咨询
         </button>
         <button type="button" className={`segmentBtn ${filter === 'public' ? 'segmentBtnActive' : ''}`} onClick={() => setFilter('public')}>
           公共部门
