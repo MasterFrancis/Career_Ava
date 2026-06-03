@@ -36,11 +36,12 @@ export default function App() {
     dispatch({ type: 'ui/setLastRoute', route: location.pathname })
   }, [dispatch, location.pathname])
 
-  useEffect(() => {
-    if (location.pathname === '/' && state.uiPrefs.lastRoute && state.uiPrefs.lastRoute !== '/') {
-      navigate(state.uiPrefs.lastRoute, { replace: true })
-    }
-  }, [location.pathname, navigate, state.uiPrefs.lastRoute])
+  // Removed automatic redirection to lastRoute so that clicking "开始" can navigate to "/" normally.
+  // useEffect(() => {
+  //   if (location.pathname === '/' && state.uiPrefs.lastRoute && state.uiPrefs.lastRoute !== '/') {
+  //     navigate(state.uiPrefs.lastRoute, { replace: true })
+  //   }
+  // }, [location.pathname, navigate, state.uiPrefs.lastRoute])
 
   const pills = useMemo(
     () => [
