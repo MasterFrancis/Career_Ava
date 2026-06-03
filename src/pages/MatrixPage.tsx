@@ -41,7 +41,7 @@ export function MatrixPage() {
             <div className="meta">本地自动保存，点击排序按钮更新顺序</div>
           </div>
         </div>
-        <div className="cardBody" style={{ overflowX: 'auto' }}>
+        <div className="cardBody" style={{ overflowX: 'visible' }}>
           <table className="matrixTable">
             <thead>
               <tr>
