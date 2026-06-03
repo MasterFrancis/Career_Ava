@@ -41,7 +41,7 @@ export function RadarChart({
   maxValue?: number
   showLabels?: boolean
 }) {
-  const padding = showLabels ? 22 : 10
+  const padding = showLabels ? 30 : 10
   const cx = size / 2
   const cy = size / 2
   const r = size / 2 - padding
@@ -113,7 +113,7 @@ export function RadarChart({
 
       {showLabels &&
         DIMENSION_ORDER.map((k, idx) => {
-          const p = polarToCartesian(cx, cy, r + 14, start + idx * step)
+          const p = polarToCartesian(cx, cy, r + 16, start + idx * step)
           const label = `${k} · ${DIMENSIONS[k].shortName}`
           const anchor = p.x < cx - 8 ? 'end' : p.x > cx + 8 ? 'start' : 'middle'
           return (
