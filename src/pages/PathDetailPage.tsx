@@ -105,9 +105,9 @@ export function PathDetailPage() {
                     <h3 className="cardTitle">岗位速览</h3>
                   </div>
                   <div className="tagRow" style={{ marginTop: 12 }}>
-                    <span className="tag" style={{ width: 'fit-content' }}>交付物：{path.deliverables.slice(0, 2).join('、')}…</span>
-                    <span className="tag" style={{ width: 'fit-content' }}>入门证据：{path.entryEvidence}</span>
-                    <span className="tag" style={{ width: 'fit-content' }}>WLB 风险：{path.wlbRisk}</span>
+                    <span className="tag">交付物：{path.deliverables.join('、')}</span>
+                    <span className="tag">入门证据：{path.entryEvidence}</span>
+                    <span className="tag">WLB 风险：{path.wlbRisk}</span>
                   </div>
                 </div>
               </div>
