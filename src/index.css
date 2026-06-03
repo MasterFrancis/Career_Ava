@@ -1,26 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 :root {
-  --bg0: #1a1c2c;
-  --bg1: #29366f;
-  --paper: #3b5dc9;
-  --card: #29366f;
-  --card2: #3b5dc9;
-  --stroke: #5d275d;
-  --stroke2: #b13e53;
-  --text: #fff1e8;
-  --muted: #c2c3c7;
-  --faint: #5f574f;
+  --bg0: #6b46c1; /* Deep purple */
+  --bg1: #8b5cf6; /* Lighter purple */
+  --bg2: #a78bfa; /* Even lighter purple for gradient */
+  
+  --paper: #fdf4ff; /* Very light pink/white for content areas to ensure text readability */
+  --card: #fdf4ff;
+  --card2: #faf5ff;
+  
+  --stroke: #2e1065; /* Very dark purple for borders and shadows */
+  --stroke2: #4c1d95;
+  
+  --text: #2e1065; /* Dark text for light backgrounds (WCAG compliant) */
+  --text-inverse: #ffffff; /* Light text for dark backgrounds */
+  --muted: #5b21b6;
+  --faint: #7c3aed;
 
-  --accent: #ef7d57;
-  --accent2: #ffcd75;
-  --accent3: #a7f070;
-  --danger: #e43b44;
-  --ok: #38b764;
+  --accent: #f472b6; /* Pink from the clouds */
+  --accent2: #fbcfe8; /* Light pink */
+  --accent3: #c084fc; /* Purple accent */
+  --danger: #e11d48;
+  --ok: #10b981;
 
-  --shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);
-  --shadow2: 2px 2px 0px rgba(0, 0, 0, 0.4);
-  --shadow-hover: 6px 6px 0px rgba(0, 0, 0, 0.5);
+  --shadow: 4px 4px 0px var(--stroke);
+  --shadow2: 2px 2px 0px var(--stroke);
+  --shadow-hover: 6px 6px 0px var(--stroke);
+  
   --radius-xl: 0px;
   --radius-lg: 0px;
   --radius-md: 0px;
@@ -32,28 +38,37 @@
   --page: 100%;
   --max-content: 1400px;
 
-  --chart-grid: rgba(255, 255, 255, 0.1);
-  --chart-axis: rgba(255, 255, 255, 0.2);
-  --chart-label: #c2c3c7;
-  --chart-user-fill-1: rgba(239, 125, 87, 0.4);
-  --chart-user-fill-2: rgba(239, 125, 87, 0.1);
-  --chart-user-stroke-1: #ef7d57;
-  --chart-user-stroke-2: #ef7d57;
-  --chart-role-fill-1: rgba(255, 205, 117, 0.4);
-  --chart-role-fill-2: rgba(255, 205, 117, 0.1);
-  --chart-role-stroke-1: #ffcd75;
-  --chart-role-stroke-2: #ffcd75;
+  --chart-grid: rgba(46, 16, 101, 0.1);
+  --chart-axis: rgba(46, 16, 101, 0.2);
+  --chart-label: var(--muted);
+  --chart-user-fill-1: rgba(244, 114, 182, 0.4);
+  --chart-user-fill-2: rgba(244, 114, 182, 0.1);
+  --chart-user-stroke-1: var(--accent);
+  --chart-user-stroke-2: var(--accent);
+  --chart-role-fill-1: rgba(192, 132, 252, 0.4);
+  --chart-role-fill-2: rgba(192, 132, 252, 0.1);
+  --chart-role-stroke-1: var(--accent3);
+  --chart-role-stroke-2: var(--accent3);
 
   font: 20px/150% var(--sans);
   letter-spacing: 1px;
   color: var(--text);
+  
+  /* Animated parallax star/pixel background */
   background-color: var(--bg0);
   background-image: 
-    linear-gradient(45deg, var(--bg1) 25%, transparent 25%, transparent 75%, var(--bg1) 75%, var(--bg1)), 
-    linear-gradient(45deg, var(--bg1) 25%, transparent 25%, transparent 75%, var(--bg1) 75%, var(--bg1));
-  background-size: 20px 20px;
-  background-position: 0 0, 10px 10px;
-  color-scheme: dark;
+    radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+    linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 50%, #d8b4e2 100%);
+  background-repeat: repeat;
+  background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100% 100%;
+  background-attachment: repeat, repeat, repeat, repeat, repeat, repeat, no-repeat;
+  
+  color-scheme: light;
   font-synthesis: none;
   text-rendering: pixelated;
   -webkit-font-smoothing: none;
@@ -102,8 +117,8 @@ a {
   justify-content: center;
   gap: 16px;
   padding: 16px 24px;
-  border-bottom: 3px solid var(--stroke);
-  background: var(--bg0);
+  border-bottom: 4px solid var(--stroke);
+  background: var(--bg0); color: var(--text-inverse);
   
   flex-wrap: wrap;
   position: sticky;
@@ -162,7 +177,7 @@ a {
   overflow-x: auto;
   scrollbar-width: none;
   padding: 8px 2px 10px;
-  border-bottom: 3px solid var(--stroke);
+  border-bottom: 4px solid var(--stroke);
   margin-bottom: 14px;
 }
 
@@ -203,7 +218,7 @@ a {
 
 .pill:hover {
   color: var(--text);
-  background: var(--accent3);
+  background: var(--accent2);
   transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
   box-shadow: var(--shadow);
 }
@@ -321,7 +336,7 @@ a {
   font-weight: 720;
   letter-spacing: 0.3px;
   font-size: 18px;
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--paper); color: var(--text);
   color: var(--text);
   border: 4px solid var(--stroke); 
   box-shadow: var(--shadow); text-transform: uppercase; font-weight: 800;
@@ -329,7 +344,7 @@ a {
 }
 
 .btn:hover {
-  background: var(--accent3);
+  background: var(--accent2);
   transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
   box-shadow: var(--shadow);
 }
@@ -395,7 +410,7 @@ a {
 }
 
 .textRisk {
-  color: var(--accent2);
+  color: var(--accent); text-shadow: 2px 2px 0 var(--stroke);
   font-size: 13.5px;
   line-height: 1.45;
 }
@@ -449,7 +464,7 @@ a {
   width: min(520px, 100%);
   border-radius: 0; box-shadow: var(--shadow);
   border: 4px solid var(--stroke); 
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--paper); color: var(--text);
   box-shadow: 12px 12px 0 var(--stroke); border: 4px solid var(--stroke);
   overflow: hidden;
 }
@@ -548,7 +563,7 @@ details[open] .accordionChevron {
   gap: 8px;
   flex-wrap: wrap;
   padding-bottom: 12px;
-  border-bottom: 3px solid var(--stroke);
+  border-bottom: 4px solid var(--stroke);
   margin-bottom: 10px;
 }
 
@@ -630,7 +645,7 @@ details[open] .accordionChevron {
   height: 10px;
   border-radius: 0; box-shadow: var(--shadow);
   border: 4px solid var(--stroke);border-radius: 0; box-shadow: var(--shadow);
-  background: var(--bg0);
+  background: var(--bg0); color: var(--text-inverse);
   cursor: pointer;
   transition: border-color 120ms ease, background 120ms ease;
 }
@@ -646,7 +661,7 @@ details[open] .accordionChevron {
 
 .stepDotActive {
   background: var(--accent2);
-  border-color: var(--accent2);
+  border-color: var(--accent); text-shadow: 2px 2px 0 var(--stroke);
 }
 
 .quizStatement {
@@ -695,7 +710,7 @@ details[open] .accordionChevron {
 }
 
 .quizScaleBtn:hover {
-  background: var(--accent3);
+  background: var(--accent2);
   transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
   box-shadow: var(--shadow);
 }
@@ -1288,10 +1303,66 @@ body {
 
 .h1, .homeTitle, .stepperTitle, .quizStatement {
   text-shadow: 4px 4px 0 var(--stroke);
-  color: var(--accent2);
+  color: var(--accent); text-shadow: 2px 2px 0 var(--stroke);
 }
 
 .brandMark {
   background: var(--accent);
   border: 4px solid var(--text);
+}
+
+@keyframes star-scroll {
+  from { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+  to { background-position: -200px 200px, -150px 150px, -100px 100px, -200px 200px, -150px 150px, -100px 100px, 0 0; }
+}
+
+body {
+  animation: star-scroll 60s linear infinite;
+}
+
+/* Add some pixel clouds to the body via pseudo elements */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: -1;
+  background-repeat: repeat-x;
+}
+
+body::before {
+  /* Foreground clouds */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" viewBox="0 0 100 40"><path fill="%23fbcfe8" opacity="0.8" d="M10,30 h80 v10 h-80 z M15,25 h70 v5 h-70 z M25,20 h40 v5 h-40 z M35,15 h20 v5 h-20 z"/></svg>');
+  background-size: 300px 120px;
+  background-position: 0 60%;
+  animation: cloud-scroll-fast 40s linear infinite;
+}
+
+body::after {
+  /* Background clouds */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="40" viewBox="0 0 100 40"><path fill="%23c084fc" opacity="0.5" d="M10,30 h80 v10 h-80 z M15,25 h70 v5 h-70 z M25,20 h40 v5 h-40 z M35,15 h20 v5 h-20 z"/></svg>');
+  background-size: 200px 80px;
+  background-position: 0 30%;
+  animation: cloud-scroll-slow 60s linear infinite;
+}
+
+@keyframes cloud-scroll-fast {
+  from { background-position: 0 60%; }
+  to { background-position: 300px 60%; }
+}
+
+@keyframes cloud-scroll-slow {
+  from { background-position: 0 30%; }
+  to { background-position: 200px 30%; }
+}
+
+/* Fix text contrast in TopBar */
+.topBar .brandTitle strong, .topBar .pathTab {
+  color: var(--text-inverse);
+}
+.topBar .pathTab:hover, .topBar .pathTabActive {
+  color: var(--accent2);
 }
