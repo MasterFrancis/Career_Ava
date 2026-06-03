@@ -40,7 +40,7 @@
 
   --chart-grid: rgba(46, 16, 101, 0.1);
   --chart-axis: rgba(46, 16, 101, 0.2);
-  --chart-label: var(--muted);
+  --chart-label: var(--text);
   --chart-user-fill-1: rgba(244, 114, 182, 0.4);
   --chart-user-fill-2: rgba(244, 114, 182, 0.1);
   --chart-user-stroke-1: var(--accent);
@@ -385,35 +385,46 @@ a {
   word-break: break-word;
 }
 
+
 .tagGood {
-  border-color: rgba(2, 132, 199, 0.25);
-  background: rgba(2, 132, 199, 0.12);
-  color: rgba(14, 38, 61, 0.88);
+  background: #e6f4ea !important;
+  color: #166534 !important;
+  border-color: #166534 !important;
+  box-shadow: none !important;
 }
 
-.tagRisk {
-  border-color: rgba(234, 88, 12, 0.24);
-  background: rgba(234, 88, 12, 0.10);
-  color: rgba(14, 38, 61, 0.88);
-}
+
 
 .tagRisk {
-  color: rgba(234, 88, 12, 0.95);
-  background: rgba(234, 88, 12, 0.12);
-  border-color: rgba(234, 88, 12, 0.22);
+  background: #ffe4e6 !important;
+  color: #9f1239 !important;
+  border-color: #9f1239 !important;
+  box-shadow: none !important;
 }
+
+
+
+.tagRisk {
+  background: #ffe4e6 !important;
+  color: #9f1239 !important;
+  border-color: #9f1239 !important;
+  box-shadow: none !important;
+}
+
+
 
 .textAdvantage {
-  color: var(--accent);
-  font-size: 13.5px;
-  line-height: 1.45;
+  color: #166534 !important; /* Softer, darker green */
+  text-shadow: none !important;
 }
 
+
+
 .textRisk {
-  color: var(--accent); text-shadow: none !important;
-  font-size: 13.5px;
-  line-height: 1.45;
+  color: #9f1239 !important; /* Softer, darker red */
+  text-shadow: none !important;
 }
+
 
 .divider {
   height: 1px;
@@ -1389,16 +1400,18 @@ body::after {
 .cardBody, .card, .dimRow, .rankRow, .roadPhase {
   color: var(--text);
 }
+
 .textAdvantage {
-  color: #be185d; /* Darker pink for better contrast on light pink bg */
-  font-weight: bold;
-  text-shadow: none;
+  color: #166534 !important; /* Softer, darker green */
+  text-shadow: none !important;
 }
+
+
 .textRisk {
-  color: #be123c; /* Darker red/pink for better contrast */
-  font-weight: bold;
-  text-shadow: none;
+  color: #9f1239 !important; /* Softer, darker red */
+  text-shadow: none !important;
 }
+
 .cardSub {
   color: var(--text);
 }
@@ -1432,55 +1445,73 @@ body::after {
 }
 
 /* Fix Tag colors for Advantage (Good) vs Risk */
+
 .tagGood {
-  background: #fdf4ff !important;
-  color: #2e1065 !important;
-  border-color: #2e1065 !important;
-  box-shadow: 2px 2px 0 #10b981 !important; /* Green shadow for good */
+  background: #e6f4ea !important;
+  color: #166534 !important;
+  border-color: #166534 !important;
+  box-shadow: none !important;
 }
+
+
 
 .tagRisk {
-  background: #fdf4ff !important;
-  color: #2e1065 !important;
-  border-color: #2e1065 !important;
-  box-shadow: 2px 2px 0 #e11d48 !important; /* Red/Pink shadow for risk */
+  background: #ffe4e6 !important;
+  color: #9f1239 !important;
+  border-color: #9f1239 !important;
+  box-shadow: none !important;
 }
 
+
 /* Also color the text for risk and advantage inside the cards */
+
 .textAdvantage {
-  color: #10b981 !important; /* Green */
+  color: #166534 !important; /* Softer, darker green */
+  text-shadow: none !important;
 }
+
+
 .textRisk {
-  color: #e11d48 !important; /* Red */
+  color: #9f1239 !important; /* Softer, darker red */
+  text-shadow: none !important;
 }
+
 
 /* Ensure the big tags in PathDetail look distinct */
 
 
 
+
 .tagGood {
-  background: rgba(16, 185, 129, 0.1) !important;
-  color: #065f46 !important;
-  border-color: #047857 !important;
-  box-shadow: 2px 2px 0 #059669 !important;
+  background: #e6f4ea !important;
+  color: #166534 !important;
+  border-color: #166534 !important;
+  box-shadow: none !important;
 }
+
+
 
 .tagRisk {
-  background: rgba(225, 29, 72, 0.1) !important;
-  color: #881337 !important;
-  border-color: #be123c !important;
-  box-shadow: 2px 2px 0 #e11d48 !important;
+  background: #ffe4e6 !important;
+  color: #9f1239 !important;
+  border-color: #9f1239 !important;
+  box-shadow: none !important;
 }
+
+
 
 .textAdvantage {
-  color: #059669 !important; /* Distinct Green */
-  text-shadow: 1px 1px 0 rgba(16, 185, 129, 0.2) !important;
+  color: #166534 !important; /* Softer, darker green */
+  text-shadow: none !important;
 }
 
+
+
 .textRisk {
-  color: #be123c !important; /* Distinct Red */
-  text-shadow: 1px 1px 0 rgba(225, 29, 72, 0.2) !important;
+  color: #9f1239 !important; /* Softer, darker red */
+  text-shadow: none !important;
 }
+
 
 .quizScaleHint span {
   color: #2e1065 !important; /* Deep purple for light bg */
@@ -1489,4 +1520,9 @@ body::after {
 
 .h1 {
   text-shadow: none !important;
+}
+
+.dimName, .pathName, .roadPhaseTitle, .accordionSummary {
+  color: var(--text) !important;
+  font-weight: bold;
 }

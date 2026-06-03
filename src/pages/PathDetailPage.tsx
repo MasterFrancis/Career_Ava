@@ -78,7 +78,7 @@ export function PathDetailPage() {
           <div className="cardHeader">
             <div className="cardTitleRow">
               <h2 className="cardTitle">用户 vs 岗位画像</h2>
-              <div className="meta">青=你 · 粉=岗位倾向</div>
+              <div className="meta">粉=你 · 紫=岗位倾向</div>
             </div>
           </div>
           <div className="cardBody splitChartXL" style={{ display: 'grid', gap: 24 }}>
