@@ -1,65 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 :root {
-  --bg0: #F0F0F0;
-  --bg1: #E0E0E0;
-  --paper: #FFFFFF;
-  --card: #FFFFFF;
-  --card2: #FAFAFA;
-  --stroke: #000000;
-  --stroke2: #000000;
-  --text: #000000;
-  --muted: #333333;
-  --faint: #666666;
+  --bg0: #1a1c2c;
+  --bg1: #29366f;
+  --paper: #3b5dc9;
+  --card: #29366f;
+  --card2: #3b5dc9;
+  --stroke: #5d275d;
+  --stroke2: #b13e53;
+  --text: #fff1e8;
+  --muted: #c2c3c7;
+  --faint: #5f574f;
 
-  --accent: #FF3366;
-  --accent2: #4D4DFF;
-  --accent3: #FFCC00;
-  --danger: #FF0000;
-  --ok: #00CC44;
+  --accent: #ef7d57;
+  --accent2: #ffcd75;
+  --accent3: #a7f070;
+  --danger: #e43b44;
+  --ok: #38b764;
 
-  --shadow: 4px 4px 0px #000000;
-  --shadow2: 2px 2px 0px #000000;
-  --shadow-hover: 8px 8px 0px #000000;
+  --shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);
+  --shadow2: 2px 2px 0px rgba(0, 0, 0, 0.4);
+  --shadow-hover: 6px 6px 0px rgba(0, 0, 0, 0.5);
   --radius-xl: 0px;
   --radius-lg: 0px;
   --radius-md: 0px;
   --radius-sm: 0px;
 
-  --sans: 'DM Sans', system-ui, sans-serif;
-  --display: 'Bricolage Grotesque', sans-serif;
+  --sans: 'VT323', monospace;
+  --display: 'Press Start 2P', cursive;
 
   --page: 100%;
   --max-content: 1400px;
 
-  --chart-grid: rgba(0, 0, 0, 0.1);
-  --chart-axis: rgba(0, 0, 0, 0.2);
-  --chart-label: #000000;
-  --chart-user-fill-1: rgba(255, 51, 102, 0.2);
-  --chart-user-fill-2: rgba(255, 51, 102, 0.05);
-  --chart-user-stroke-1: #FF3366;
-  --chart-user-stroke-2: #FF3366;
-  --chart-role-fill-1: rgba(77, 77, 255, 0.2);
-  --chart-role-fill-2: rgba(77, 77, 255, 0.05);
-  --chart-role-stroke-1: #4D4DFF;
-  --chart-role-stroke-2: #4D4DFF;
+  --chart-grid: rgba(255, 255, 255, 0.1);
+  --chart-axis: rgba(255, 255, 255, 0.2);
+  --chart-label: #c2c3c7;
+  --chart-user-fill-1: rgba(239, 125, 87, 0.4);
+  --chart-user-fill-2: rgba(239, 125, 87, 0.1);
+  --chart-user-stroke-1: #ef7d57;
+  --chart-user-stroke-2: #ef7d57;
+  --chart-role-fill-1: rgba(255, 205, 117, 0.4);
+  --chart-role-fill-2: rgba(255, 205, 117, 0.1);
+  --chart-role-stroke-1: #ffcd75;
+  --chart-role-stroke-2: #ffcd75;
 
-  font: 16px/155% var(--sans);
-  letter-spacing: 0.5px;
+  font: 20px/150% var(--sans);
+  letter-spacing: 1px;
   color: var(--text);
   background-color: var(--bg0);
-  background-image: radial-gradient(var(--stroke) 1px, transparent 1px);
-  background-size: 24px 24px;
-  color-scheme: light;
+  background-image: 
+    linear-gradient(45deg, var(--bg1) 25%, transparent 25%, transparent 75%, var(--bg1) 75%, var(--bg1)), 
+    linear-gradient(45deg, var(--bg1) 25%, transparent 25%, transparent 75%, var(--bg1) 75%, var(--bg1));
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  color-scheme: dark;
   font-synthesis: none;
-  text-rendering: geometricPrecision;
-  -webkit-font-smoothing: antialiased;
+  text-rendering: pixelated;
+  -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: grayscale;
+  image-rendering: pixelated;
 }
 
 @media (max-width: 720px) {
   :root {
-    font-size: 15px;
+    font-size: 18px;
   }
 }
 
@@ -117,9 +121,9 @@ a {
 .brandMark {
   width: 34px;
   height: 34px;
-  border-radius: 0;
-  background: var(--accent); border: 2px solid var(--stroke);
-  box-shadow: var(--shadow2);
+  border-radius: 0; box-shadow: var(--shadow);
+  background: var(--accent); border: 4px solid var(--stroke); 
+  box-shadow: var(--shadow);
 }
 
 .brandTitle {
@@ -130,15 +134,16 @@ a {
 
 .brandTitle strong {
   font-family: var(--display);
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  line-height: 1.05;
-  font-size: 18px;
+  font-weight: normal;
+  letter-spacing: 0px;
+  line-height: 1.2;
+  font-size: 14px;
+  text-shadow: 2px 2px 0 var(--stroke);
 }
 
 .brandTitle span {
   color: var(--faint);
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .navPills {
@@ -169,7 +174,7 @@ a {
   flex: 0 0 auto;
   text-decoration: none;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 720;
   padding: 8px 2px;
   border-bottom: 2px solid transparent;
@@ -187,19 +192,19 @@ a {
 
 .pill {
   padding: 8px 16px;
-  border-radius: 0;
-  border: 2px solid var(--stroke); box-shadow: var(--shadow2); font-weight: 800; text-transform: uppercase;
+  border-radius: 0; box-shadow: var(--shadow);
+  border: 4px solid var(--stroke);box-shadow: var(--shadow); font-weight: 800; text-transform: uppercase;
   text-decoration: none;
   color: var(--muted);
   background: var(--paper);
   transition: background 120ms ease, color 120ms ease;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .pill:hover {
   color: var(--text);
   background: var(--accent3);
-  transform: translate(-2px, -2px);
+  transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
   box-shadow: var(--shadow);
 }
 
@@ -237,7 +242,7 @@ a {
   letter-spacing: -1px;
   margin: 0;
   font-weight: 750;
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1.02;
 }
 
@@ -266,7 +271,7 @@ a {
 }
 
 .card {
-  border: 3px solid var(--stroke);
+  border: 4px solid var(--stroke); 
   border-radius: var(--radius-lg);
   background: var(--paper);
   box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
@@ -290,7 +295,7 @@ a {
 
 .cardTitle {
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 0.2px;
   color: var(--text);
   font-weight: 720;
@@ -298,7 +303,7 @@ a {
 
 .meta {
   color: var(--faint);
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .btnRow {
@@ -311,21 +316,21 @@ a {
 .btn {
   appearance: none;
   cursor: pointer;
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   padding: 10px 20px;
   font-weight: 720;
   letter-spacing: 0.3px;
-  font-size: 14px;
+  font-size: 18px;
   background: rgba(255, 255, 255, 0.96);
   color: var(--text);
-  border: 2px solid var(--stroke);
-  box-shadow: var(--shadow2); text-transform: uppercase; font-weight: 800;
+  border: 4px solid var(--stroke); 
+  box-shadow: var(--shadow); text-transform: uppercase; font-weight: 800;
   transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
 }
 
 .btn:hover {
   background: var(--accent3);
-  transform: translate(-2px, -2px);
+  transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
   box-shadow: var(--shadow);
 }
 
@@ -337,7 +342,7 @@ a {
 
 .btnPrimary:hover {
   background: var(--accent2);
-  transform: translate(-2px, -2px);
+  transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
   box-shadow: var(--shadow);
 }
 
@@ -354,12 +359,12 @@ a {
 
 .tag {
   display: inline-block;
-  border: 3px solid var(--stroke);
-  border-radius: 0;
+  border: 4px solid var(--stroke); 
+  border-radius: 0; box-shadow: var(--shadow);
   padding: 6px 10px;
-  font-size: 12px;
+  font-size: 18px;
   color: var(--muted);
-  background: var(--paper); box-shadow: var(--shadow2); font-weight: 700; border: 2px solid var(--stroke);
+  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
   max-width: 100%;
   white-space: normal;
   word-break: break-word;
@@ -408,7 +413,7 @@ a {
   align-items: center;
   gap: 16px;
   color: var(--faint);
-  font-size: 13px;
+  font-size: 16px;
   padding: 16px 24px;
   border-top: 1px solid var(--stroke);
   background: rgba(255, 255, 255, 0.5);
@@ -433,7 +438,7 @@ a {
 .modalOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(10, 20, 18, 0.35);
+  background: rgba(26, 28, 44, 0.8);
   display: grid;
   place-items: center;
   padding: 18px;
@@ -442,8 +447,8 @@ a {
 
 .modal {
   width: min(520px, 100%);
-  border-radius: 0;
-  border: 2px solid var(--stroke);
+  border-radius: 0; box-shadow: var(--shadow);
+  border: 4px solid var(--stroke); 
   background: rgba(255, 255, 255, 0.96);
   box-shadow: 12px 12px 0 var(--stroke); border: 4px solid var(--stroke);
   overflow: hidden;
@@ -495,7 +500,7 @@ a {
   gap: 12px;
   color: var(--muted);
   font-weight: 600;
-  font-size: 13px;
+  font-size: 16px;
   transition: color 120ms ease;
 }
 
@@ -515,7 +520,7 @@ a {
 }
 
 .accordionHint {
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 720;
   letter-spacing: 0.2px;
 }
@@ -549,12 +554,12 @@ details[open] .accordionChevron {
 
 .sectionLink {
   text-decoration: none;
-  border: 3px solid var(--stroke);
-  border-radius: 0;
+  border: 4px solid var(--stroke); 
+  border-radius: 0; box-shadow: var(--shadow);
   padding: 6px 10px;
-  font-size: 12px;
+  font-size: 18px;
   color: var(--muted);
-  background: var(--paper); box-shadow: var(--shadow2); font-weight: 700; border: 2px solid var(--stroke);
+  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
   width: fit-content;
 }
 
@@ -579,9 +584,9 @@ details[open] .accordionChevron {
 
 .stepper {
   margin-top: 14px;
-  border-radius: 0;
-  border: 3px solid var(--stroke);
-  background: var(--paper); box-shadow: var(--shadow); border: 3px solid var(--stroke);
+  border-radius: 0; box-shadow: var(--shadow);
+  border: 4px solid var(--stroke); 
+  background: var(--paper); box-shadow: var(--shadow); border: 4px solid var(--stroke); 
   padding: 12px 12px;
   display: flex;
   align-items: center;
@@ -623,8 +628,8 @@ details[open] .accordionChevron {
 .stepDot {
   width: 10px;
   height: 10px;
-  border-radius: 0;
-  border: 2px solid var(--stroke); border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
+  border: 4px solid var(--stroke);border-radius: 0; box-shadow: var(--shadow);
   background: var(--bg0);
   cursor: pointer;
   transition: border-color 120ms ease, background 120ms ease;
@@ -678,20 +683,20 @@ details[open] .accordionChevron {
 }
 
 .quizScaleBtn {
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   padding: 14px 10px;
-  border: 2px solid var(--stroke);
-  background: var(--paper); box-shadow: var(--shadow2); border: 2px solid var(--stroke);
+  border: 4px solid var(--stroke); 
+  background: var(--paper); box-shadow: var(--shadow); border: 4px solid var(--stroke); 
   color: var(--text);
   font-weight: 820;
-  font-size: 16px;
+  font-size: 18px;
   cursor: pointer;
   transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
 }
 
 .quizScaleBtn:hover {
   background: var(--accent3);
-  transform: translate(-2px, -2px);
+  transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
   box-shadow: var(--shadow);
 }
 
@@ -707,16 +712,16 @@ details[open] .accordionChevron {
   justify-content: space-between;
   gap: 10px;
   color: var(--faint);
-  font-size: 12px;
+  font-size: 18px;
 }
 
 
 
 .dimRow {
-  border: 3px solid var(--stroke);
+  border: 4px solid var(--stroke); 
   border-radius: 16px;
   padding: 14px;
-  background: var(--paper); box-shadow: var(--shadow2); font-weight: 700; border: 2px solid var(--stroke);
+  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
 }
 
 .dimHead {
@@ -729,7 +734,7 @@ details[open] .accordionChevron {
 .dimKey {
   width: 34px;
   height: 34px;
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   display: grid;
   place-items: center;
   font-weight: 900;
@@ -744,7 +749,7 @@ details[open] .accordionChevron {
 
 .dimDesc {
   margin-top: 4px;
-  font-size: 12px;
+  font-size: 18px;
   color: var(--faint);
 }
 
@@ -760,9 +765,9 @@ details[open] .accordionChevron {
   gap: 10px;
   align-items: center;
   padding: 10px;
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   border: 1px solid rgba(14, 38, 61, 0.10);
-  background: var(--paper); box-shadow: var(--shadow2); font-weight: 700; border: 2px solid var(--stroke);
+  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
 }
 
 .breakKey {
@@ -797,7 +802,7 @@ details[open] .accordionChevron {
 .pathCadence {
   color: var(--accent);
   font-weight: 600;
-  font-size: 13px;
+  font-size: 16px;
   background: rgba(37, 99, 235, 0.08);
   padding: 4px 10px;
   border-radius: 6px;
@@ -811,7 +816,7 @@ details[open] .accordionChevron {
   border-radius: 16px;
   padding: 12px;
   border: 1px solid rgba(14, 38, 61, 0.16);
-  background: var(--paper); box-shadow: var(--shadow2); border: 2px solid var(--stroke);
+  background: var(--paper); box-shadow: var(--shadow); border: 4px solid var(--stroke); 
   color: rgba(14, 38, 61, 0.9);
   font: inherit;
   outline: none;
@@ -826,7 +831,7 @@ details[open] .accordionChevron {
   border: 1px solid rgba(14, 38, 61, 0.10);
   border-radius: 16px;
   padding: 12px;
-  background: var(--paper); box-shadow: var(--shadow2); font-weight: 700; border: 2px solid var(--stroke);
+  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
 }
 
 .roadPhaseTitle {
@@ -851,7 +856,7 @@ details[open] .accordionChevron {
 .matrixTh {
   position: sticky;
   top: 0;
-  background: var(--paper); box-shadow: var(--shadow2); border: 2px solid var(--stroke);
+  background: var(--paper); box-shadow: var(--shadow); border: 4px solid var(--stroke); 
   backdrop-filter: blur(8px);
   z-index: 1;
   color: rgba(14, 38, 61, 0.9);
@@ -863,10 +868,10 @@ details[open] .accordionChevron {
 
 .matrixSelect {
   width: 100%;
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   padding: 9px 10px;
   border: 1px solid rgba(14, 38, 61, 0.16);
-  background: var(--paper); box-shadow: var(--shadow2); border: 2px solid var(--stroke);
+  background: var(--paper); box-shadow: var(--shadow); border: 4px solid var(--stroke); 
   color: rgba(14, 38, 61, 0.9);
   font: inherit;
   outline: none;
@@ -888,7 +893,7 @@ details[open] .accordionChevron {
   border-radius: 8px;
   cursor: pointer;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
   transition: all 120ms ease;
 }
@@ -913,7 +918,7 @@ details[open] .accordionChevron {
   border: 1px solid rgba(14, 38, 61, 0.10);
   border-radius: 16px;
   padding: 12px;
-  background: var(--paper); box-shadow: var(--shadow2); font-weight: 700; border: 2px solid var(--stroke);
+  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
 }
 
 .rankHead {
@@ -925,7 +930,7 @@ details[open] .accordionChevron {
 .rankBar {
   margin-top: 10px;
   height: 10px;
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   border: 1px solid rgba(14, 38, 61, 0.12);
   background: rgba(14, 38, 61, 0.05);
   overflow: hidden;
@@ -1000,7 +1005,7 @@ details[open] .accordionChevron {
 }
 
 .homeHeroGrid {
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   background: transparent;
   padding: 20px 0;
   display: grid;
@@ -1019,11 +1024,11 @@ details[open] .accordionChevron {
   align-items: center;
   gap: 10px;
   padding: 6px 10px;
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   border: 1px solid rgba(14, 38, 61, 0.12);
-  background: var(--paper); box-shadow: var(--shadow2); font-weight: 700; border: 2px solid var(--stroke);
+  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
   color: var(--muted);
-  font-size: 12px;
+  font-size: 18px;
   width: fit-content;
 }
 
@@ -1032,21 +1037,21 @@ details[open] .accordionChevron {
   font-family: var(--display);
   letter-spacing: -1.2px;
   font-weight: 850;
-  font-size: 50px;
+  font-size: 28px;
   line-height: 1.02;
   color: rgba(14, 38, 61, 0.96);
 }
 
 @media (max-width: 720px) {
   .homeTitle {
-    font-size: 38px;
+    font-size: 28px;
   }
 }
 
 .homeSub {
   margin-top: 12px;
   color: rgba(14, 38, 61, 0.70);
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .homeActions {
@@ -1065,12 +1070,12 @@ details[open] .accordionChevron {
 }
 
 .chip {
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   padding: 8px 12px;
   border: 1px solid rgba(14, 38, 61, 0.10);
   background: rgba(255, 255, 255, 0.74);
   color: rgba(14, 38, 61, 0.76);
-  font-size: 12px;
+  font-size: 18px;
 }
 
 .homeHeroRight {
@@ -1078,7 +1083,7 @@ details[open] .accordionChevron {
 }
 
 .homeStat {
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   border: 1px solid rgba(14, 38, 61, 0.10);
   background: rgba(255, 255, 255, 0.78);
   padding: 14px;
@@ -1090,13 +1095,13 @@ details[open] .accordionChevron {
   font-family: var(--display);
   font-weight: 850;
   letter-spacing: -0.8px;
-  font-size: 36px;
+  font-size: 28px;
   color: rgba(14, 38, 61, 0.94);
 }
 
 .homeStatText {
   color: rgba(14, 38, 61, 0.66);
-  font-size: 13px;
+  font-size: 16px;
 }
 
 .marqueeContainer {
@@ -1126,7 +1131,7 @@ details[open] .accordionChevron {
 
 .dimExplainCardScroll {
   flex: 0 0 260px;
-  border: 3px solid var(--stroke);
+  border: 4px solid var(--stroke); 
   border-radius: var(--radius-lg);
   padding: 18px;
   background: rgba(255, 255, 255, 0.6);
@@ -1166,7 +1171,7 @@ details[open] .accordionChevron {
 .dimExplainKey {
   width: 34px;
   height: 34px;
-  border-radius: 0;
+  border-radius: 0; box-shadow: var(--shadow);
   display: grid;
   place-items: center;
   font-weight: 900;
@@ -1182,7 +1187,7 @@ details[open] .accordionChevron {
 .dimExplainText {
   margin-top: 4px;
   color: rgba(14, 38, 61, 0.62);
-  font-size: 12px;
+  font-size: 18px;
 }
 
 /* Tooltip */
@@ -1204,7 +1209,7 @@ details[open] .accordionChevron {
   color: var(--text);
   padding: 6px 12px;
   border-radius: 99px;
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 500;
   white-space: nowrap;
   pointer-events: none;
@@ -1263,4 +1268,30 @@ details[open] .accordionChevron {
 
 body {
   animation: bg-scroll 20s linear infinite;
+}
+
+* {
+  image-rendering: pixelated !important;
+}
+
+.card, .btn, .pill, .modal, .tag, .stepper, .dimRow, .rankRow, .roadPhase {
+  border-width: 4px !important;
+  border-style: solid !important;
+  border-color: var(--text) var(--stroke) var(--stroke) var(--text) !important;
+}
+
+.btn:active, .pill:active, .quizScaleBtn:active {
+  border-color: var(--stroke) var(--text) var(--text) var(--stroke) !important;
+  transform: translate(4px, 4px) !important;
+  box-shadow: none !important;
+}
+
+.h1, .homeTitle, .stepperTitle, .quizStatement {
+  text-shadow: 4px 4px 0 var(--stroke);
+  color: var(--accent2);
+}
+
+.brandMark {
+  background: var(--accent);
+  border: 4px solid var(--text);
 }
