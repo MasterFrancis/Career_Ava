@@ -26,10 +26,10 @@ export function MatrixPage() {
         把“权衡”显性化：你可以把测评推荐的 2–4 条路径带到这里，按你在意的列权重与评分计算总分并排序。
       </p>
 
-      <Accordion title="怎么用（超短引导）" defaultOpen>
+      <Accordion title="怎么用" defaultOpen>
         <div className="meta" style={{ display: 'grid', gap: 8 }}>
           <div>1) 先在结果页/岗位浏览页选 2–4 条候选路径；</div>
-          <div>2) 先调列权重（1–3）：权重代表“你有多在意”；</div>
+          <div>2) 先调列权重（不太重要–非常重要）：权重代表“你有多在意”；</div>
           <div>3) 再填每条路径评分（1–5）：不是追求满分，而是看清取舍。</div>
         </div>
       </Accordion>
@@ -45,14 +45,11 @@ export function MatrixPage() {
           <table className="matrixTable">
             <thead>
               <tr>
-                <th className="matrixTh">
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    排名
-                    <button type="button" className="btn" style={{ padding: '4px 8px', fontSize: 12, display: 'flex', alignItems: 'center', gap: 4 }} onClick={handleSort} title="按当前总分重新排序">
-                      <ArrowUpDown size={14} />
-                      排序
-                    </button>
-                  </div>
+                <th className="matrixTh" style={{ width: 80 }}>
+                  <button type="button" className="btn" style={{ padding: '4px 8px', fontSize: 12, display: 'flex', alignItems: 'center', gap: 4, margin: '0 auto' }} onClick={handleSort} title="按当前总分重新排序">
+                    <ArrowUpDown size={14} />
+                    排序
+                  </button>
                 </th>
                 <th className="matrixTh">路径</th>
                 {MATRIX_COLUMNS.map((c) => (
@@ -77,9 +74,9 @@ export function MatrixPage() {
                           })
                         }
                       >
-                        <option value={1}>1 - 不太重要</option>
-                        <option value={2}>2 - 一般</option>
-                        <option value={3}>3 - 非常重要</option>
+                        <option value={1}>不太重要</option>
+                        <option value={2}>一般</option>
+                        <option value={3}>非常重要</option>
                       </select>
                     </div>
                   </th>
@@ -108,7 +105,7 @@ export function MatrixPage() {
                     </td>
                     {MATRIX_COLUMNS.map((c) => (
                       <td key={c.id} className="matrixTd">
-                        <div className="segmentGroup">
+                        <div className="segmentGroup" style={{ gap: 2, padding: 3, width: '100%', display: 'flex' }}>
                           {[1, 2, 3, 4, 5].map((v) => {
                             const active = state.matrix.scores[p.id][c.id] === v
                             return (
@@ -116,7 +113,7 @@ export function MatrixPage() {
                                 key={v}
                                 type="button"
                                 className={`segmentBtn ${active ? 'segmentBtnActive' : ''}`}
-                                style={{ padding: '6px 10px' }}
+                                style={{ padding: '4px 0', flex: 1, minWidth: 24, fontSize: 13, textAlign: 'center' }}
                                 onClick={() =>
                                   dispatch({
                                     type: 'matrix/setScore',
