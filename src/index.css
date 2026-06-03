@@ -1389,7 +1389,7 @@ body::after {
   color: #e9d5ff;
 }
 .h1, .homeTitle {
-  color: var(--text);
+  color: #ffffff !important;
   text-shadow: none !important;
 }
 .stepperTitle, .quizStatement {
@@ -1519,10 +1519,34 @@ body::after {
 }
 
 .h1 {
+  color: #ffffff !important;
   text-shadow: none !important;
 }
 
 .dimName, .pathName, .roadPhaseTitle, .accordionSummary {
   color: var(--text) !important;
   font-weight: bold;
+}
+
+/* Text on the main dark background should be light */
+.page > .meta, .page > .lead, .page > .accordion > .accordionSummary > .meta {
+  color: #e9d5ff !important; /* Light purple */
+}
+
+/* Ensure accordion summary text on dark bg is light */
+.accordionSummary {
+  color: #ffffff !important;
+}
+.accordionBody {
+  color: #e9d5ff !important;
+}
+.accordionRight {
+  color: #d8b4e2 !important;
+}
+.accordionChevron {
+  color: #ffffff !important;
+}
+
+.accordion .meta {
+  color: #e9d5ff !important;
 }
