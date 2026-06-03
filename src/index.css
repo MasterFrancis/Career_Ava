@@ -450,7 +450,8 @@ a {
   background: transparent;
   border: 0;
   cursor: pointer;
-  color: rgba(14, 38, 61, 0.78);
+  color: #fbcfe8;
+  font-weight: bold;
   text-decoration: underline;
   text-underline-offset: 3px;
   padding: 0;
@@ -458,7 +459,7 @@ a {
 }
 
 .linkBtn:hover {
-  color: rgba(14, 38, 61, 0.92);
+  color: #ffffff;
 }
 
 .modalOverlay {
@@ -905,8 +906,9 @@ details[open] .accordionChevron {
 
 .segmentGroup {
   display: inline-flex;
-  background: rgba(14, 38, 61, 0.05);
-  border-radius: 10px;
+  background: #fdf4ff;
+  border: 2px solid var(--stroke);
+  border-radius: 0;
   padding: 3px;
   gap: 2px;
 }
@@ -926,7 +928,8 @@ details[open] .accordionChevron {
 
 .segmentBtn:hover {
   color: var(--text);
-  background: rgba(14, 38, 61, 0.05);
+  background: #f3e8ff; /* Light purple hover */
+  border: 2px solid var(--stroke);
 }
 
 .segmentBtn:disabled {
@@ -935,9 +938,10 @@ details[open] .accordionChevron {
 }
 
 .segmentBtnActive {
-  background: #fff;
-  color: var(--accent);
-  box-shadow: 0 2px 6px rgba(14, 38, 61, 0.08);
+  background: var(--accent2);
+  color: var(--text);
+  border: 2px solid var(--stroke);
+  box-shadow: 2px 2px 0 var(--stroke);
 }
 
 .rankRow {
