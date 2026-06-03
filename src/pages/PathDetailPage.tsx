@@ -25,6 +25,9 @@ export function PathDetailPage() {
   const safePathId: PathId = invalid ? 'ux-research' : pathId
 
   const path = getPathById(safePathId)
+  const idx = PATHS.findIndex((p) => p.id === safePathId)
+  const prevPath = PATHS[(idx - 1 + PATHS.length) % PATHS.length]
+  const nextPath = PATHS[(idx + 1) % PATHS.length]
   const roleProfile = state.roleProfiles[safePathId]
   const insight = useMemo(
     () => getMatchInsight(state.dimensionScores, roleProfile, safePathId),
@@ -39,17 +42,13 @@ export function PathDetailPage() {
 
   return (
     <div>
-      <div
-        className="navPills"
-        aria-label="岗位切换"
-        style={{ justifyContent: 'flex-start', overflowX: 'auto', paddingBottom: 4 }}
-      >
+      <div className="pathTabs" aria-label="岗位切换">
         {PATHS.map((p) => (
           <Link
             key={p.id}
             to={`/paths/${p.id}`}
-            className={`pill ${p.id === safePathId ? 'pillActive' : ''}`}
-            style={{ flex: '0 0 auto' }}
+            className={`pathTab ${p.id === safePathId ? 'pathTabActive' : ''}`}
+            aria-current={p.id === safePathId ? 'page' : undefined}
           >
             {p.name}
           </Link>
@@ -166,76 +165,116 @@ export function PathDetailPage() {
             </div>
           </div>
           <div className="cardBody">
-            <Accordion title="岗位内核" defaultOpen forceOpen={forceOpen}>
-              <ul className="ul">
-                {path.sections.kernel.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </Accordion>
+            <div className="sectionNav">
+              <a className="sectionLink" href="#sec-kernel">岗位内核</a>
+              <a className="sectionLink" href="#sec-titles">岗位名称变体</a>
+              <a className="sectionLink" href="#sec-workflow">典型工作流</a>
+              <a className="sectionLink" href="#sec-skills">技能树</a>
+              <a className="sectionLink" href="#sec-market">市场与薪资</a>
+              <a className="sectionLink" href="#sec-pros">优缺点与 WLB</a>
+              <a className="sectionLink" href="#sec-action">验证型行动建议</a>
+              <a className="sectionLink" href="#sec-roadmap">路线图 / 计划方案</a>
+            </div>
 
-            <Accordion title="岗位名称变体" defaultOpen forceOpen={forceOpen}>
-              <ul className="ul">
-                {path.sections.titleVariants.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </Accordion>
+            <div id="sec-kernel" className="sectionAnchor">
+              <Accordion title="岗位内核" defaultOpen forceOpen={forceOpen}>
+                <ul className="ul">
+                  {path.sections.kernel.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </Accordion>
+            </div>
 
-            <Accordion title="典型工作流" defaultOpen forceOpen={forceOpen}>
-              <ul className="ul">
-                {path.sections.workflow.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </Accordion>
+            <div id="sec-titles" className="sectionAnchor">
+              <Accordion title="岗位名称变体" defaultOpen forceOpen={forceOpen}>
+                <ul className="ul">
+                  {path.sections.titleVariants.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </Accordion>
+            </div>
 
-            <Accordion title="技能树" defaultOpen forceOpen={forceOpen}>
-              <ul className="ul">
-                {path.sections.skillTree.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </Accordion>
+            <div id="sec-workflow" className="sectionAnchor">
+              <Accordion title="典型工作流" defaultOpen forceOpen={forceOpen}>
+                <ul className="ul">
+                  {path.sections.workflow.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </Accordion>
+            </div>
 
-            <Accordion title="市场与薪资" defaultOpen forceOpen={forceOpen}>
-              <ul className="ul">
-                {path.sections.marketSalary.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </Accordion>
+            <div id="sec-skills" className="sectionAnchor">
+              <Accordion title="技能树" defaultOpen forceOpen={forceOpen}>
+                <ul className="ul">
+                  {path.sections.skillTree.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </Accordion>
+            </div>
 
-            <Accordion title="优缺点与 WLB" defaultOpen forceOpen={forceOpen}>
-              <ul className="ul">
-                {path.sections.prosConsWlb.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </Accordion>
+            <div id="sec-market" className="sectionAnchor">
+              <Accordion title="市场与薪资" defaultOpen forceOpen={forceOpen}>
+                <ul className="ul">
+                  {path.sections.marketSalary.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </Accordion>
+            </div>
 
-            <Accordion title="验证型行动建议" forceOpen={forceOpen}>
-              <ul className="ul">
-                {path.sections.actionAdvice.map((t) => (
-                  <li key={t}>{t}</li>
-                ))}
-              </ul>
-            </Accordion>
+            <div id="sec-pros" className="sectionAnchor">
+              <Accordion title="优缺点与 WLB" defaultOpen forceOpen={forceOpen}>
+                <ul className="ul">
+                  {path.sections.prosConsWlb.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </Accordion>
+            </div>
 
-            <Accordion title="路线图 / 计划方案" forceOpen={forceOpen}>
-              <div style={{ display: 'grid', gap: 10 }}>
-                {path.sections.roadmap.map((s) => (
-                  <div key={s.phase} className="roadPhase">
-                    <div className="roadPhaseTitle">{s.phase}</div>
-                    <ul className="ul" style={{ marginTop: 6 }}>
-                      {s.bullets.map((t) => (
-                        <li key={t}>{t}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-            </Accordion>
+            <div id="sec-action" className="sectionAnchor">
+              <Accordion title="验证型行动建议" forceOpen={forceOpen}>
+                <ul className="ul">
+                  {path.sections.actionAdvice.map((t) => (
+                    <li key={t}>{t}</li>
+                  ))}
+                </ul>
+              </Accordion>
+            </div>
+
+            <div id="sec-roadmap" className="sectionAnchor">
+              <Accordion title="路线图 / 计划方案" forceOpen={forceOpen}>
+                <div style={{ display: 'grid', gap: 10 }}>
+                  {path.sections.roadmap.map((s) => (
+                    <div key={s.phase} className="roadPhase">
+                      <div className="roadPhaseTitle">{s.phase}</div>
+                      <ul className="ul" style={{ marginTop: 6 }}>
+                        {s.bullets.map((t) => (
+                          <li key={t}>{t}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </Accordion>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="card cardSub" style={{ marginTop: 16 }}>
+        <div className="cardBody">
+          <div className="meta">这里的“岗位”指 6 条职业路径中的一条；用于横向对比你的偏好画像与岗位倾向。</div>
+          <div className="btnRow" style={{ justifyContent: 'space-between' }}>
+            <Link to={`/paths/${prevPath.id}`} className="btn btnGhost" style={{ textDecoration: 'none' }}>
+              上一岗位：{prevPath.name}
+            </Link>
+            <Link to={`/paths/${nextPath.id}`} className="btn btnGhost" style={{ textDecoration: 'none' }}>
+              下一岗位：{nextPath.name}
+            </Link>
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DIMENSIONS } from '../domain/dimensions'
 import { buildMatchExplanation, getMatchInsight } from '../domain/compare'
@@ -8,6 +9,31 @@ import { Accordion } from '../ui/Accordion'
 
 export function PathsPage() {
   const { state } = useStore()
+  const [filter, setFilter] = useState<'all' | 'top' | 'lowRisk' | 'agency' | 'public'>('all')
+
+  const topIds = state.recommendations?.top.map((r) => r.pathId) ?? []
+
+  const paths = useMemo(() => {
+    if (filter === 'top') {
+      return topIds.map((id) => PATHS.find((p) => p.id === id)).filter(Boolean) as typeof PATHS
+    }
+
+    let list = PATHS
+    if (filter === 'public') {
+      list = list.filter((p) => p.id === 'public-sector-research')
+    }
+    if (filter === 'agency') {
+      list = list.filter((p) => p.id === 'agency-strategy' || p.id === 'research-consulting')
+    }
+    if (filter === 'lowRisk') {
+      list = list.filter((p) => {
+        const roleProfile = state.roleProfiles[p.id]
+        const insight = getMatchInsight(state.dimensionScores, roleProfile, p.id)
+        return insight.risk.length === 0
+      })
+    }
+    return list
+  }, [filter, state.dimensionScores, state.roleProfiles, topIds])
 
   return (
     <div>
@@ -22,8 +48,32 @@ export function PathsPage() {
         </div>
       </Accordion>
 
+      <div className="segmentGroup" style={{ marginTop: 12, width: 'fit-content' }}>
+        <button type="button" className={`segmentBtn ${filter === 'all' ? 'segmentBtnActive' : ''}`} onClick={() => setFilter('all')}>
+          全部
+        </button>
+        <button
+          type="button"
+          className={`segmentBtn ${filter === 'top' ? 'segmentBtnActive' : ''}`}
+          onClick={() => setFilter('top')}
+          disabled={topIds.length === 0}
+          title={topIds.length === 0 ? '完成问卷后可用' : '仅看推荐 Top'}
+        >
+          推荐 Top
+        </button>
+        <button type="button" className={`segmentBtn ${filter === 'lowRisk' ? 'segmentBtnActive' : ''}`} onClick={() => setFilter('lowRisk')}>
+          风险少
+        </button>
+        <button type="button" className={`segmentBtn ${filter === 'agency' ? 'segmentBtnActive' : ''}`} onClick={() => setFilter('agency')}>
+          乙方/咨询
+        </button>
+        <button type="button" className={`segmentBtn ${filter === 'public' ? 'segmentBtnActive' : ''}`} onClick={() => setFilter('public')}>
+          公共部门
+        </button>
+      </div>
+
       <div style={{ display: 'grid', gap: 14, marginTop: 14 }}>
-        {PATHS.map((p) => {
+        {paths.map((p) => {
           const roleProfile = state.roleProfiles[p.id]
           const insight = getMatchInsight(state.dimensionScores, roleProfile, p.id)
           const lines = buildMatchExplanation(insight)
