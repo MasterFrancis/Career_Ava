@@ -41,10 +41,10 @@ export function RadarChart({
   maxValue?: number
   showLabels?: boolean
 }) {
-  const padding = showLabels ? 42 : 10
+  const padding = showLabels ? 72 : 10
   const cx = size / 2
   const cy = size / 2
-  const r = size / 2 - padding
+  const r = Math.max(10, size / 2 - padding)
   const step = (Math.PI * 2) / DIMENSION_ORDER.length
   const start = -Math.PI / 2
 
@@ -55,7 +55,7 @@ export function RadarChart({
     : null
 
   return (
-    <svg width="100%" height="100%" viewBox={`0 0 ${size} ${size}`} style={{ overflow: 'visible' }}>
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
       <defs>
         <linearGradient id="uFill" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="var(--chart-user-fill-1)" />
