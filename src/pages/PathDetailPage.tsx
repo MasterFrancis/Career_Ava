@@ -104,12 +104,12 @@ export function PathDetailPage() {
                   <div className="tagRow">
                     {insight.advantage.map((k) => (
                       <span key={`a-${k}`} className="tag tagGood">
-                        优势 {k}·{DIMENSIONS[k].shortName}
+                        优势：{DIMENSIONS[k].shortName}
                       </span>
                     ))}
                     {insight.risk.map((k) => (
                       <span key={`r-${k}`} className="tag tagRisk">
-                        风险 {k}·{DIMENSIONS[k].shortName}
+                        风险：{DIMENSIONS[k].shortName}
                       </span>
                     ))}
                   </div>

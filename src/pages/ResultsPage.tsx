@@ -107,7 +107,7 @@ export function ResultsPage() {
                         <div className="tagRow">
                           {r.highlightDims.map((k) => (
                             <span key={k} className="tag tagGood">
-                              亮点 {k}·{DIMENSIONS[k].shortName}
+                              亮点：{DIMENSIONS[k].shortName}
                             </span>
                           ))}
                         </div>

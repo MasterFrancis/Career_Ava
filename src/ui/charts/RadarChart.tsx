@@ -116,7 +116,7 @@ export function RadarChart({
       {showLabels &&
         DIMENSION_ORDER.map((k, idx) => {
           const p = polarToCartesian(cx, cy, r + 18, start + idx * step)
-          const label = `${k} · ${DIMENSIONS[k].shortName}`
+          const label = DIMENSIONS[k].shortName
           const anchor = p.x < cx - 12 ? 'end' : p.x > cx + 12 ? 'start' : 'middle'
           return (
             <text
