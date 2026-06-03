@@ -1539,18 +1539,34 @@ body::after {
 
 /* Ensure accordion summary text on dark bg is light */
 .accordionSummary {
-  color: #ffffff !important;
+  color: var(--text) !important;
 }
 .accordionBody {
-  color: #e9d5ff !important;
+  color: var(--muted) !important;
 }
 .accordionRight {
-  color: #d8b4e2 !important;
+  color: var(--faint) !important;
 }
 .accordionChevron {
-  color: #ffffff !important;
+  color: var(--accent) !important;
 }
 
-.accordion .meta {
+/* removed .accordion .meta light color override */
+
+.breakRow {
+  color: var(--text) !important;
+}
+.breakRow .meta {
+  color: #4c1d95 !important; /* Dark purple */
+}
+
+/* Accordion summary on dark page background */
+.page > .accordion > .accordionSummary {
+  color: #ffffff !important;
+}
+.page > .accordion > .accordionSummary .accordionChevron {
+  color: #fbcfe8 !important;
+}
+.page > .accordion > .accordionBody {
   color: #e9d5ff !important;
 }
