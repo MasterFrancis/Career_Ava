@@ -65,8 +65,8 @@ export function PathDetailPage() {
         </div>
         <div className="btnRow" style={{ marginTop: 0 }}>
           <Link to="/paths" className="btn btnGhost" style={{ textDecoration: 'none' }}>
-            返回浏览
-          </Link>
+          返回列表
+        </Link>
           <Link to="/matrix" className="btn" style={{ textDecoration: 'none' }}>
             去决策矩阵
           </Link>

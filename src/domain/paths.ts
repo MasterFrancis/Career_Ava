@@ -155,7 +155,7 @@ export const PATHS: Path[] = [
   },
   {
     id: 'agency-strategy',
-    name: '乙方策略/策划',
+    name: '乙方策略',
     oneLiner: '洞察→主张→策略→创意方向：用提案与叙事推动客户买单。',
     deliverables: ['一页主张', '策略框架', 'Pitch Deck', '创意 brief', '复盘建议'],
     cadence: '项目制；对外沟通与提案多，节奏更不可控。',
@@ -211,7 +211,7 @@ export const PATHS: Path[] = [
   },
   {
     id: 'research-consulting',
-    name: '研究公司/咨询',
+    name: '研究咨询',
     oneLiner: '项目制交付：研究方法 + 项目管理 + 客户沟通三位一体。',
     deliverables: ['研究报告', 'Workshop 产出', '客户沟通纪要', '建议清单'],
     cadence: '多客户多议题；流程与进度管理强，多线程并行。',
@@ -258,7 +258,7 @@ export const PATHS: Path[] = [
   },
   {
     id: 'public-sector-research',
-    name: '政府/公共部门研究',
+    name: '公共部门研究',
     oneLiner: '把问题–证据–建议–风险写成可被采纳的政策与评估材料。',
     deliverables: ['Policy brief', '评估框架/逻辑模型', '证据综述', '访谈总结与建议'],
     cadence: '伦理与可解释性重要；写作产出多，周期相对更长。',
@@ -305,7 +305,7 @@ export const PATHS: Path[] = [
   },
   {
     id: 'measurement',
-    name: '传播效果/品牌测量',
+    name: '品牌测量',
     oneLiner: '把传播与效果指标连接成可复盘的闭环，让预算与创意更可决策。',
     deliverables: ['指标框架', '前后测/实验方案', '活动后评估', '复盘报告', '优化建议'],
     cadence: '连接传播团队与数据/研究；强调口径对齐与可解释性。',
