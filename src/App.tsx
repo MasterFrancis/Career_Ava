@@ -130,7 +130,7 @@ export default function App() {
 
       {showReset && (
         <Modal title="确认重置？" onClose={() => setShowReset(false)}>
-          <div>将清空所有本地数据：问卷答案、结果、矩阵、备注与偏好。</div>
+          <div style={{ color: 'var(--accent3)' }}>将清空所有本地数据：问卷答案、结果、矩阵、备注与偏好。</div>
           <div className="modalActions">
             <button type="button" className="btn btnGhost" onClick={() => setShowReset(false)}>
               取消

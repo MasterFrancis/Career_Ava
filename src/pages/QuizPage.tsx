@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { QUIZ_QUESTIONS, isQuizComplete, type QuizAnswer } from '../domain/quiz'
 import { DIMENSIONS } from '../domain/dimensions'
 import { useStore } from '../state/useStore'
+import { Modal } from '../ui/Modal'
 
 function clamp(v: number, min: number, max: number) {
   return Math.max(min, Math.min(max, v))
@@ -24,9 +25,11 @@ export function QuizPage() {
   const doneCount = state.quizAnswers.filter((a) => a != null).length
   const complete = isQuizComplete(state.quizAnswers)
 
+  const [showLockedModal, setShowLockedModal] = useState(false)
+
   const setAnswer = (a: QuizAnswer) => {
     if (complete) {
-      alert('测评已完成。如需重新测试，请点击页面底部的“重置全部数据”按钮。')
+      setShowLockedModal(true)
       return
     }
     dispatch({ type: 'quiz/setAnswer', index: cursor, answer: a })
@@ -132,6 +135,17 @@ export function QuizPage() {
           </div>
         </div>
       </div>
+
+      {showLockedModal && (
+        <Modal title="测评已完成" onClose={() => setShowLockedModal(false)}>
+          <div style={{ color: 'var(--accent3)' }}>测评已锁定。如需重新测试，请点击页面底部的“重置”按钮清空数据。</div>
+          <div className="modalActions">
+            <button type="button" className="btn btnPrimary" onClick={() => setShowLockedModal(false)}>
+              知道了
+            </button>
+          </div>
+        </Modal>
+      )}
     </div>
   )
 }
