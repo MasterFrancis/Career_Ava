@@ -1219,7 +1219,7 @@ details[open] .accordionChevron {
 }
 
 .dimExplainCardScroll {
-  flex: 0 0 260px;
+  flex: 0 0 300px;
   border: 1px solid var(--stroke); 
   border-radius: var(--radius-lg);
   padding: 18px;
