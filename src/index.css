@@ -858,7 +858,7 @@ details[open] .accordionChevron {
   color: var(--accent);
   font-weight: 600;
   font-size: 16px;
-  background: var(--accent2); /* light pink */
+  background: rgba(251, 207, 232, 0.4); /* very light transparent pink */
   padding: 4px 10px;
   border-radius: 6px;
 }
