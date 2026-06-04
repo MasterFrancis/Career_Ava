@@ -1007,8 +1007,8 @@ details[open] .accordionChevron {
 
 .segmentBtn:hover {
 
-  transform: none !important;
-  box-shadow: 4px 4px 0px var(--stroke) !important;
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
   background: var(--accent2) !important; /* light pink */
   color: var(--text) !important;
 
@@ -1024,6 +1024,8 @@ details[open] .accordionChevron {
   color: #fff !important;
   border-color: var(--stroke) !important;
   text-shadow: none;
+  transform: none !important;
+  box-shadow: 4px 4px 0px var(--stroke) !important;
 }
 
 .rankRow {
