@@ -8,12 +8,14 @@ type Cluster = {
 }
 
 type CloudSpec = {
+  id: string
   baseX: number
   yRatio: number
   speed: number
   gap: number
   pixel: number
   clusters: Cluster[]
+  shadowBias?: number
 }
 
 type PreparedCloud = CloudSpec & {
@@ -42,103 +44,123 @@ const SKY_STOPS = [
 
 const CLOUD_SPECS: CloudSpec[] = [
   {
+    id: 'thin-drifter',
     baseX: 120,
     yRatio: 0.1,
     speed: 0.12,
-    gap: 220,
-    pixel: 10,
+    gap: 320,
+    pixel: 8,
     clusters: [
-      { x: 1, y: 4, w: 8, h: 4 },
-      { x: 5, y: 2, w: 9, h: 5 },
-      { x: 11, y: 3, w: 6, h: 4 },
-      { x: 15, y: 5, w: 8, h: 3 },
-      { x: 20, y: 6, w: 7, h: 2 },
-      { x: 24, y: 7, w: 6, h: 1 },
+      { x: 0, y: 8, w: 6, h: 2 },
+      { x: 3, y: 5, w: 7, h: 4 },
+      { x: 8, y: 2, w: 7, h: 5 },
+      { x: 13, y: 3, w: 6, h: 4 },
+      { x: 17, y: 5, w: 6, h: 3 },
+      { x: 22, y: 7, w: 6, h: 1 },
+      { x: 28, y: 7, w: 4, h: 1 },
     ],
+    shadowBias: 0.8,
   },
   {
+    id: 'small-puff',
     baseX: 620,
     yRatio: 0.18,
     speed: -0.08,
-    gap: 260,
-    pixel: 10,
+    gap: 300,
+    pixel: 8,
     clusters: [
-      { x: 3, y: 3, w: 7, h: 4 },
-      { x: 8, y: 1, w: 8, h: 5 },
-      { x: 14, y: 2, w: 9, h: 5 },
-      { x: 19, y: 4, w: 7, h: 4 },
-      { x: 25, y: 6, w: 4, h: 2 },
+      { x: 1, y: 7, w: 6, h: 2 },
+      { x: 4, y: 4, w: 6, h: 4 },
+      { x: 9, y: 1, w: 7, h: 5 },
+      { x: 14, y: 3, w: 8, h: 4 },
+      { x: 20, y: 5, w: 6, h: 3 },
     ],
+    shadowBias: 1,
   },
   {
+    id: 'medium-left',
     baseX: 260,
     yRatio: 0.32,
     speed: 0.06,
-    gap: 260,
-    pixel: 11,
+    gap: 340,
+    pixel: 9,
     clusters: [
-      { x: 2, y: 5, w: 10, h: 5 },
-      { x: 7, y: 2, w: 9, h: 6 },
-      { x: 13, y: 1, w: 10, h: 6 },
-      { x: 19, y: 3, w: 7, h: 5 },
-      { x: 23, y: 5, w: 6, h: 4 },
+      { x: 1, y: 8, w: 8, h: 2 },
+      { x: 5, y: 5, w: 8, h: 4 },
+      { x: 10, y: 2, w: 9, h: 6 },
+      { x: 17, y: 1, w: 8, h: 6 },
+      { x: 23, y: 4, w: 7, h: 4 },
+      { x: 28, y: 7, w: 5, h: 2 },
     ],
+    shadowBias: 1,
   },
   {
+    id: 'right-mass',
     baseX: 760,
     yRatio: 0.46,
     speed: -0.05,
-    gap: 320,
-    pixel: 12,
+    gap: 380,
+    pixel: 10,
     clusters: [
-      { x: 3, y: 6, w: 9, h: 5 },
-      { x: 8, y: 2, w: 11, h: 7 },
-      { x: 16, y: 0, w: 9, h: 7 },
-      { x: 22, y: 4, w: 8, h: 5 },
-      { x: 27, y: 7, w: 4, h: 2 },
+      { x: 1, y: 10, w: 8, h: 2 },
+      { x: 5, y: 6, w: 9, h: 5 },
+      { x: 11, y: 3, w: 10, h: 6 },
+      { x: 18, y: 0, w: 11, h: 8 },
+      { x: 26, y: 3, w: 8, h: 6 },
+      { x: 31, y: 7, w: 6, h: 3 },
     ],
+    shadowBias: 1.15,
   },
   {
+    id: 'wide-bottom-left',
     baseX: 160,
     yRatio: 0.58,
     speed: 0.05,
-    gap: 320,
-    pixel: 13,
+    gap: 420,
+    pixel: 10,
     clusters: [
-      { x: 1, y: 7, w: 10, h: 5 },
-      { x: 7, y: 3, w: 10, h: 7 },
-      { x: 14, y: 1, w: 12, h: 8 },
-      { x: 23, y: 5, w: 9, h: 5 },
-      { x: 28, y: 8, w: 5, h: 3 },
+      { x: 0, y: 12, w: 7, h: 2 },
+      { x: 4, y: 8, w: 9, h: 5 },
+      { x: 10, y: 5, w: 9, h: 6 },
+      { x: 17, y: 1, w: 11, h: 8 },
+      { x: 26, y: 4, w: 10, h: 6 },
+      { x: 34, y: 9, w: 7, h: 3 },
     ],
+    shadowBias: 1.1,
   },
   {
+    id: 'bottom-right',
     baseX: 960,
     yRatio: 0.72,
     speed: -0.04,
-    gap: 360,
-    pixel: 13,
+    gap: 420,
+    pixel: 11,
     clusters: [
-      { x: 2, y: 8, w: 9, h: 5 },
-      { x: 7, y: 4, w: 11, h: 7 },
-      { x: 15, y: 1, w: 10, h: 8 },
-      { x: 22, y: 5, w: 10, h: 6 },
-      { x: 28, y: 9, w: 5, h: 3 },
+      { x: 1, y: 11, w: 7, h: 2 },
+      { x: 5, y: 7, w: 9, h: 5 },
+      { x: 11, y: 4, w: 10, h: 6 },
+      { x: 18, y: 0, w: 10, h: 8 },
+      { x: 25, y: 4, w: 9, h: 6 },
+      { x: 32, y: 8, w: 7, h: 3 },
     ],
+    shadowBias: 1.05,
   },
   {
+    id: 'hero-bottom',
     baseX: 420,
     yRatio: 0.84,
     speed: 0.03,
-    gap: 400,
-    pixel: 14,
+    gap: 520,
+    pixel: 12,
     clusters: [
-      { x: 0, y: 8, w: 10, h: 5 },
-      { x: 6, y: 4, w: 12, h: 8 },
-      { x: 14, y: 0, w: 11, h: 9 },
-      { x: 23, y: 5, w: 10, h: 6 },
-      { x: 29, y: 9, w: 5, h: 3 },
+      { x: 0, y: 13, w: 8, h: 2 },
+      { x: 5, y: 9, w: 10, h: 5 },
+      { x: 12, y: 5, w: 11, h: 7 },
+      { x: 20, y: 0, w: 12, h: 9 },
+      { x: 29, y: 4, w: 11, h: 7 },
+      { x: 38, y: 10, w: 8, h: 3 },
     ],
+    shadowBias: 1.2,
   },
 ]
 
@@ -252,27 +274,31 @@ function drawCloud(
       const height = bottom - top + 1
       const yRatio = (py + pixel * 0.5) / viewportHeight
       const skyColor = getSkyColor(yRatio)
+      const shadowBias = cloud.shadowBias ?? 1
+      const columnHeight = height
+      const columnCenter = (top + bottom) * 0.5
+      const softnessBand = Math.max(2, Math.floor(columnHeight * 0.22))
 
       let color = CORE
 
-      // Solid highlight cap.
-      if (topDepth <= 1) {
+      // Keep the top cap clean and bright like the reference.
+      if (topDepth === 0) {
         color = HIGHLIGHT
-      } else if (topDepth === 2) {
-        // Soft transition from highlight into the core.
+      } else if (topDepth === 1) {
         color = (gx + gy) % 2 === 0 ? HIGHLIGHT : CORE
-      } else if (bottomDepth >= 4) {
-        color = CORE
+      } else if (topDepth <= softnessBand && gy < columnCenter) {
+        color = (gx + gy) % 4 === 0 ? HIGHLIGHT : CORE
       } else {
-        // Bottom rows turn into a dithered shadow/surrounding-sky mix.
-        if (bottomDepth === 3) {
-          color = (gx + gy) % 2 === 0 ? SHADOW : CORE
+        // The belly holds together as a soft core, with the shadow staying attached
+        // to the bottom edge rather than dripping downward.
+        if (bottomDepth >= 3) {
+          color = CORE
         } else if (bottomDepth === 2) {
-          color = (gx + gy) % 2 === 0 ? SHADOW : skyColor
+          color = (gx + gy) % 3 === 0 ? SHADOW : CORE
         } else if (bottomDepth === 1) {
-          color = (gx + gy) % 3 === 0 ? SHADOW : skyColor
+          color = (gx + gy) % 2 === 0 ? SHADOW : CORE
         } else {
-          color = (gx + gy) % 4 === 0 ? SHADOW : skyColor
+          color = (gx + gy + Math.floor(shadowBias * 2)) % 3 === 0 ? skyColor : SHADOW
         }
       }
 
@@ -283,19 +309,19 @@ function drawCloud(
       fillPixel(ctx, px, py, pixel, color)
     }
 
-    // Extend the cloud belly downward with a decreasing-density dither strip.
-    for (let spill = 1; spill <= 4; spill += 1) {
+    // Dissolve the bottom edge into the sky with a decreasing-density matrix.
+    for (let spill = 1; spill <= 3; spill += 1) {
       const py = originY + (bottom - cloud.minY + spill) * pixel
       const px = originX + (gx - cloud.minX) * pixel
-      const yRatio = (py + pixel * 0.5) / viewportHeight
-      const skyColor = getSkyColor(yRatio)
-      const pattern = (gx + (bottom + spill)) % 4
+      const parity = (gx + bottom + spill) % 2
+      const sparse = (gx * 3 + bottom + spill) % 5
+      const verySparse = (gx * 5 + bottom + spill) % 8
 
-      if (spill === 1) {
-        fillPixel(ctx, px, py, pixel, pattern <= 1 ? SHADOW : skyColor)
-      } else if (spill === 2 && pattern === 0) {
+      if (spill === 1 && parity === 0) {
         fillPixel(ctx, px, py, pixel, SHADOW)
-      } else if (spill === 3 && (gx + bottom) % 6 === 0) {
+      } else if (spill === 2 && sparse === 0) {
+        fillPixel(ctx, px, py, pixel, SHADOW)
+      } else if (spill === 3 && verySparse === 0) {
         fillPixel(ctx, px, py, pixel, SHADOW)
       }
     }
