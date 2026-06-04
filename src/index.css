@@ -855,7 +855,7 @@ details[open] .accordionChevron {
 }
 
 .pathCadence {
-  color: var(--accent);
+  color: #be185d; /* deep pink */
   font-weight: 600;
   font-size: 16px;
   background: rgba(251, 207, 232, 0.4); /* very light transparent pink */
