@@ -113,7 +113,7 @@ export function MatrixPage() {
                               <button
                                 key={v}
                                 type="button"
-                                className={`segmentBtn ${active ? 'segmentBtnActive' : ''}`}
+                                className={`segmentBtn matrixScoreBtn ${active ? 'segmentBtnActive' : ''}`}
                                 style={{ padding: '4px 0', flex: 1, minWidth: 24, fontSize: 13, textAlign: 'center' }}
                                 onClick={() =>
                                   dispatch({
