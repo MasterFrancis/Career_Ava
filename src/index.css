@@ -1035,7 +1035,6 @@ details[open] .accordionChevron {
 }
 
 .homeHeroGrid {
-  border-radius: 0; box-shadow: var(--shadow);
   background: transparent;
   padding: 20px 0;
   display: grid;
