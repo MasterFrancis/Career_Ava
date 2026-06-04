@@ -922,7 +922,8 @@ details[open] .accordionChevron {
   cursor: pointer;
   font-weight: 700;
   font-size: 16px;
-  color: var(--muted);
+  color: #ffffff;
+  text-shadow: none;
   transition: all 120ms ease;
 }
 
@@ -942,6 +943,7 @@ details[open] .accordionChevron {
   color: var(--text);
   border: 2px solid var(--stroke);
   box-shadow: 2px 2px 0 var(--stroke);
+  text-shadow: none;
 }
 
 .rankRow {
