@@ -77,7 +77,7 @@ export function loadState(): AppStateV1 {
       ...parsed,
       uiPrefs: { ...createDefaultState().uiPrefs, ...(parsed.uiPrefs ?? {}) },
       notes: { ...createDefaultState().notes, ...(parsed.notes ?? {}) },
-      roleProfiles: { ...ROLE_PROFILES, ...(parsed.roleProfiles ?? {}) },
+      roleProfiles: ROLE_PROFILES,
       matrix: parsed.matrix ?? createDefaultMatrix(),
       quizAnswers: Array.isArray(parsed.quizAnswers)
         ? (parsed.quizAnswers.slice(0, 24) as AppStateV1['quizAnswers'])
