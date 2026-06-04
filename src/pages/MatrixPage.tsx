@@ -35,14 +35,8 @@ export function MatrixPage() {
       </Accordion>
 
       <div className="card" style={{ marginTop: 14 }}>
-        <div className="cardHeader">
-          <div className="cardTitleRow">
-            <h2 className="cardTitle">矩阵表</h2>
-            <div className="meta">本地自动保存，点击排序按钮更新顺序</div>
-          </div>
-        </div>
         <div className="cardBody" style={{ overflowX: 'visible' }}>
-          <table className="matrixTable">
+          <table className="matrixTable" style={{ fontSize: '0.85em' }}>
             <thead>
               <tr>
                 <th className="matrixTh" style={{ width: 80 }}>
