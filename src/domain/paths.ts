@@ -155,7 +155,7 @@ export const PATHS: Path[] = [
   },
   {
     id: 'agency-strategy',
-    name: '乙方策略',
+    name: '乙方品牌策略',
     oneLiner: '洞察→主张→策略→创意方向：用提案与叙事推动客户买单。',
     deliverables: ['一页主张', '策略框架', 'Pitch Deck', '创意 brief', '复盘建议'],
     cadence: '项目制；对外沟通与提案多，节奏更不可控。',
