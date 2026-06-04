@@ -815,7 +815,7 @@ details[open] .accordionChevron {
   display: grid;
   place-items: center;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--accent);
   background: var(--accent2);
 }
 
@@ -1325,8 +1325,8 @@ details[open] .accordionChevron {
   display: grid;
   place-items: center;
   font-weight: 900;
-  color: rgba(255, 255, 255, 0.95);
-  background: var(--accent);
+  color: var(--accent);
+  background: var(--accent2);
 }
 
 .dimExplainName {
