@@ -121,7 +121,7 @@ export function ResultsPage() {
                           </Link>
                         </div>
 
-                        <Accordion title="维度贡献拆解">
+                        <Accordion title="维度贡献拆解" className="resultsAccordion">
                           <div style={{ marginTop: 10, display: 'grid', gap: 8 }}>
                             {DIMENSION_ORDER.map((k) => {
                               const w = PATH_WEIGHTS[r.pathId][k]
