@@ -1045,8 +1045,6 @@ details[open] .accordionChevron {
 }
 
 .segmentBtnActive {
-  transform: translate(4px, 4px) !important;
-  box-shadow: 0px 0px 0px var(--stroke) !important;
   background: var(--accent) !important; /* deep pink */
   color: #fff !important;
   border-color: var(--stroke) !important;
