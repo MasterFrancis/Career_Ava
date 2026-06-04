@@ -1590,13 +1590,20 @@ details[open] .accordionChevron {
 
 /* NEW PIXEL BACKGROUND */
 body {
-  background-color: #5e35b1;
+  background-color: #2a0845;
   background-image:
-    url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23ffffff' fill-opacity='0.08'/%3E%3Crect x='2' y='2' width='2' height='2' fill='%23ffffff' fill-opacity='0.08'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='20' y='30' width='3' height='3' fill='white' opacity='0.8'/%3E%3Crect x='150' y='80' width='3' height='3' fill='white' opacity='0.6'/%3E%3Crect x='80' y='260' width='3' height='3' fill='white' opacity='0.9'/%3E%3Crect x='250' y='190' width='3' height='3' fill='white' opacity='0.5'/%3E%3Cpath d='M100 40 h3 v-3 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 z' fill='white' opacity='0.9'/%3E%3Cpath d='M220 220 h3 v-3 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 z' fill='white' opacity='0.7'/%3E%3C/svg%3E"),
-    linear-gradient(180deg, #4421a6 0%, #6f42c1 35%, #9c68d9 65%, #d1a8f0 85%, #e8daf9 100%);
-  background-attachment: fixed, fixed, fixed;
-  background-size: 4px 4px, 300px 300px, 100% 100%;
+    url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0%25' stop-color='%232a0845'/%3E%3Cstop offset='7.14%25' stop-color='%232a0845'/%3E%3Cstop offset='7.14%25' stop-color='%234a148c'/%3E%3Cstop offset='21.42%25' stop-color='%234a148c'/%3E%3Cstop offset='21.42%25' stop-color='%23673ab7'/%3E%3Cstop offset='35.71%25' stop-color='%23673ab7'/%3E%3Cstop offset='35.71%25' stop-color='%239575cd'/%3E%3Cstop offset='50%25' stop-color='%239575cd'/%3E%3Cstop offset='50%25' stop-color='%23b39ddb'/%3E%3Cstop offset='64.28%25' stop-color='%23b39ddb'/%3E%3Cstop offset='64.28%25' stop-color='%23d1c4e9'/%3E%3Cstop offset='78.57%25' stop-color='%23d1c4e9'/%3E%3Cstop offset='78.57%25' stop-color='%23ede7f6'/%3E%3Cstop offset='100%25' stop-color='%23ede7f6'/%3E%3C/linearGradient%3E%3Cpattern id='c' width='8' height='8' patternUnits='userSpaceOnUse'%3E%3Crect x='0' y='0' width='4' height='4' fill='white'/%3E%3Crect x='4' y='4' width='4' height='4' fill='white'/%3E%3C/pattern%3E%3Cmask id='m'%3E%3Crect width='100%25' height='100%25' fill='url(%23c)'/%3E%3C/mask%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23g)' mask='url(%23m)'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, 
+      #2a0845 0%, #2a0845 14.28%,
+      #4a148c 14.28%, #4a148c 28.57%,
+      #673ab7 28.57%, #673ab7 42.85%,
+      #9575cd 42.85%, #9575cd 57.14%,
+      #b39ddb 57.14%, #b39ddb 71.42%,
+      #d1c4e9 71.42%, #d1c4e9 85.71%,
+      #ede7f6 85.71%, #ede7f6 100%
+    );
+  background-attachment: fixed, fixed;
+  background-size: 100% 100%, 100% 100%;
 }
 
 #root {
@@ -1609,14 +1616,9 @@ body::before {
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: -3;
   pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='250' height='250' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='40' y='120' width='3' height='3' fill='white'/%3E%3Crect x='180' y='40' width='3' height='3' fill='white'/%3E%3Cpath d='M150 150 h3 v-3 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 z' fill='white'/%3E%3C/svg%3E");
-  background-size: 250px 250px;
+  background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='40' y='120' width='3' height='3' fill='white'%3E%3Canimate attributeName='opacity' values='0.2;1;0.2' dur='3s' repeatCount='indefinite' /%3E%3C/rect%3E%3Crect x='180' y='40' width='3' height='3' fill='white'%3E%3Canimate attributeName='opacity' values='1;0.2;1' dur='4s' repeatCount='indefinite' /%3E%3C/rect%3E%3Cpath d='M150 150 h3 v-3 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 z' fill='white'%3E%3Canimate attributeName='opacity' values='0.1;0.8;0.1' dur='2.5s' repeatCount='indefinite' /%3E%3C/path%3E%3Crect x='80' y='220' width='3' height='3' fill='white'%3E%3Canimate attributeName='opacity' values='0.5;1;0.5' dur='3.5s' repeatCount='indefinite' /%3E%3C/rect%3E%3Cpath d='M250 260 h3 v-3 h3 v3 h3 v3 h-3 v3 h-3 v-3 h-3 z' fill='white'%3E%3Canimate attributeName='opacity' values='1;0.3;1' dur='5s' repeatCount='indefinite' /%3E%3C/path%3E%3C/svg%3E");
+  background-size: 300px 300px;
   background-attachment: fixed;
-  animation: twinkle 3s ease-in-out infinite alternate;
-}
-@keyframes twinkle {
-  0% { opacity: 0.1; }
-  100% { opacity: 0.9; }
 }
 
 body::after {
