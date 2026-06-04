@@ -1396,8 +1396,14 @@ body {
   image-rendering: pixelated !important;
 }
 
-.card, .btn, .pill, .modal, .tag, .stepper, .dimRow, .rankRow, .roadPhase {
+.card, .btn, .pill, .modal, .stepper, .dimRow, .rankRow, .roadPhase {
   border-width: 4px !important;
+  border-style: solid !important;
+  border-color: var(--text) var(--stroke) var(--stroke) var(--text) !important;
+}
+
+.tag {
+  border-width: 2px !important;
   border-style: solid !important;
   border-color: var(--text) var(--stroke) var(--stroke) var(--text) !important;
 }
