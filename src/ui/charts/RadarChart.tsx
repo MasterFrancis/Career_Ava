@@ -46,7 +46,7 @@ export function RadarChart({
   const cy = size / 2
   const rx = Math.max(10, size / 2 - paddingX)
   const ry = Math.max(10, size / 2 - paddingY)
-  const r = showLabels ? Math.min(rx, ry) + 12 : rx
+  const r = showLabels ? Math.min(rx, ry) - 4 : rx
   const step = (Math.PI * 2) / DIMENSION_ORDER.length
   const start = -Math.PI / 2
 
