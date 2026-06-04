@@ -9,7 +9,7 @@ import { Accordion } from '../ui/Accordion'
 
 export function PathsPage() {
   const { state } = useStore()
-  const [filter, setFilter] = useState<'all' | 'top' | 'lowRisk' | 'agency' | 'public'>('all')
+  const [filter, setFilter] = useState<'all' | 'top'>('all')
 
   const topIds = state.recommendations?.top.map((r) => r.pathId) ?? []
 
@@ -17,23 +17,8 @@ export function PathsPage() {
     if (filter === 'top') {
       return topIds.map((id) => PATHS.find((p) => p.id === id)).filter(Boolean) as typeof PATHS
     }
-
-    let list = PATHS
-    if (filter === 'public') {
-      list = list.filter((p) => p.id === 'public-sector-research')
-    }
-    if (filter === 'agency') {
-      list = list.filter((p) => p.id === 'agency-strategy' || p.id === 'research-consulting')
-    }
-    if (filter === 'lowRisk') {
-      list = list.filter((p) => {
-        const roleProfile = state.roleProfiles[p.id]
-        const insight = getMatchInsight(state.dimensionScores, roleProfile, p.id)
-        return insight.risk.length === 0
-      })
-    }
-    return list
-  }, [filter, state.dimensionScores, state.roleProfiles, topIds])
+    return PATHS
+  }, [filter, topIds])
 
   return (
     <div>
@@ -60,15 +45,6 @@ export function PathsPage() {
           title={topIds.length === 0 ? '完成问卷后可用' : '仅看推荐 Top'}
         >
           推荐 Top
-        </button>
-        <button type="button" className={`segmentBtn ${filter === 'lowRisk' ? 'segmentBtnActive' : ''}`} onClick={() => setFilter('lowRisk')}>
-          风险少
-        </button>
-        <button type="button" className={`segmentBtn ${filter === 'agency' ? 'segmentBtnActive' : ''}`} onClick={() => setFilter('agency')}>
-          乙方咨询
-        </button>
-        <button type="button" className={`segmentBtn ${filter === 'public' ? 'segmentBtnActive' : ''}`} onClick={() => setFilter('public')}>
-          公共部门
         </button>
       </div>
 
