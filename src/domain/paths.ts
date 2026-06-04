@@ -380,7 +380,7 @@ export function weightsToRoleProfile(
 ): RoleProfile {
   const p: RoleProfile = { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0, G: 0, H: 0 }
   for (const k of DIMENSION_ORDER) {
-    p[k] = weights[k] * 5
+    p[k] = 3 + weights[k] * 4
   }
   return p
 }
