@@ -9,6 +9,7 @@ import { MatrixPage } from './pages/MatrixPage'
 import { useStore } from './state/useStore'
 import { isQuizComplete } from './domain/quiz'
 import { Modal } from './ui/Modal'
+import { PixelSkyCanvas } from './ui/PixelSkyCanvas'
 import { resetAll } from './state/storage'
 
 function Guard({
@@ -58,6 +59,7 @@ export default function App() {
 
   return (
     <div className="appShell">
+      <PixelSkyCanvas />
       {complete && (
         <div className="topBar">
           <nav className="navPills" aria-label="Main">
