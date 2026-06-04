@@ -47,8 +47,8 @@ export function MatrixPage() {
               <tr>
                 <th className="matrixTh" style={{ width: 80 }}>
                   <button type="button" className="btn" style={{ padding: '4px 8px', fontSize: 12, display: 'flex', alignItems: 'center', gap: 4, margin: '0 auto' }} onClick={handleSort} title="按当前总分重新排序">
-                    <ArrowUpDown size={14} />
                     排序
+                    <ArrowUpDown size={14} strokeWidth={3} />
                   </button>
                 </th>
                 <th className="matrixTh" style={{ textAlign: 'left' }}>路径</th>
