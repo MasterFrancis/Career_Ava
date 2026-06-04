@@ -37,7 +37,7 @@ export function getMatchInsight(
     .map((d) => d.key)
 
   const risk = deltas
-    .filter((d) => d.delta <= -0.15 && (d.weight >= 2 || d.role >= 0.65))
+    .filter((d) => d.delta <= -0.10 && (d.weight >= 2 || d.role >= 0.60))
     .sort((a, b) => b.pressure - a.pressure)
     .slice(0, 2)
     .map((d) => d.key)
