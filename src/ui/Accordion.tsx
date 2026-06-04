@@ -5,11 +5,15 @@ export function Accordion({
   children,
   defaultOpen = false,
   forceOpen,
+  className,
+  style,
 }: {
   title: ReactNode
   children: ReactNode
   defaultOpen?: boolean
   forceOpen?: boolean
+  className?: string
+  style?: React.CSSProperties
 }) {
   const id = useId()
   const detailsRef = useRef<HTMLDetailsElement>(null)
@@ -27,7 +31,7 @@ export function Accordion({
   }, [forceOpen])
 
   return (
-    <details className="accordion" ref={detailsRef}>
+    <details className={`accordion ${className || ''}`} ref={detailsRef} style={style}>
       <summary className="accordionSummary" aria-controls={id}>
         <span>{title}</span>
         <span className="accordionRight">

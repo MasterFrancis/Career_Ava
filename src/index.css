@@ -1534,8 +1534,15 @@ body::after {
 }
 
 /* Text on the main dark background should be light */
-.page > .meta, .page > .lead, .page > .accordion > .accordionSummary > .meta {
+.page > .meta, .page > .lead {
   color: #e9d5ff !important; /* Light purple */
+}
+
+.pageAccordion > .accordionSummary {
+  color: #ffffff !important;
+}
+.pageAccordion > .accordionBody .meta, .pageAccordion > .accordionBody {
+  color: #e9d5ff !important;
 }
 
 /* Ensure accordion summary text on dark bg is light */
