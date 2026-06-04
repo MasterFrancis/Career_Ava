@@ -25,6 +25,10 @@ export function QuizPage() {
   const complete = isQuizComplete(state.quizAnswers)
 
   const setAnswer = (a: QuizAnswer) => {
+    if (complete) {
+      alert('测评已完成。如需重新测试，请点击页面底部的“重置全部数据”按钮。')
+      return
+    }
     dispatch({ type: 'quiz/setAnswer', index: cursor, answer: a })
     if (cursor < 23) setCursor((c) => clamp(c + 1, 0, 23))
   }
@@ -85,6 +89,7 @@ export function QuizPage() {
                     type="button"
                     className={`quizScaleBtn ${selected ? 'quizScaleBtnActive' : ''}`}
                     onClick={() => setAnswer(v as QuizAnswer)}
+                    disabled={complete && !selected}
                   >
                     {v}
                   </button>
