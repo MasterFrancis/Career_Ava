@@ -575,47 +575,6 @@ details[open] .accordionChevron {
   color: var(--muted);
 }
 
-.sectionNav {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding-bottom: 12px;
-  border-bottom: none;
-  margin-bottom: 10px;
-}
-
-.sectionLink {
-  text-decoration: none;
-  padding: 6px 10px;
-  font-size: 18px;
-  color: var(--muted);
-  background: var(--paper);
-  font-weight: 700;
-  width: fit-content;
-
-  border: 4px solid var(--stroke) !important;
-  box-shadow: 4px 4px 0px var(--stroke) !important;
-  border-radius: 8px !important;
-  transition: all 120ms ease !important;
-
-}
-
-.sectionLink:active {
-
-  background: var(--accent) !important; /* deep pink */
-  color: #fff !important;
-
-}
-
-.sectionLink:hover {
-
-  transform: translate(4px, 4px) !important;
-  box-shadow: 0px 0px 0px var(--stroke) !important;
-  background: var(--accent2) !important; /* light pink */
-  color: var(--text) !important;
-
-}
-
 .sectionAnchor {
   scroll-margin-top: 88px;
 }
@@ -1516,9 +1475,6 @@ body::after {
   background: var(--paper);
 }
 
-.sectionLink {
-  color: var(--text);
-}
 
 .pill {
   color: var(--text);

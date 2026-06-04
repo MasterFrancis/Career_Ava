@@ -165,17 +165,6 @@ export function PathDetailPage() {
             </div>
           </div>
           <div className="cardBody">
-            <div className="sectionNav">
-              <a className="sectionLink" href="#sec-kernel">岗位内核</a>
-              <a className="sectionLink" href="#sec-titles">岗位名称变体</a>
-              <a className="sectionLink" href="#sec-workflow">典型工作流</a>
-              <a className="sectionLink" href="#sec-skills">技能树</a>
-              <a className="sectionLink" href="#sec-market">市场与薪资</a>
-              <a className="sectionLink" href="#sec-pros">优缺点与 WLB</a>
-              <a className="sectionLink" href="#sec-action">验证型行动建议</a>
-              <a className="sectionLink" href="#sec-roadmap">路线图 / 计划方案</a>
-            </div>
-
             <div id="sec-kernel" className="sectionAnchor">
               <Accordion title="岗位内核" defaultOpen forceOpen={forceOpen}>
                 <ul className="ul">
