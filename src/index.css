@@ -1229,6 +1229,10 @@ details[open] .accordionChevron {
   z-index: 10;
 }
 
+.tooltipWrap .lucide-info {
+  color: #2e1065 !important;
+}
+
 .tooltipWrap .tooltipContent {
   visibility: hidden;
   opacity: 0;
@@ -1236,18 +1240,19 @@ details[open] .accordionChevron {
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(4px);
-  background: var(--bg);
-  color: var(--text);
+  background: var(--accent); /* Same pink as btnPrimary */
+  color: rgba(255, 255, 255, 0.95);
   padding: 6px 12px;
   border-radius: 99px;
   font-size: 18px;
   font-weight: 500;
   white-space: nowrap;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 99999; /* Fix Z stack issue */
   transition: all 0.2s;
   margin-bottom: 10px;
-  border: 1px solid var(--border);
+  border: 4px solid var(--stroke); 
+  box-shadow: var(--shadow);
 }
 
 /* Removed tooltip arrows */
