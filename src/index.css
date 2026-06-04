@@ -522,9 +522,9 @@ a {
   cursor: pointer;
   padding: 12px 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   color: var(--muted);
   font-weight: 600;
   font-size: 16px;
@@ -1557,7 +1557,6 @@ body::after {
 }
 .accordionChevron {
   color: #ffffff !important;
-  margin-left: 2px;
   transform: scale(1.3);
 }
 
