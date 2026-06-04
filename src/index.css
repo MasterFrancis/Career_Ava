@@ -1677,32 +1677,31 @@ body::after {
 @keyframes clouds-fg {
   0% {
     background-position:
-      120px 11%,
-      780px 29%,
-      240px 43%,
-      960px 63%;
+      120px 9%,
+      780px 32%,
+      240px 58%,
+      960px 84%;
   }
   100% {
     background-position:
-      1440px 11%,
-      -400px 29%,
-      1700px 43%,
-      -280px 63%;
+      1440px 9%,
+      -400px 32%,
+      1700px 58%,
+      -280px 84%;
   }
 }
 
 @keyframes clouds-bg {
   0% {
     background-position:
-      0px 19%,
-      540px 36%,
-      180px 54%;
+      0px 18%,
+      540px 46%,
+      180px 72%;
   }
   100% {
     background-position:
-      -1680px 19%,
-      2080px 36%,
-      -1220px 54%;
+      -1680px 18%,
+      2080px 46%,
+      -1220px 72%;
   }
 }
-
