@@ -1556,7 +1556,9 @@ body::after {
   color: var(--faint) !important;
 }
 .accordionChevron {
-  color: var(--accent) !important;
+  color: #ffffff !important;
+  margin-left: 2px;
+  transform: scale(1.3);
 }
 
 /* removed .accordion .meta light color override */
