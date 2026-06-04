@@ -136,9 +136,8 @@ a {
 .brandMark {
   width: 34px;
   height: 34px;
-  border-radius: 0; box-shadow: var(--shadow);
-  background: var(--accent); border: 4px solid var(--stroke); 
-  box-shadow: var(--shadow);
+  
+  background: var(--accent);
 }
 
 .brandTitle {
@@ -188,39 +187,68 @@ a {
 .pathTab {
   flex: 0 0 auto;
   text-decoration: none;
-  color: var(--muted);
-  font-size: 16px;
-  font-weight: 720;
-  padding: 8px 2px;
-  border-bottom: 2px solid transparent;
+  padding: 8px 16px;
   white-space: nowrap;
+  background: var(--paper);
+  color: var(--text);
+  font-weight: 720;
+
+  border: 4px solid var(--stroke) !important;
+  box-shadow: 4px 4px 0px var(--stroke) !important;
+  border-radius: 8px !important;
+  transition: all 120ms ease !important;
+
+}
+
+.pathTab:active {
+
+  background: var(--accent) !important; /* deep pink */
+  color: #fff !important;
+
 }
 
 .pathTab:hover {
-  color: var(--text);
+
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent2) !important; /* light pink */
+  color: var(--text) !important;
+
 }
 
 .pathTabActive {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent) !important;
+  color: #fff !important;
+  border-color: var(--stroke) !important;
 }
 
 .pill {
   padding: 8px 16px;
-  border-radius: 0; box-shadow: var(--shadow);
-  border: 4px solid var(--stroke);box-shadow: var(--shadow); font-weight: 800; text-transform: uppercase;
+  text-transform: uppercase;
   text-decoration: none;
   color: var(--muted);
   background: var(--paper);
-  transition: background 120ms ease, color 120ms ease;
   font-size: 16px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+
+  border: 4px solid var(--stroke) !important;
+  box-shadow: 4px 4px 0px var(--stroke) !important;
+  border-radius: 8px !important;
+  transition: all 120ms ease !important;
+
 }
 
 .pill:hover {
-  color: var(--text);
-  background: var(--accent2);
-  transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
-  box-shadow: var(--shadow);
+
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent2) !important; /* light pink */
+  color: var(--text) !important;
+
 }
 
 .pillActive {
@@ -286,10 +314,9 @@ a {
 }
 
 .card {
-  border: 4px solid var(--stroke); 
+  border: 1px solid rgba(14,38,61,0.15);
   border-radius: var(--radius-lg);
   background: var(--paper);
-  box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s;
   overflow: visible;
 }
 
@@ -331,35 +358,36 @@ a {
 .btn {
   appearance: none;
   cursor: pointer;
-  border-radius: 0; box-shadow: var(--shadow);
   padding: 10px 20px;
-  font-weight: 720;
+  font-weight: 800;
   letter-spacing: 0.3px;
   font-size: 18px;
-  background: var(--paper); color: var(--text);
+  background: var(--paper);
   color: var(--text);
-  border: 4px solid var(--stroke); 
-  box-shadow: var(--shadow); text-transform: uppercase; font-weight: 800;
-  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+  text-transform: uppercase;
+
+  border: 4px solid var(--stroke) !important;
+  box-shadow: 4px 4px 0px var(--stroke) !important;
+  border-radius: 8px !important;
+  transition: all 120ms ease !important;
+
 }
 
 .btn:hover {
-  background: var(--accent2);
-  transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
-  box-shadow: var(--shadow);
+
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent2) !important; /* light pink */
+  color: var(--text) !important;
+
 }
 
 .btnPrimary {
   background: var(--accent);
   color: rgba(255, 255, 255, 0.95);
-  border-color: transparent;
 }
 
-.btnPrimary:hover {
-  background: var(--accent2);
-  transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
-  box-shadow: var(--shadow);
-}
+
 
 .btnGhost {
   background: rgba(255, 255, 255, 0.6);
@@ -374,12 +402,12 @@ a {
 
 .tag {
   display: inline-block;
-  border: 4px solid var(--stroke); 
-  border-radius: 0; box-shadow: var(--shadow);
+  border: 1px solid var(--stroke); 
+  
   padding: 6px 10px;
   font-size: 18px;
   color: var(--muted);
-  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
+  background: var(--paper);
   max-width: 100%;
   white-space: normal;
   word-break: break-word;
@@ -473,10 +501,10 @@ a {
 
 .modal {
   width: min(520px, 100%);
-  border-radius: 0; box-shadow: var(--shadow);
-  border: 4px solid var(--stroke); 
+  
+  border: 1px solid var(--stroke); 
   background: var(--paper); color: var(--text);
-  box-shadow: 12px 12px 0 var(--stroke); border: 4px solid var(--stroke);
+  border: 1px solid rgba(14,38,61,0.15); box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   overflow: hidden;
 }
 
@@ -580,18 +608,34 @@ details[open] .accordionChevron {
 
 .sectionLink {
   text-decoration: none;
-  border: 4px solid var(--stroke); 
-  border-radius: 0; box-shadow: var(--shadow);
   padding: 6px 10px;
   font-size: 18px;
   color: var(--muted);
-  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
+  background: var(--paper);
+  font-weight: 700;
   width: fit-content;
+
+  border: 4px solid var(--stroke) !important;
+  box-shadow: 4px 4px 0px var(--stroke) !important;
+  border-radius: 8px !important;
+  transition: all 120ms ease !important;
+
+}
+
+.sectionLink:active {
+
+  background: var(--accent) !important; /* deep pink */
+  color: #fff !important;
+
 }
 
 .sectionLink:hover {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.9);
+
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent2) !important; /* light pink */
+  color: var(--text) !important;
+
 }
 
 .sectionAnchor {
@@ -610,9 +654,9 @@ details[open] .accordionChevron {
 
 .stepper {
   margin-top: 14px;
-  border-radius: 0; box-shadow: var(--shadow);
-  border: 4px solid var(--stroke); 
-  background: var(--paper); box-shadow: var(--shadow); border: 4px solid var(--stroke); 
+  
+  border: 1px solid var(--stroke); 
+  background: var(--paper);
   padding: 12px 12px;
   display: flex;
   align-items: center;
@@ -654,25 +698,26 @@ details[open] .accordionChevron {
 .stepDot {
   width: 10px;
   height: 10px;
-  border-radius: 0; box-shadow: var(--shadow);
-  border: 4px solid var(--stroke);border-radius: 0; box-shadow: var(--shadow);
+  
+  border: 1px solid var(--stroke);
   background: var(--bg0); color: var(--text-inverse);
   cursor: pointer;
   transition: border-color 120ms ease, background 120ms ease;
 }
 
 .stepDot:hover {
-  border-color: var(--accent);
+  background: var(--accent2);
+  border-color: var(--stroke);
 }
 
 .stepDotDone {
-  background: rgba(37, 99, 235, 0.3); /* accent */
-  border-color: rgba(37, 99, 235, 0.4);
+  background: var(--faint);
+  border-color: var(--stroke);
 }
 
 .stepDotActive {
-  background: var(--accent2);
-  border-color: var(--accent); text-shadow: none !important;
+  background: var(--accent);
+  border-color: var(--stroke);
 }
 
 .quizStatement {
@@ -709,21 +754,27 @@ details[open] .accordionChevron {
 }
 
 .quizScaleBtn {
-  border-radius: 0; box-shadow: var(--shadow);
   padding: 14px 10px;
-  border: 4px solid var(--stroke); 
-  background: var(--paper); box-shadow: var(--shadow); border: 4px solid var(--stroke); 
+  background: var(--paper);
   color: var(--text);
   font-weight: 820;
   font-size: 18px;
   cursor: pointer;
-  transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+
+  border: 4px solid var(--stroke) !important;
+  box-shadow: 4px 4px 0px var(--stroke) !important;
+  border-radius: 8px !important;
+  transition: all 120ms ease !important;
+
 }
 
 .quizScaleBtn:hover {
-  background: var(--accent2);
-  transform: translate(2px, 2px); box-shadow: 2px 2px 0px rgba(0,0,0,0.4);
-  box-shadow: var(--shadow);
+
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent2) !important; /* light pink */
+  color: var(--text) !important;
+
 }
 
 .quizScaleBtnActive {
@@ -744,10 +795,10 @@ details[open] .accordionChevron {
 
 
 .dimRow {
-  border: 4px solid var(--stroke); 
+  border: 1px solid var(--stroke); 
   border-radius: 16px;
   padding: 14px;
-  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
+  background: var(--paper);
 }
 
 .dimHead {
@@ -760,7 +811,7 @@ details[open] .accordionChevron {
 .dimKey {
   width: 34px;
   height: 34px;
-  border-radius: 0; box-shadow: var(--shadow);
+  
   display: grid;
   place-items: center;
   font-weight: 900;
@@ -791,9 +842,9 @@ details[open] .accordionChevron {
   gap: 10px;
   align-items: center;
   padding: 10px;
-  border-radius: 0; box-shadow: var(--shadow);
+  
   border: 1px solid rgba(14, 38, 61, 0.10);
-  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
+  background: var(--paper);
 }
 
 .breakKey {
@@ -834,30 +885,47 @@ details[open] .accordionChevron {
   border-radius: 6px;
 }
 
+.noteArea:focus {
+
+  background: var(--accent) !important; /* deep pink */
+  color: #fff !important;
+
+}
+
+.noteArea:hover {
+
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent2) !important; /* light pink */
+  color: var(--text) !important;
+
+}
+
 .noteArea {
   margin-top: 12px;
   width: 100%;
   min-height: 130px;
   resize: vertical;
-  border-radius: 16px;
   padding: 12px;
-  border: 1px solid rgba(14, 38, 61, 0.16);
-  background: var(--paper); box-shadow: var(--shadow); border: 4px solid var(--stroke); 
-  color: rgba(14, 38, 61, 0.9);
+  background: var(--paper);
+  color: var(--text);
   font: inherit;
   outline: none;
+
+  border: 4px solid var(--stroke) !important;
+  box-shadow: 4px 4px 0px var(--stroke) !important;
+  border-radius: 8px !important;
+  transition: all 120ms ease !important;
+
 }
 
-.noteArea:focus {
-  border-color: rgba(3, 105, 161, 0.35);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.16);
-}
+
 
 .roadPhase {
   border: 1px solid rgba(14, 38, 61, 0.10);
   border-radius: 16px;
   padding: 12px;
-  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
+  background: var(--paper);
 }
 
 .roadPhaseTitle {
@@ -882,7 +950,7 @@ details[open] .accordionChevron {
 .matrixTh {
   position: sticky;
   top: 0;
-  background: var(--paper); box-shadow: var(--shadow); border: 4px solid var(--stroke); 
+  background: var(--paper);
   backdrop-filter: blur(8px);
   z-index: 10;
   color: rgba(14, 38, 61, 0.9);
@@ -897,15 +965,36 @@ details[open] .accordionChevron {
   width: 170px;
 }
 
+.matrixSelect:active, .matrixSelect:focus {
+
+  background: var(--accent) !important; /* deep pink */
+  color: #fff !important;
+
+}
+
+.matrixSelect:hover {
+
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent2) !important; /* light pink */
+  color: var(--text) !important;
+
+}
+
 .matrixSelect {
   width: 100%;
-  border-radius: 0; box-shadow: var(--shadow);
   padding: 9px 10px;
-  border: 1px solid rgba(14, 38, 61, 0.16);
-  background: var(--paper); box-shadow: var(--shadow); border: 4px solid var(--stroke); 
-  color: rgba(14, 38, 61, 0.9);
+  background: var(--paper);
+  color: var(--text);
   font: inherit;
   outline: none;
+  cursor: pointer;
+
+  border: 4px solid var(--stroke) !important;
+  box-shadow: 4px 4px 0px var(--stroke) !important;
+  border-radius: 8px !important;
+  transition: all 120ms ease !important;
+
 }
 
 .segmentGroup {
@@ -919,22 +1008,35 @@ details[open] .accordionChevron {
 
 .segmentBtn {
   appearance: none;
-  border: 2px solid transparent;
   background: transparent;
   padding: 6px 12px;
-  border-radius: 8px;
   cursor: pointer;
   font-weight: 700;
   font-size: 16px;
   color: #2e1065;
   text-shadow: none;
-  transition: all 120ms ease;
+
+  border: 4px solid var(--stroke) !important;
+  box-shadow: 4px 4px 0px var(--stroke) !important;
+  border-radius: 8px !important;
+  transition: all 120ms ease !important;
+
+}
+
+.segmentBtn:active {
+
+  background: var(--accent) !important; /* deep pink */
+  color: #fff !important;
+
 }
 
 .segmentBtn:hover {
-  color: var(--text);
-  background: #f3e8ff; /* Light purple hover */
-  border: 2px solid var(--stroke);
+
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent2) !important; /* light pink */
+  color: var(--text) !important;
+
 }
 
 .segmentBtn:disabled {
@@ -943,10 +1045,11 @@ details[open] .accordionChevron {
 }
 
 .segmentBtnActive {
-  background: var(--accent2);
-  color: var(--text);
-  border: 2px solid var(--stroke);
-  box-shadow: 2px 2px 0 var(--stroke);
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent) !important; /* deep pink */
+  color: #fff !important;
+  border-color: var(--stroke) !important;
   text-shadow: none;
 }
 
@@ -954,7 +1057,7 @@ details[open] .accordionChevron {
   border: 1px solid rgba(14, 38, 61, 0.10);
   border-radius: 16px;
   padding: 12px;
-  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
+  background: var(--paper);
 }
 
 .rankHead {
@@ -966,7 +1069,7 @@ details[open] .accordionChevron {
 .rankBar {
   margin-top: 10px;
   height: 10px;
-  border-radius: 0; box-shadow: var(--shadow);
+  
   border: 1px solid rgba(14, 38, 61, 0.12);
   background: rgba(14, 38, 61, 0.05);
   overflow: hidden;
@@ -978,12 +1081,21 @@ details[open] .accordionChevron {
 }
 
 .clickCard {
-  transition: border-color 140ms ease, box-shadow 140ms ease;
+
+  border: 4px solid var(--stroke) !important;
+  box-shadow: 4px 4px 0px var(--stroke) !important;
+  border-radius: 8px !important;
+  transition: all 120ms ease !important;
+
+  background: var(--paper);
 }
 
 .clickCard:hover {
-  border-color: var(--accent);
-  box-shadow: 0 18px 52px rgba(14, 38, 61, 0.14);
+
+  transform: translate(4px, 4px) !important;
+  box-shadow: 0px 0px 0px var(--stroke) !important;
+  background: var(--accent2) !important;
+
 }
 
 .pathName {
@@ -1059,9 +1171,9 @@ details[open] .accordionChevron {
   align-items: center;
   gap: 10px;
   padding: 6px 10px;
-  border-radius: 0; box-shadow: var(--shadow);
+  
   border: 1px solid rgba(14, 38, 61, 0.12);
-  background: var(--paper); box-shadow: var(--shadow); font-weight: 700; border: 4px solid var(--stroke); 
+  background: var(--paper);
   color: var(--muted);
   font-size: 18px;
   width: fit-content;
@@ -1105,7 +1217,7 @@ details[open] .accordionChevron {
 }
 
 .chip {
-  border-radius: 0; box-shadow: var(--shadow);
+  
   padding: 8px 12px;
   border: 1px solid rgba(14, 38, 61, 0.10);
   background: rgba(255, 255, 255, 0.74);
@@ -1118,7 +1230,7 @@ details[open] .accordionChevron {
 }
 
 .homeStat {
-  border-radius: 0; box-shadow: var(--shadow);
+  
   border: 1px solid rgba(14, 38, 61, 0.10);
   background: rgba(255, 255, 255, 0.78);
   padding: 14px;
@@ -1166,7 +1278,7 @@ details[open] .accordionChevron {
 
 .dimExplainCardScroll {
   flex: 0 0 260px;
-  border: 4px solid var(--stroke); 
+  border: 1px solid var(--stroke); 
   border-radius: var(--radius-lg);
   padding: 18px;
   background: rgba(255, 255, 255, 0.6);
@@ -1179,10 +1291,7 @@ details[open] .accordionChevron {
 }
 
 .dimExplainCardScroll:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.08);
-  border-color: rgba(37, 99, 235, 0.3);
-  background: rgba(255, 255, 255, 0.9);
+  /* No interactive effects for non-interactive elements */
 }
 
 .dimExplainHead {
@@ -1206,7 +1315,7 @@ details[open] .accordionChevron {
 .dimExplainKey {
   width: 34px;
   height: 34px;
-  border-radius: 0; box-shadow: var(--shadow);
+  
   display: grid;
   place-items: center;
   font-weight: 900;
@@ -1255,8 +1364,8 @@ details[open] .accordionChevron {
   z-index: 99999; /* Fix Z stack issue */
   transition: all 0.2s;
   margin-bottom: 10px;
-  border: 4px solid var(--stroke); 
-  box-shadow: var(--shadow);
+  border: 1px solid var(--stroke); 
+  
 }
 
 /* Removed tooltip arrows */
@@ -1292,9 +1401,7 @@ details[open] .accordionChevron {
 .card:nth-child(4) { animation-delay: 0.3s; }
 .card:nth-child(5) { animation-delay: 0.4s; }
 
-.btnPrimary {
-  animation: pulse-shadow 3s infinite;
-}
+
 
 .brandMark {
   animation: float 4s ease-in-out infinite;
@@ -1337,7 +1444,7 @@ body {
 
 .brandMark {
   background: var(--accent);
-  border: 4px solid var(--text);
+  border: 2px solid var(--text);
 }
 
 @keyframes star-scroll {
@@ -1441,13 +1548,8 @@ body::after {
 .pill {
   color: var(--text);
 }
-.pathTab {
-  color: #e9d5ff !important;
-}
-.pathTabActive {
-  color: #ffffff !important;
-  border-bottom-color: #ffffff !important;
-}
+
+
 .meta, .dimDesc {
   color: #4c1d95; /* Darker purple for meta text inside cards */
 }
