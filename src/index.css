@@ -1108,19 +1108,6 @@ details[open] .accordionChevron {
   }
 }
 
-.homeKicker {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 10px;
-  
-  border: 1px solid rgba(14, 38, 61, 0.12);
-  background: var(--paper);
-  color: var(--muted);
-  font-size: 18px;
-  width: fit-content;
-}
-
 .homeTitle {
   margin: 14px 0 0;
   font-family: var(--display);

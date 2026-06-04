@@ -34,7 +34,6 @@ export function WelcomePage() {
     <div className="homeHero">
       <div className="homeHeroGrid">
         <div className="homeHeroLeft">
-          <div className="homeKicker">Career Flow · UK</div>
           <h1 className="homeTitle">把职业选择变成一条可走的路</h1>
           <p className="homeSub">
             专为在英国求职的定性研究与社会学背景量身定制的职业路径探索工具。通过 24 题自我评估，匹配 6 大高壁垒岗位，提供透明的可解释推荐与路线图。
