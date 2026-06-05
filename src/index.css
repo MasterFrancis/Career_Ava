@@ -1203,7 +1203,7 @@ details[open] .accordionChevron {
   place-items: center;
   position: relative;
   background: var(--card);
-  padding: 10px;
+  padding: 0 10px;
   border-radius: var(--radius-lg);
   margin-bottom: 10px;
 }
