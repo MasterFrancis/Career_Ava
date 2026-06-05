@@ -20,15 +20,15 @@ export function WelcomePage() {
         <div className="homeHeroLeft">
           <h1 className="homeTitle">把职业选择变成一条可走的路</h1>
           <p className="homeSub">
-            专为在英国求职的定性研究与社会学背景量身定制的职业路径探索工具。通过 24 题自我评估，匹配 6 大高壁垒岗位，提供透明的可解释推荐与路线图。
+            欢迎来到你的职业冒险地图。用 24 道题点亮能力属性，在英国求职世界里解锁 6 条高壁垒路线，看看哪一条最适合你升级打怪。
           </p>
 
           <div className="homeActions">
-            <button type="button" className="btn btnPrimary" onClick={() => navigate('/quiz')}>
+            <button type="button" className="btn btnPrimary homePixelBtn homePixelBtnPrimary" onClick={() => navigate('/quiz')}>
               {answeredCount === 0 ? '开始问卷' : '继续问卷'}
             </button>
             {complete && (
-              <button type="button" className="btn" onClick={() => navigate('/results')}>
+              <button type="button" className="btn homePixelBtn homePixelBtnGhost" onClick={() => navigate('/results')}>
                 查看上次结果
               </button>
             )}
