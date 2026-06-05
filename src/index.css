@@ -1736,7 +1736,7 @@ body::after {
 .cloudSprite {
   flex: 0 0 auto;
   image-rendering: pixelated;
-  filter: contrast(1.12) saturate(1.08) brightness(1.02);
+  filter: contrast(1.28) saturate(1.14) brightness(1.03);
   user-select: none;
   -webkit-user-drag: none;
 }
