@@ -2088,35 +2088,32 @@ body::after {
 
 .pixelSkyCornerMask {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  width: min(340px, 28vw);
-  height: 180px;
+  right: 18px;
+  bottom: 14px;
+  width: min(220px, 18vw);
+  height: 92px;
   z-index: 1;
   pointer-events: none;
+  border: 4px solid #fff0c9;
   background:
-    linear-gradient(180deg, rgba(38, 43, 56, 0) 0%, rgba(33, 39, 49, 0.72) 28%, rgba(24, 30, 38, 0.94) 54%, rgba(16, 21, 28, 0.98) 100%);
+    linear-gradient(180deg, #ffdc90 0%, #e79a4f 18%, #a95a35 18%, #a95a35 100%);
+  box-shadow:
+    8px 8px 0 rgba(28, 16, 36, 0.52),
+    inset 0 0 0 4px #6d3440,
+    inset 0 -8px 0 rgba(92, 44, 26, 0.9);
   clip-path: polygon(
-    100% 100%,
-    0 100%,
-    0 62%,
-    8% 62%,
-    8% 56%,
-    16% 56%,
-    16% 52%,
-    24% 52%,
-    24% 48%,
-    34% 48%,
-    34% 44%,
-    46% 44%,
-    46% 40%,
-    58% 40%,
-    58% 35%,
-    72% 35%,
-    72% 30%,
-    86% 30%,
-    86% 22%,
-    100% 22%
+    0 12%,
+    6% 12%,
+    6% 0,
+    94% 0,
+    94% 12%,
+    100% 12%,
+    100% 88%,
+    94% 88%,
+    94% 100%,
+    6% 100%,
+    6% 88%,
+    0 88%
   );
   image-rendering: pixelated;
 }
@@ -2124,60 +2121,64 @@ body::after {
 .pixelSkyCornerMask::before {
   content: '';
   position: absolute;
-  inset: 24px 0 0 18%;
+  left: 24px;
+  right: 24px;
+  bottom: -52px;
+  height: 64px;
   background:
-    linear-gradient(180deg, rgba(248, 168, 208, 0.18) 0%, rgba(248, 168, 208, 0) 18%),
-    repeating-linear-gradient(
-      90deg,
-      rgba(14, 20, 27, 0.96) 0 8px,
-      rgba(30, 36, 45, 0.96) 8px 14px,
-      rgba(16, 22, 30, 0.98) 14px 22px
-    );
+    linear-gradient(180deg, #9a5334 0%, #6f3524 100%);
+  box-shadow:
+    0 0 0 4px #3d1f21,
+    112px 0 0 0 #9a5334,
+    112px 0 0 4px #3d1f21,
+    20px 42px 0 -18px #2a1722,
+    132px 42px 0 -18px #2a1722;
   clip-path: polygon(
+    0 0,
+    18% 0,
+    18% 100%,
+    30% 100%,
+    30% 16%,
+    70% 16%,
+    70% 100%,
+    82% 100%,
+    82% 0,
+    100% 0,
     100% 100%,
-    0 100%,
-    0 72%,
-    8% 72%,
-    8% 48%,
-    14% 48%,
-    14% 64%,
-    22% 64%,
-    22% 38%,
-    30% 38%,
-    30% 58%,
-    38% 58%,
-    38% 32%,
-    48% 32%,
-    48% 52%,
-    58% 52%,
-    58% 24%,
-    68% 24%,
-    68% 48%,
-    78% 48%,
-    78% 18%,
-    88% 18%,
-    88% 40%,
-    100% 40%
+    0 100%
   );
 }
 
 .pixelSkyCornerMask::after {
   content: '';
   position: absolute;
-  right: 36px;
-  bottom: 20px;
-  width: 8px;
-  height: 8px;
-  background: #f9b0cb;
+  inset: 18px 22px 18px 22px;
+  border: 4px solid rgba(54, 20, 42, 0.9);
+  background:
+    linear-gradient(180deg, rgba(255, 248, 214, 0.16) 0%, rgba(255, 248, 214, 0) 34%),
+    linear-gradient(180deg, #7b3f61 0%, #5a2b4e 100%);
   box-shadow:
-    -26px -18px 0 #b27be7,
-    -18px -46px 0 #ffca78,
-    20px -30px 0 #f9b0cb,
-    44px -12px 0 #b27be7,
-    66px -44px 0 #ffca78,
-    -42px -6px 0 #ffca78,
-    -4px -62px 0 #b27be7,
-    56px -64px 0 #f9b0cb;
+    inset 0 0 0 4px rgba(255, 207, 145, 0.18),
+    14px 14px 0 -10px #ffe08a,
+    26px 28px 0 -10px #f9b0cb,
+    44px 18px 0 -10px #b27be7,
+    66px 30px 0 -10px #ffe08a,
+    82px 16px 0 -10px #f9b0cb,
+    102px 28px 0 -10px #b27be7;
+  clip-path: polygon(
+    0 10%,
+    6% 10%,
+    6% 0,
+    94% 0,
+    94% 10%,
+    100% 10%,
+    100% 90%,
+    94% 90%,
+    94% 100%,
+    6% 100%,
+    6% 90%,
+    0 90%
+  );
 }
 
 .cloudLane {
