@@ -39,7 +39,7 @@ export function PathDetailPage() {
   const [forceOpen, setForceOpen] = useState<boolean | undefined>(undefined)
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
   }, [safePathId])
 
   if (invalid) return <Navigate to="/paths" replace />
