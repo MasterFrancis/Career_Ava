@@ -301,7 +301,7 @@ a {
 }
 
 .pageIntro {
-  width: min(100%, 960px);
+  width: 100%;
   margin: 0 0 18px;
   padding: 16px 18px 14px;
   background: rgba(36, 18, 71, 0.52);
@@ -318,7 +318,10 @@ a {
 
 .pageIntro .lead {
   margin: 10px 0 0;
-  max-width: 72ch;
+}
+
+.pageIntro .pageAccordion {
+  margin-top: 14px;
 }
 
 .lead {

@@ -27,13 +27,12 @@ export function PathsPage() {
         <p className="lead">
           每张卡片右上角是迷你雷达：粉色=你，紫色=岗位倾向。下面的标签是“优势维度/风险维度”的短提示（点击进入详情看完整解释与大图对比）。
         </p>
+        <Accordion title="对比规则（为什么是优势/风险）" className="pageAccordion">
+          <div className="meta">
+            优势：你明显高于岗位倾向，或在岗位高权重维度上得分很高。风险：岗位倾向高但你得分偏低，可能更容易感到不舒服或需要补齐。
+          </div>
+        </Accordion>
       </div>
-
-      <Accordion title="对比规则（为什么是优势/风险）" className="pageAccordion">
-        <div className="meta">
-          优势：你明显高于岗位倾向，或在岗位高权重维度上得分很高。风险：岗位倾向高但你得分偏低，可能更容易感到不舒服或需要补齐。
-        </div>
-      </Accordion>
 
       <div className="segmentGroup" style={{ marginTop: 12, width: 'fit-content' }}>
         <button type="button" className={`segmentBtn ${filter === 'all' ? 'segmentBtnActive' : ''}`} onClick={() => setFilter('all')}>
