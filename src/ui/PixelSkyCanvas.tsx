@@ -1,4 +1,4 @@
-const backgroundGif = new URL('../assets/IMG_8346.GIF', import.meta.url).href
+const backgroundGif = new URL('../assets/ezgif-317edc398ad99fa9.gif', import.meta.url).href
 const cloud1 = new URL('../assets/1.png', import.meta.url).href
 const cloud2 = new URL('../assets/2.png', import.meta.url).href
 const cloud3 = new URL('../assets/3.png', import.meta.url).href
@@ -7,7 +7,6 @@ export function PixelSkyCanvas() {
   return (
     <div className="pixelSkyCanvas" aria-hidden="true">
       <div className="pixelSkyBackdrop" style={{ backgroundImage: `url(${backgroundGif})` }} />
-      <div className="pixelSkyCornerMask" />
 
       <div className="cloudLane cloudLaneOne">
         <div className="cloudTrack cloudTrackRight">
