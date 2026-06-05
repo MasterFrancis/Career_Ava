@@ -6,7 +6,9 @@ const cloud3 = new URL('../assets/3.png', import.meta.url).href
 export function PixelSkyCanvas() {
   return (
     <div className="pixelSkyCanvas" aria-hidden="true">
-      <div className="pixelSkyBackdrop" style={{ backgroundImage: `url(${backgroundGif})` }} />
+      <div className="pixelSkyBackdrop">
+        <img src={backgroundGif} alt="" className="pixelSkyBackdropImage" />
+      </div>
 
       <div className="cloudLane cloudLaneOne">
         <div className="cloudTrack cloudTrackRight">

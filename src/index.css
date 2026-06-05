@@ -2080,9 +2080,19 @@ body::after {
 .pixelSkyBackdrop {
   position: absolute;
   inset: 0;
-  background-position: center calc(50% - 50px);
-  background-repeat: no-repeat;
-  background-size: cover;
+  overflow: hidden;
+}
+
+.pixelSkyBackdropImage {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  bottom: -50px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 100px);
+  object-fit: cover;
+  object-position: center center;
   image-rendering: pixelated;
 }
 
