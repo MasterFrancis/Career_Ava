@@ -1675,9 +1675,100 @@ body::after {
   width: 100vw;
   height: 100svh;
   pointer-events: none;
-  image-rendering: pixelated;
   z-index: -1;
+  overflow: hidden;
+}
+
+.pixelSkyBackdrop {
+  position: absolute;
+  inset: 0;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  image-rendering: pixelated;
+}
+
+.cloudLane {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.cloudLaneOne {
+  top: 9%;
+  height: 16%;
+}
+
+.cloudLaneTwo {
+  top: 30%;
+  height: 20%;
+}
+
+.cloudLaneThree {
+  top: 61%;
+  height: 24%;
+}
+
+.cloudTrack {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+}
+
+.cloudTrackRight {
+  animation: cloud-slide-right 52s linear infinite;
+}
+
+.cloudTrackLeft {
+  animation: cloud-slide-left 68s linear infinite;
+}
+
+.cloudTrackRightSlow {
+  animation: cloud-slide-right 84s linear infinite;
+}
+
+.cloudSprite {
+  flex: 0 0 auto;
+  image-rendering: pixelated;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.cloudSpriteOne {
+  height: 92%;
+  margin-right: 32vw;
+}
+
+.cloudSpriteTwo {
+  height: 100%;
+  margin-right: 40vw;
+}
+
+.cloudSpriteThree {
+  height: 100%;
+  margin-right: 36vw;
+}
+
+@keyframes cloud-slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes cloud-slide-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
