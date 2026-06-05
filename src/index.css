@@ -444,8 +444,22 @@ a {
   margin: 18px 0;
 }
 
-.footer {
+.footerRevealZone {
   position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 28px;
+  z-index: 140;
+}
+
+.footerRevealZone:hover,
+.footerRevealZone:focus-within {
+  height: 104px;
+}
+
+.footer {
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
@@ -459,10 +473,16 @@ a {
   border-bottom: 0;
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(4px);
-  z-index: 140;
   width: 100%;
   box-sizing: border-box;
   white-space: normal;
+  transform: translateY(calc(100% - 8px));
+  transition: transform 180ms ease;
+}
+
+.footerRevealZone:hover .footer,
+.footerRevealZone:focus-within .footer {
+  transform: translateY(0);
 }
 
 .linkBtn {

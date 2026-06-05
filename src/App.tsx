@@ -124,11 +124,13 @@ export default function App() {
           </div>
         </div>
 
-        <div className="footer">
-          <span>数据仅存浏览器本地，刷新自动恢复</span>
-          <button type="button" className="linkBtn" onClick={() => setShowReset(true)}>
-            重置
-          </button>
+        <div className="footerRevealZone">
+          <div className="footer">
+            <span>数据仅存浏览器本地，刷新自动恢复</span>
+            <button type="button" className="linkBtn" onClick={() => setShowReset(true)}>
+              重置
+            </button>
+          </div>
         </div>
 
         {showReset && (
