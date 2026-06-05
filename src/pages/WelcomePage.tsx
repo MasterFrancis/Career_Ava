@@ -13,6 +13,8 @@ export function WelcomePage() {
   )
 
   const complete = isQuizComplete(state.quizAnswers)
+  const primaryCtaLabel = answeredCount === 0 ? '开始冒险' : complete ? '继续查看结果' : '继续冒险'
+  const primaryCtaPath = complete ? '/results' : '/quiz'
 
   return (
     <div className="homeHero">
@@ -24,14 +26,9 @@ export function WelcomePage() {
           </p>
 
           <div className="homeActions">
-            <button type="button" className="btn btnPrimary homePixelBtn homePixelBtnPrimary" onClick={() => navigate('/quiz')}>
-              {answeredCount === 0 ? '开始问卷' : '继续问卷'}
+            <button type="button" className="btn btnPrimary homePixelBtn homePixelBtnPrimary" onClick={() => navigate(primaryCtaPath)}>
+              {primaryCtaLabel}
             </button>
-            {complete && (
-              <button type="button" className="btn homePixelBtn homePixelBtnGhost" onClick={() => navigate('/results')}>
-                查看上次结果
-              </button>
-            )}
             {answeredCount > 0 && !complete && <span className="meta">已答 {answeredCount}/24</span>}
           </div>
         </div>
