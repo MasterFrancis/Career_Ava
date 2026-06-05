@@ -40,8 +40,10 @@ export function RadarChart({
   maxValue?: number
   showLabels?: boolean
 }) {
-  const paddingX = showLabels ? 62 : 10
-  const paddingY = showLabels ? 24 : 10
+  const labelFontSize = size >= 240 ? 12 : 11
+  const labelOffset = size >= 240 ? 18 : 16
+  const paddingX = showLabels ? 84 : 10
+  const paddingY = showLabels ? 38 : 10
   const cx = size / 2
   const cy = size / 2
   const rx = Math.max(10, size / 2 - paddingX)
@@ -115,8 +117,8 @@ export function RadarChart({
 
       {showLabels &&
         DIMENSION_ORDER.map((k, idx) => {
-          const p = polarToCartesian(cx, cy, r + 18, start + idx * step)
-          const label = DIMENSIONS[k].shortName
+          const p = polarToCartesian(cx, cy, r + labelOffset, start + idx * step)
+          const label = DIMENSIONS[k].name
           const anchor = p.x < cx - 12 ? 'end' : p.x > cx + 12 ? 'start' : 'middle'
           return (
             <text
@@ -126,7 +128,7 @@ export function RadarChart({
               textAnchor={anchor}
               dominantBaseline="middle"
               fill="var(--chart-label)"
-              fontSize="11"
+              fontSize={labelFontSize}
               fontFamily="Recursive, system-ui, sans-serif"
             >
               {label}

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { DIMENSIONS } from '../domain/dimensions'
 import { buildMatchExplanation, getMatchInsight } from '../domain/compare'
@@ -38,6 +38,10 @@ export function PathDetailPage() {
   const [allOpen, setAllOpen] = useState(false)
   const [forceOpen, setForceOpen] = useState<boolean | undefined>(undefined)
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+  }, [safePathId])
+
   if (invalid) return <Navigate to="/paths" replace />
 
   return (
@@ -55,7 +59,7 @@ export function PathDetailPage() {
         ))}
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12, flexWrap: 'wrap' }}>
+      <div className="pageIntro" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12, flexWrap: 'wrap' }}>
         <div style={{ minWidth: 0 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
             <h1 className="h1" style={{ margin: 0, fontSize: 28 }}>{path.name}</h1>
@@ -82,8 +86,8 @@ export function PathDetailPage() {
             </div>
           </div>
           <div className="cardBody splitChartXL" style={{ display: 'grid', gap: 24 }}>
-            <div className="chartWrap" style={{ position: 'relative', top: 'auto', background: 'transparent', padding: 0 }}>
-              <RadarChart size={280} values={state.dimensionScores} compareValues={roleProfile} />
+            <div className="chartWrap chartWrapCrop" style={{ position: 'relative', top: 'auto', background: 'transparent', padding: 0 }}>
+              <RadarChart size={400} values={state.dimensionScores} compareValues={roleProfile} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               <div className="card cardSub">

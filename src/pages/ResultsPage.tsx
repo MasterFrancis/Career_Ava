@@ -4,21 +4,25 @@ import { getPathById, PATH_WEIGHTS } from '../domain/paths'
 import { useStore } from '../state/useStore'
 import { RadarChart } from '../ui/charts/RadarChart'
 import { Accordion } from '../ui/Accordion'
-import { 
-  Box, Search, Users, Mic, 
-  LineChart, Clock, Shield, Target 
-} from 'lucide-react'
-import React from 'react'
 
-const DIM_ICONS: Record<string, React.ReactNode> = {
-  A: <Box size={18} />,
-  B: <Search size={18} />,
-  C: <Users size={18} />,
-  D: <Mic size={18} />,
-  E: <LineChart size={18} />,
-  F: <Clock size={18} />,
-  G: <Shield size={18} />,
-  H: <Target size={18} />
+const DIMENSION_EMOJIS: Record<string, string> = {
+  A: '📦',
+  B: '🔍',
+  C: '👥',
+  D: '📣',
+  E: '📊',
+  F: '⏰',
+  G: '🛡️',
+  H: '🎯',
+}
+
+function PixelDimensionIcon({ id, compact = false }: { id: string; compact?: boolean }) {
+  const emoji = DIMENSION_EMOJIS[id] ?? DIMENSION_EMOJIS.A
+  return (
+    <span className={`pixelDimIcon pixelDimIcon${id} ${compact ? 'pixelDimIconCompact' : ''}`} aria-hidden="true">
+      <span className="pixelDimEmoji">{emoji}</span>
+    </span>
+  )
 }
 
 export function ResultsPage() {
@@ -29,11 +33,13 @@ export function ResultsPage() {
 
   return (
     <div>
-      <h1 className="h1">结果总览</h1>
-      <p className="lead">
-        你得到的是“工作偏好画像”（不是能力高低）。接下来会用透明权重算法推荐 2–3
-        条路径，并展示匹配来源。
-      </p>
+      <div className="pageIntro">
+        <h1 className="h1">结果总览</h1>
+        <p className="lead">
+          你得到的是“工作偏好画像”（不是能力高低）。接下来会用透明权重算法推荐 2–3
+          条路径，并展示匹配来源。
+        </p>
+      </div>
 
       <div className="grid2" style={{ marginTop: 16 }}>
         <div className="card">
@@ -44,8 +50,8 @@ export function ResultsPage() {
             </div>
           </div>
           <div className="cardBody splitChart">
-            <div className="chartWrap" style={{ gridRow: 1, display: 'flex', justifyContent: 'center' }}>
-              <RadarChart size={280} values={state.dimensionScores} />
+            <div className="chartWrap chartWrapCrop" style={{ gridRow: 1, display: 'flex', justifyContent: 'center' }}>
+              <RadarChart size={400} values={state.dimensionScores} />
             </div>
             <div className="chartSide">
               {DIMENSION_ORDER.map((k) => {
@@ -53,7 +59,7 @@ export function ResultsPage() {
                 return (
                   <div key={k} className="dimRow">
                     <div className="dimHead">
-                      <div className="dimKey">{DIM_ICONS[k]}</div>
+                      <div className="dimKey"><PixelDimensionIcon id={k} /></div>
                       <div style={{ minWidth: 0 }}>
                         <div className="dimName">{DIMENSIONS[k].name}</div>
                         <div className="dimDesc">{DIMENSIONS[k].oneLiner}</div>
@@ -87,7 +93,7 @@ export function ResultsPage() {
                         <div className="cardTitleRow">
                           <div style={{ minWidth: 0 }}>
                             <div style={{ display: 'flex', gap: 10, alignItems: 'baseline' }}>
-                              <div className="tag" style={{ borderRadius: 999, fontSize: 12 }}>
+                              <div className={`tag topBadge topBadge${idx + 1}`} style={{ fontSize: 12 }}>
                                 Top {idx + 1}
                               </div>
                               <div className="pathName" style={{ fontSize: 18 }}>{path.name}</div>
@@ -129,7 +135,7 @@ export function ResultsPage() {
                               const c = s * w
                               return (
                                 <div key={k} className="breakRow">
-                                  <div className="breakKey">{DIM_ICONS[k]}</div>
+                                  <div className="breakKey"><PixelDimensionIcon id={k} compact /></div>
                                   <div className="breakMid">
                                     <span className="meta">{DIMENSIONS[k].name}</span>
                                   </div>

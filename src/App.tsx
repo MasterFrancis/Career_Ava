@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { NavLink, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { WelcomePage } from './pages/WelcomePage'
 import { QuizPage } from './pages/QuizPage'
@@ -9,7 +9,10 @@ import { MatrixPage } from './pages/MatrixPage'
 import { useStore } from './state/useStore'
 import { isQuizComplete } from './domain/quiz'
 import { Modal } from './ui/Modal'
+import { PixelSkyCanvas } from './ui/PixelSkyCanvas'
 import { resetAll } from './state/storage'
+
+const MIN_DESKTOP_WIDTH = 960
 
 function Guard({
   requireQuizComplete,
@@ -31,10 +34,25 @@ export default function App() {
   const location = useLocation()
   const navigate = useNavigate()
   const [showReset, setShowReset] = useState(false)
+  const [showTopBar, setShowTopBar] = useState(true)
+  const [isNarrowScreen, setIsNarrowScreen] = useState(false)
+  const lastScrollYRef = useRef(0)
+  const tickingRef = useRef(false)
+  const frameRef = useRef<number | null>(null)
 
   useEffect(() => {
     dispatch({ type: 'ui/setLastRoute', route: location.pathname })
   }, [dispatch, location.pathname])
+
+  useEffect(() => {
+    const updateViewportGuard = () => {
+      setIsNarrowScreen(window.innerWidth < MIN_DESKTOP_WIDTH)
+    }
+
+    updateViewportGuard()
+    window.addEventListener('resize', updateViewportGuard, { passive: true })
+    return () => window.removeEventListener('resize', updateViewportGuard)
+  }, [])
 
   // Removed automatic redirection to lastRoute so that clicking "开始" can navigate to "/" normally.
   // useEffect(() => {
@@ -45,7 +63,7 @@ export default function App() {
 
   const pills = useMemo(
     () => [
-      { to: '/', label: '开始' },
+      { to: '/', label: '主页' },
       { to: '/quiz', label: '问卷' },
       { to: '/results', label: '结果' },
       { to: '/paths', label: '岗位浏览' },
@@ -56,100 +74,163 @@ export default function App() {
 
   const complete = isQuizComplete(state.quizAnswers)
 
+  useEffect(() => {
+    if (!complete) return
+    setShowTopBar(true)
+    lastScrollYRef.current = window.scrollY
+  }, [complete, location.pathname])
+
+  useEffect(() => {
+    if (!complete) return
+    lastScrollYRef.current = window.scrollY
+
+    const updateTopBar = () => {
+      const currentScrollY = window.scrollY
+      const delta = currentScrollY - lastScrollYRef.current
+      const nearTop = currentScrollY <= 24
+
+      if (nearTop || delta < -6) {
+        setShowTopBar(true)
+      } else if (delta > 6) {
+        setShowTopBar(false)
+      }
+
+      lastScrollYRef.current = currentScrollY
+      tickingRef.current = false
+    }
+
+    const handleScroll = () => {
+      if (tickingRef.current) return
+      tickingRef.current = true
+      frameRef.current = window.requestAnimationFrame(updateTopBar)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (frameRef.current != null) {
+        window.cancelAnimationFrame(frameRef.current)
+      }
+      tickingRef.current = false
+    }
+  }, [complete, location.pathname])
+
   return (
     <div className="appShell">
-      {complete && (
-        <div className="topBar">
-          <nav className="navPills" aria-label="Main">
-            {pills.map((p) => {
-              const active =
-                location.pathname === p.to || location.pathname.startsWith(`${p.to}/`)
-              const disabled = (p.to === '/results' || p.to === '/paths' || p.to === '/matrix') && !complete
-              return (
-                <NavLink
-                  key={p.to}
-                  to={disabled ? '/quiz' : p.to}
-                  className={() => `pill ${active ? 'pillActive' : ''}`}
-                >
-                  {p.label}
-                </NavLink>
-              )
-            })}
-          </nav>
+      <PixelSkyCanvas />
+      <div className="uiScale">
+        {complete && (
+          <div className={`topBarShell ${showTopBar ? 'topBarShellVisible' : 'topBarShellHidden'}`}>
+            <div className="topBarTrigger" aria-hidden="true" />
+            <div className="topBar">
+              <nav className="navPills" aria-label="Main">
+                {pills.map((p) => {
+                  const active =
+                    location.pathname === p.to || location.pathname.startsWith(`${p.to}/`)
+                  const disabled = (p.to === '/results' || p.to === '/paths' || p.to === '/matrix') && !complete
+                  return (
+                    <NavLink
+                      key={p.to}
+                      to={disabled ? '/quiz' : p.to}
+                      className={() => `pill ${active ? 'pillActive' : ''}`}
+                    >
+                      {p.label}
+                    </NavLink>
+                  )
+                })}
+              </nav>
+            </div>
+          </div>
+        )}
+
+        <div className={`page ${complete ? 'pageWithTopBar' : ''}`}>
+          <div className="pageInner">
+            <Routes>
+              <Route path="/" element={<WelcomePage />} />
+              <Route path="/quiz" element={<QuizPage />} />
+              <Route
+                path="/results"
+                element={
+                  <Guard requireQuizComplete>
+                    <ResultsPage />
+                  </Guard>
+                }
+              />
+              <Route
+                path="/paths"
+                element={
+                  <Guard requireQuizComplete>
+                    <PathsPage />
+                  </Guard>
+                }
+              />
+              <Route
+                path="/paths/:pathId"
+                element={
+                  <Guard requireQuizComplete>
+                    <PathDetailPage />
+                  </Guard>
+                }
+              />
+              <Route
+                path="/matrix"
+                element={
+                  <Guard requireQuizComplete>
+                    <MatrixPage />
+                  </Guard>
+                }
+              />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </div>
         </div>
-      )}
 
-      <div className="page">
-        <div className="pageInner">
-          <Routes>
-            <Route path="/" element={<WelcomePage />} />
-            <Route path="/quiz" element={<QuizPage />} />
-            <Route
-              path="/results"
-              element={
-                <Guard requireQuizComplete>
-                  <ResultsPage />
-                </Guard>
-              }
-            />
-            <Route
-              path="/paths"
-              element={
-                <Guard requireQuizComplete>
-                  <PathsPage />
-                </Guard>
-              }
-            />
-            <Route
-              path="/paths/:pathId"
-              element={
-                <Guard requireQuizComplete>
-                  <PathDetailPage />
-                </Guard>
-              }
-            />
-            <Route
-              path="/matrix"
-              element={
-                <Guard requireQuizComplete>
-                  <MatrixPage />
-                </Guard>
-              }
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </div>
-      </div>
-
-      <div className="footer">
-        <span>数据仅存浏览器本地，刷新自动恢复</span>
-        <button type="button" className="linkBtn" onClick={() => setShowReset(true)}>
-          重置
-        </button>
-      </div>
-
-      {showReset && (
-        <Modal title="确认重置？" onClose={() => setShowReset(false)}>
-          <div style={{ color: 'var(--accent3)' }}>将清空所有本地数据：问卷答案、结果、矩阵、备注与偏好。</div>
-          <div className="modalActions">
-            <button type="button" className="btn btnGhost" onClick={() => setShowReset(false)}>
-              取消
-            </button>
-            <button
-              type="button"
-              className="btn btnPrimary"
-              onClick={() => {
-                resetAll()
-                dispatch({ type: 'reset' })
-                setShowReset(false)
-                navigate('/', { replace: true })
-              }}
-            >
-              清空并重启
+        <div className="footerRevealZone">
+          <div className="footer">
+            <span>冒险进度已本地存档，刷新不会掉档</span>
+            <button type="button" className="linkBtn" onClick={() => setShowReset(true)}>
+              重开一局
             </button>
           </div>
-        </Modal>
-      )}
+        </div>
+
+        {showReset && (
+          <Modal title="确认重置？" onClose={() => setShowReset(false)}>
+            <div style={{ color: 'var(--accent3)' }}>将清空所有本地数据：问卷答案、结果、矩阵、备注与偏好。</div>
+            <div className="modalActions">
+              <button type="button" className="btn btnGhost" onClick={() => setShowReset(false)}>
+                取消
+              </button>
+              <button
+                type="button"
+                className="btn btnPrimary"
+                onClick={() => {
+                  resetAll()
+                  dispatch({ type: 'reset' })
+                  setShowReset(false)
+                  navigate('/', { replace: true })
+                }}
+              >
+                清空并重启
+              </button>
+            </div>
+          </Modal>
+        )}
+
+        {isNarrowScreen && (
+          <div className="screenGuardOverlay" role="dialog" aria-modal="true" aria-labelledby="screen-guard-title">
+            <div className="screenGuardCard">
+              <div className="screenGuardTopRow">
+                <div className="screenGuardBadge">宽屏模式限定</div>
+              </div>
+              <h2 id="screen-guard-title" className="screenGuardTitle">当前窗口太窄了</h2>
+              <p className="screenGuardText">
+                这张职业冒险地图更适合在电脑宽屏中展开。请改用电脑访问，或把浏览器窗口拉宽到至少 {MIN_DESKTOP_WIDTH}px 后继续探索。
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   )
 }

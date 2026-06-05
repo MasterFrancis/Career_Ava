@@ -38,10 +38,12 @@ export function QuizPage() {
 
   return (
     <div>
-      <h1 className="h1">问卷测评</h1>
-      <p className="lead">
-        逐题作答（1–5 分）。每次选择会立即保存到本地；你可以刷新或下次打开继续。
-      </p>
+      <div className="pageIntro">
+        <h1 className="h1">问卷测评</h1>
+        <p className="lead">
+          逐题作答（1–5 分）。每次选择会立即保存到本地；你可以刷新或下次打开继续。
+        </p>
+      </div>
 
       <div className="stepper">
         <div className="stepperLeft">
@@ -53,7 +55,7 @@ export function QuizPage() {
         <div className="stepperDots" aria-label="Progress">
           {QUIZ_QUESTIONS.map((qq, idx) => {
             const v = state.quizAnswers[idx]
-            const active = idx === cursor
+            const active = !complete && idx === cursor
             const done = v != null
             return (
               <button
@@ -138,7 +140,7 @@ export function QuizPage() {
 
       {showLockedModal && (
         <Modal title="测评已完成" onClose={() => setShowLockedModal(false)}>
-          <div style={{ color: 'var(--accent3)' }}>测评已锁定。如需重新测试，请点击页面底部的“重置”按钮清空数据。</div>
+          <div style={{ color: 'var(--accent3)' }}>测评已锁定。如需重新测试，请点击页面底部的“重开一局”按钮清空数据。</div>
           <div className="modalActions">
             <button type="button" className="btn btnPrimary" onClick={() => setShowLockedModal(false)}>
               知道了

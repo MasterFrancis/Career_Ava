@@ -21,18 +21,19 @@ export function MatrixPage() {
 
   return (
     <div>
-      <h1 className="h1">决策矩阵</h1>
-      <p className="lead">
-        把“权衡”显性化：你可以把测评推荐的 2–4 条路径带到这里，按你在意的列权重与评分计算总分并排序。
-      </p>
-
-      <Accordion title="怎么用" defaultOpen className="pageAccordion">
-        <div className="meta" style={{ display: 'grid', gap: 8 }}>
-          <div>1) 先在结果页/岗位浏览页选 2–4 条候选路径；</div>
-          <div>2) 先调列权重（不太重要–非常重要）：权重代表“你有多在意”；</div>
-          <div>3) 再填每条路径评分（1–5）：不是追求满分，而是看清取舍。</div>
-        </div>
-      </Accordion>
+      <div className="pageIntro">
+        <h1 className="h1">决策矩阵</h1>
+        <p className="lead">
+          把“权衡”显性化：你可以把测评推荐的 2–4 条路径带到这里，按你在意的列权重与评分计算总分并排序。
+        </p>
+        <Accordion title="怎么用" defaultOpen className="pageAccordion">
+          <div className="meta" style={{ display: 'grid', gap: 8 }}>
+            <div>1) 先在结果页/岗位浏览页选 2–4 条候选路径；</div>
+            <div>2) 先调列权重（不太重要–非常重要）：权重代表“你有多在意”；</div>
+            <div>3) 再填每条路径评分（1–5）：不是追求满分，而是看清取舍。</div>
+          </div>
+        </Accordion>
+      </div>
 
       <div className="card" style={{ marginTop: 14 }}>
         <div className="cardBody" style={{ overflowX: 'visible' }}>
