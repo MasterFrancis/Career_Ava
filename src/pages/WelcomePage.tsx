@@ -18,7 +18,7 @@ export function WelcomePage() {
     <div className="homeHero">
       <div className="homeHeroGrid">
         <div className="homeHeroLeft">
-          <h1 className="homeTitle">把职业选择变成一条可走的路</h1>
+          <h1 className="homeTitle">点亮你的职业路</h1>
           <p className="homeSub">
             欢迎来到你的职业冒险地图。用 24 道题点亮能力属性，在英国求职世界里解锁 6 条高壁垒路线，看看哪一条最适合你升级打怪。
           </p>

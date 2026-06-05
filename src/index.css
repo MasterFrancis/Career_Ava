@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Chivo+Mono:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Silkscreen:wght@400;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/@fontsource/fusion-pixel-12px-proportional-sc@5.2.5/index.min.css');
 
 :root {
   --bg0: #6b46c1; /* Deep purple */
@@ -35,6 +36,7 @@
   --sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
   --display: 'Chivo Mono', 'IBM Plex Sans', monospace;
   --pixel: 'Silkscreen', 'Chivo Mono', monospace;
+  --pixel-cjk: 'Fusion Pixel 12px Proportional SC', 'Silkscreen', 'Chivo Mono', monospace;
 
   --page: 100%;
   --max-content: 1400px;
@@ -1122,7 +1124,7 @@ details[open] .accordionChevron {
 
 .homeTitle {
   margin: 14px 0 0;
-  font-family: var(--pixel);
+  font-family: var(--pixel-cjk);
   letter-spacing: 0.4px;
   font-weight: 700;
   font-size: 34px;
@@ -1144,7 +1146,7 @@ details[open] .accordionChevron {
 
 .homeSub {
   margin-top: 12px;
-  font-family: var(--pixel);
+  font-family: var(--pixel-cjk);
   color: rgba(255, 247, 255, 0.96);
   font-size: 14px;
   line-height: 1.9;
@@ -1164,7 +1166,7 @@ details[open] .accordionChevron {
 }
 
 .homePixelBtn {
-  font-family: var(--pixel);
+  font-family: var(--pixel-cjk);
   font-size: 15px;
   line-height: 1.3;
   padding: 16px 24px;
@@ -1412,7 +1414,7 @@ details[open] .accordionChevron {
   box-shadow: none !important;
 }
 
-.h1, .homeTitle {
+.h1 {
   text-shadow: none !important;
   color: var(--accent);
 }
@@ -1441,7 +1443,7 @@ details[open] .accordionChevron {
 .lead, .homeSub {
   color: #e9d5ff;
 }
-.h1, .homeTitle {
+.h1 {
   color: #ffffff !important;
   text-shadow: none !important;
 }
