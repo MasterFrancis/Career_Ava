@@ -875,8 +875,8 @@ details[open] .accordionChevron {
 }
 
 .stepDotActive {
-  background: #9333ea;
-  border-color: #4c1d95;
+  background: var(--accent);
+  border-color: var(--stroke);
 }
 
 .quizStatement {
