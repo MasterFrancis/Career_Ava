@@ -12,6 +12,8 @@ import { Modal } from './ui/Modal'
 import { PixelSkyCanvas } from './ui/PixelSkyCanvas'
 import { resetAll } from './state/storage'
 
+const MIN_DESKTOP_WIDTH = 960
+
 function Guard({
   requireQuizComplete,
   children,
@@ -33,6 +35,7 @@ export default function App() {
   const navigate = useNavigate()
   const [showReset, setShowReset] = useState(false)
   const [showTopBar, setShowTopBar] = useState(true)
+  const [isNarrowScreen, setIsNarrowScreen] = useState(false)
   const lastScrollYRef = useRef(0)
   const tickingRef = useRef(false)
   const frameRef = useRef<number | null>(null)
@@ -40,6 +43,16 @@ export default function App() {
   useEffect(() => {
     dispatch({ type: 'ui/setLastRoute', route: location.pathname })
   }, [dispatch, location.pathname])
+
+  useEffect(() => {
+    const updateViewportGuard = () => {
+      setIsNarrowScreen(window.innerWidth < MIN_DESKTOP_WIDTH)
+    }
+
+    updateViewportGuard()
+    window.addEventListener('resize', updateViewportGuard, { passive: true })
+    return () => window.removeEventListener('resize', updateViewportGuard)
+  }, [])
 
   // Removed automatic redirection to lastRoute so that clicking "开始" can navigate to "/" normally.
   // useEffect(() => {
@@ -202,6 +215,18 @@ export default function App() {
               </button>
             </div>
           </Modal>
+        )}
+
+        {isNarrowScreen && (
+          <div className="screenGuardOverlay" role="dialog" aria-modal="true" aria-labelledby="screen-guard-title">
+            <div className="screenGuardCard">
+              <div className="screenGuardBadge">Desktop Only</div>
+              <h2 id="screen-guard-title" className="screenGuardTitle">请使用宽屏打开</h2>
+              <p className="screenGuardText">
+                当前页面为桌面宽屏体验优化版本。请改用电脑访问，或将浏览器窗口扩展到至少 {MIN_DESKTOP_WIDTH}px 宽度后继续。
+              </p>
+            </div>
+          </div>
         )}
       </div>
     </div>
