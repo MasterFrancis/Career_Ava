@@ -1,23 +1,7 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { DIMENSION_ORDER, DIMENSIONS } from '../domain/dimensions'
 import { isQuizComplete } from '../domain/quiz'
 import { useStore } from '../state/useStore'
-import { 
-  Box, Search, Users, Mic, 
-  LineChart, Clock, Shield, Target 
-} from 'lucide-react'
-
-const DIM_ICONS: Record<string, React.ReactNode> = {
-  A: <Box size={18} />,
-  B: <Search size={18} />,
-  C: <Users size={18} />,
-  D: <Mic size={18} />,
-  E: <LineChart size={18} />,
-  F: <Clock size={18} />,
-  G: <Shield size={18} />,
-  H: <Target size={18} />
-}
 
 export function WelcomePage() {
   const { state } = useStore()
@@ -64,27 +48,6 @@ export function WelcomePage() {
           <div className="homeStat">
             <div className="homeStatNum">1</div>
             <div className="homeStatText">决策矩阵</div>
-          </div>
-        </div>
-      </div>
-
-      <div className="homeDesc">
-        <div className="marqueeContainer">
-          <div className="marqueeContent">
-            {[...DIMENSION_ORDER, ...DIMENSION_ORDER].map((key, index) => {
-              const d = DIMENSIONS[key as keyof typeof DIMENSIONS]
-              return (
-                <div key={`${key}-${index}`} className="dimExplainCardScroll">
-                  <div className="dimExplainHead">
-                    <div className="dimExplainIcon">{DIM_ICONS[key]}</div>
-                    <div>
-                      <div className="dimExplainName">{d.name}</div>
-                    </div>
-                  </div>
-                  <div className="dimExplainText">{d.oneLiner}</div>
-                </div>
-              )
-            })}
           </div>
         </div>
       </div>
