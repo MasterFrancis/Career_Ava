@@ -1202,9 +1202,7 @@ details[open] .accordionChevron {
 .chartWrap {
   display: grid;
   place-items: center;
-  position: sticky;
-  top: 80px;
-  z-index: 10;
+  position: relative;
   background: var(--card);
   padding: 10px;
   border-radius: var(--radius-lg);
