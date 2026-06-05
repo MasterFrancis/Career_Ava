@@ -1030,6 +1030,8 @@ details[open] .accordionChevron {
   --pixel-cell: 2px;
   --pixel-on: #fff7fb;
   --pixel-hi: #ffffff;
+  --pixel-edge-dark: rgba(46, 16, 101, 0.34);
+  --pixel-edge-light: rgba(255, 255, 255, 0.58);
   display: grid;
   grid-template-columns: repeat(var(--pixel-cols), var(--pixel-cell));
   grid-template-rows: repeat(var(--pixel-rows), var(--pixel-cell));
@@ -1044,43 +1046,43 @@ details[open] .accordionChevron {
 }
 
 .pixelDimIconA {
-  --pixel-on: #fff7d6;
-  --pixel-hi: #fffdf2;
+  --pixel-on: #f5b942;
+  --pixel-hi: #fff0a8;
 }
 
 .pixelDimIconB {
-  --pixel-on: #fff4fb;
-  --pixel-hi: #ffffff;
+  --pixel-on: #f472b6;
+  --pixel-hi: #ffd4ee;
 }
 
 .pixelDimIconC {
-  --pixel-on: #f7fffb;
-  --pixel-hi: #ffffff;
+  --pixel-on: #34d399;
+  --pixel-hi: #c7ffeb;
 }
 
 .pixelDimIconD {
-  --pixel-on: #fff1e8;
-  --pixel-hi: #fff8f3;
+  --pixel-on: #fb923c;
+  --pixel-hi: #ffd9b5;
 }
 
 .pixelDimIconE {
-  --pixel-on: #f3ffea;
-  --pixel-hi: #fbfff7;
+  --pixel-on: #84cc16;
+  --pixel-hi: #e7ffb0;
 }
 
 .pixelDimIconF {
-  --pixel-on: #eef6ff;
-  --pixel-hi: #ffffff;
+  --pixel-on: #60a5fa;
+  --pixel-hi: #d7e9ff;
 }
 
 .pixelDimIconG {
-  --pixel-on: #f0fff6;
-  --pixel-hi: #ffffff;
+  --pixel-on: #2dd4bf;
+  --pixel-hi: #c6fff6;
 }
 
 .pixelDimIconH {
-  --pixel-on: #fff5cf;
-  --pixel-hi: #fffdf1;
+  --pixel-on: #facc15;
+  --pixel-hi: #fff2a6;
 }
 
 .pixelDimCell {
@@ -1092,15 +1094,15 @@ details[open] .accordionChevron {
 .pixelDimCellOn {
   background: var(--pixel-on);
   box-shadow:
-    inset -1px -1px 0 rgba(251, 207, 232, 0.45),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.18);
+    inset -1px -1px 0 var(--pixel-edge-dark),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .pixelDimCellHi {
   background: var(--pixel-hi);
   box-shadow:
-    inset -1px -1px 0 rgba(251, 207, 232, 0.28),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.42);
+    inset -1px -1px 0 rgba(46, 16, 101, 0.2),
+    inset 1px 1px 0 var(--pixel-edge-light);
 }
 
 .pathCardHead {
