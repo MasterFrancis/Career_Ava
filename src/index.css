@@ -1205,7 +1205,7 @@ details[open] .accordionChevron {
   background: var(--card);
   padding: 0 10px;
   border-radius: var(--radius-lg);
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 
 .chartSide {
