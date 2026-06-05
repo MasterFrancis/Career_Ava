@@ -220,6 +220,7 @@ export default function App() {
         {isNarrowScreen && (
           <div className="screenGuardOverlay" role="dialog" aria-modal="true" aria-labelledby="screen-guard-title">
             <div className="screenGuardCard">
+              <div className="screenGuardIcon" aria-hidden="true">!</div>
               <div className="screenGuardBadge">Wide Screen Required</div>
               <h2 id="screen-guard-title" className="screenGuardTitle">请使用宽屏打开</h2>
               <p className="screenGuardText">

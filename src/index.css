@@ -654,7 +654,7 @@ a {
 }
 
 .screenGuardCard {
-  width: min(680px, 100%);
+  width: min(760px, 100%);
   padding: 28px 28px 24px;
   background: linear-gradient(180deg, rgba(255, 244, 252, 0.96) 0%, rgba(248, 232, 248, 0.96) 100%);
   color: var(--text);
@@ -663,6 +663,23 @@ a {
     12px 12px 0 rgba(46, 16, 101, 0.92),
     inset 0 0 0 3px rgba(244, 114, 182, 0.22);
   text-align: center;
+}
+
+.screenGuardIcon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg, #facc15 0%, #f97316 100%);
+  color: #fffdfd;
+  border: 4px solid var(--stroke);
+  box-shadow:
+    6px 6px 0 rgba(46, 16, 101, 0.82),
+    inset 0 0 0 2px rgba(255, 244, 252, 0.28);
+  font-family: var(--pixel-cjk);
+  font-size: 24px;
+  line-height: 1;
 }
 
 .screenGuardBadge {
@@ -692,7 +709,7 @@ a {
 
 .screenGuardText {
   margin: 14px auto 0;
-  max-width: 40ch;
+  max-width: 48ch;
   font-family: var(--pixel-cjk);
   font-size: 15px;
   line-height: 1.9;
