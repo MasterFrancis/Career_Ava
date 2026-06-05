@@ -4,21 +4,32 @@ import { getPathById, PATH_WEIGHTS } from '../domain/paths'
 import { useStore } from '../state/useStore'
 import { RadarChart } from '../ui/charts/RadarChart'
 import { Accordion } from '../ui/Accordion'
-import { 
-  Box, Search, Users, Mic, 
-  LineChart, Clock, Shield, Target 
-} from 'lucide-react'
-import React from 'react'
 
-const DIM_ICONS: Record<string, React.ReactNode> = {
-  A: <Box size={18} />,
-  B: <Search size={18} />,
-  C: <Users size={18} />,
-  D: <Mic size={18} />,
-  E: <LineChart size={18} />,
-  F: <Clock size={18} />,
-  G: <Shield size={18} />,
-  H: <Target size={18} />
+const PIXEL_ICON_PATTERNS: Record<string, string[]> = {
+  A: ['01111110', '11000011', '10111101', '10100101', '10100101', '10111101', '11000011', '01111110'],
+  B: ['00111100', '01111110', '11000011', '11000011', '11001111', '01111110', '00111110', '00000111'],
+  C: ['00100100', '01111110', '11111111', '00100100', '00111100', '01111110', '11000011', '00000000'],
+  D: ['00011000', '00111100', '00111100', '00111100', '00111100', '00111100', '01111110', '01011010'],
+  E: ['11000011', '11000011', '11011011', '11011011', '11011011', '11011011', '11111111', '00000000'],
+  F: ['00111100', '01100110', '11000011', '11011011', '11011011', '11000011', '01111110', '00111100'],
+  G: ['00111100', '01111110', '11100111', '11000011', '11000011', '11100111', '01111110', '00111100'],
+  H: ['00111100', '01111110', '11111111', '11100111', '11100111', '11111111', '01111110', '00111100'],
+}
+
+function PixelDimensionIcon({ id, compact = false }: { id: string; compact?: boolean }) {
+  const pattern = PIXEL_ICON_PATTERNS[id] ?? PIXEL_ICON_PATTERNS.A
+  return (
+    <span className={`pixelDimIcon ${compact ? 'pixelDimIconCompact' : ''}`} aria-hidden="true">
+      {pattern.map((row, rowIndex) =>
+        row.split('').map((cell, colIndex) => (
+          <span
+            key={`${id}-${rowIndex}-${colIndex}`}
+            className={`pixelDimCell ${cell === '1' ? 'pixelDimCellOn' : ''}`}
+          />
+        )),
+      )}
+    </span>
+  )
 }
 
 export function ResultsPage() {
@@ -55,7 +66,7 @@ export function ResultsPage() {
                 return (
                   <div key={k} className="dimRow">
                     <div className="dimHead">
-                      <div className="dimKey">{DIM_ICONS[k]}</div>
+                      <div className="dimKey"><PixelDimensionIcon id={k} /></div>
                       <div style={{ minWidth: 0 }}>
                         <div className="dimName">{DIMENSIONS[k].name}</div>
                         <div className="dimDesc">{DIMENSIONS[k].oneLiner}</div>
@@ -131,7 +142,7 @@ export function ResultsPage() {
                               const c = s * w
                               return (
                                 <div key={k} className="breakRow">
-                                  <div className="breakKey">{DIM_ICONS[k]}</div>
+                                  <div className="breakKey"><PixelDimensionIcon id={k} compact /></div>
                                   <div className="breakMid">
                                     <span className="meta">{DIMENSIONS[k].name}</span>
                                   </div>
