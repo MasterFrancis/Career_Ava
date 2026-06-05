@@ -93,7 +93,7 @@ export function ResultsPage() {
                         <div className="cardTitleRow">
                           <div style={{ minWidth: 0 }}>
                             <div style={{ display: 'flex', gap: 10, alignItems: 'baseline' }}>
-                              <div className="tag" style={{ borderRadius: 999, fontSize: 12 }}>
+                              <div className={`tag topBadge topBadge${idx + 1}`} style={{ fontSize: 12 }}>
                                 Top {idx + 1}
                               </div>
                               <div className="pathName" style={{ fontSize: 18 }}>{path.name}</div>

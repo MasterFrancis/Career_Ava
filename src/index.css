@@ -1771,6 +1771,46 @@ details[open] .accordionChevron {
   background: var(--paper);
 }
 
+.topBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 78px;
+  padding: 6px 12px 5px;
+  border-width: 3px !important;
+  border-style: solid !important;
+  border-radius: 0 !important;
+  font-family: var(--pixel-cjk);
+  font-size: 13px !important;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow:
+    4px 4px 0 rgba(46, 16, 101, 0.72),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.14);
+}
+
+.topBadge1 {
+  color: #4a2400 !important;
+  background: linear-gradient(180deg, #ffe27a 0%, #facc15 100%) !important;
+  border-color: #fff2b3 #9a6700 #9a6700 #fff2b3 !important;
+  text-shadow: 1px 1px 0 rgba(255, 248, 205, 0.55);
+}
+
+.topBadge2 {
+  color: #24364f !important;
+  background: linear-gradient(180deg, #edf4ff 0%, #aebfd9 100%) !important;
+  border-color: #ffffff #5b6d87 #5b6d87 #ffffff !important;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.topBadge3 {
+  color: #552d18 !important;
+  background: linear-gradient(180deg, #f1c7a8 0%, #c97a4a 100%) !important;
+  border-color: #ffe3d0 #7c3f22 #7c3f22 #ffe3d0 !important;
+  text-shadow: 1px 1px 0 rgba(255, 241, 234, 0.4);
+}
+
 
 .pill {
   color: var(--text);
