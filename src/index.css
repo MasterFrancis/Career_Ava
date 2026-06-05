@@ -1696,18 +1696,18 @@ body::after {
 }
 
 .cloudLaneOne {
-  top: 9%;
-  height: 16%;
+  top: 7%;
+  height: 11%;
 }
 
 .cloudLaneTwo {
-  top: 30%;
-  height: 20%;
+  top: 19%;
+  height: 14%;
 }
 
 .cloudLaneThree {
-  top: 61%;
-  height: 24%;
+  top: 33%;
+  height: 17%;
 }
 
 .cloudTrack {
@@ -1741,18 +1741,18 @@ body::after {
 }
 
 .cloudSpriteOne {
-  height: 92%;
-  margin-right: 32vw;
+  height: 72%;
+  margin-right: 118vw;
 }
 
 .cloudSpriteTwo {
-  height: 100%;
-  margin-right: 40vw;
+  height: 76%;
+  margin-right: 126vw;
 }
 
 .cloudSpriteThree {
-  height: 100%;
-  margin-right: 36vw;
+  height: 74%;
+  margin-right: 122vw;
 }
 
 @keyframes cloud-slide-left {
