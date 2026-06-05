@@ -443,25 +443,23 @@ a {
 
 .footer {
   position: fixed;
-  left: 50%;
+  left: 0;
+  right: 0;
   bottom: 0;
-  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 16px;
   color: #4c1d95; /* Darker purple to match dimDesc */
   padding: 12px 20px;
-  border: 1px solid var(--stroke);
+  border-top: 1px solid var(--stroke);
   border-bottom: 0;
-  border-radius: 14px 14px 0 0;
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(4px);
   z-index: 140;
-  width: max-content;
-  max-width: calc(100vw - 24px);
+  width: 100%;
   box-sizing: border-box;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .linkBtn {
