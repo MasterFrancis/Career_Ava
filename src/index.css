@@ -2080,7 +2080,7 @@ body::after {
 .pixelSkyBackdrop {
   position: absolute;
   inset: 0;
-  background-position: center calc(50% - 60px);
+  background-position: center calc(50% - 50px);
   background-repeat: no-repeat;
   background-size: cover;
   image-rendering: pixelated;
