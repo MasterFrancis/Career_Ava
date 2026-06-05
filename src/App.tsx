@@ -32,6 +32,7 @@ export default function App() {
   const location = useLocation()
   const navigate = useNavigate()
   const [showReset, setShowReset] = useState(false)
+  const [showTopBar, setShowTopBar] = useState(true)
 
   useEffect(() => {
     dispatch({ type: 'ui/setLastRoute', route: location.pathname })
@@ -57,32 +58,71 @@ export default function App() {
 
   const complete = isQuizComplete(state.quizAnswers)
 
+  useEffect(() => {
+    if (!complete) return
+    setShowTopBar(true)
+  }, [complete, location.pathname])
+
+  useEffect(() => {
+    if (!complete) return
+
+    let lastScrollY = window.scrollY
+    let ticking = false
+
+    const updateTopBar = () => {
+      const currentScrollY = window.scrollY
+      const delta = currentScrollY - lastScrollY
+      const nearTop = currentScrollY <= 24
+
+      if (nearTop || delta < -6) {
+        setShowTopBar(true)
+      } else if (delta > 6) {
+        setShowTopBar(false)
+      }
+
+      lastScrollY = currentScrollY
+      ticking = false
+    }
+
+    const handleScroll = () => {
+      if (ticking) return
+      ticking = true
+      window.requestAnimationFrame(updateTopBar)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [complete])
+
   return (
     <div className="appShell">
       <PixelSkyCanvas />
       <div className="uiScale">
         {complete && (
-          <div className="topBar">
-            <nav className="navPills" aria-label="Main">
-              {pills.map((p) => {
-                const active =
-                  location.pathname === p.to || location.pathname.startsWith(`${p.to}/`)
-                const disabled = (p.to === '/results' || p.to === '/paths' || p.to === '/matrix') && !complete
-                return (
-                  <NavLink
-                    key={p.to}
-                    to={disabled ? '/quiz' : p.to}
-                    className={() => `pill ${active ? 'pillActive' : ''}`}
-                  >
-                    {p.label}
-                  </NavLink>
-                )
-              })}
-            </nav>
+          <div className={`topBarShell ${showTopBar ? 'topBarShellVisible' : 'topBarShellHidden'}`}>
+            <div className="topBarTrigger" aria-hidden="true" />
+            <div className="topBar">
+              <nav className="navPills" aria-label="Main">
+                {pills.map((p) => {
+                  const active =
+                    location.pathname === p.to || location.pathname.startsWith(`${p.to}/`)
+                  const disabled = (p.to === '/results' || p.to === '/paths' || p.to === '/matrix') && !complete
+                  return (
+                    <NavLink
+                      key={p.to}
+                      to={disabled ? '/quiz' : p.to}
+                      className={() => `pill ${active ? 'pillActive' : ''}`}
+                    >
+                      {p.label}
+                    </NavLink>
+                  )
+                })}
+              </nav>
+            </div>
           </div>
         )}
 
-        <div className="page">
+        <div className={`page ${complete ? 'pageWithTopBar' : ''}`}>
           <div className="pageInner">
             <Routes>
               <Route path="/" element={<WelcomePage />} />
