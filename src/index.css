@@ -665,10 +665,18 @@ a {
   text-align: center;
 }
 
+.screenGuardTopRow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
 .screenGuardIcon {
   width: 56px;
+  min-width: 56px;
   height: 56px;
-  margin: 0 auto 14px;
   display: grid;
   place-items: center;
   background: linear-gradient(180deg, #facc15 0%, #f97316 100%);
@@ -683,9 +691,11 @@ a {
 }
 
 .screenGuardBadge {
-  display: inline-block;
-  padding: 8px 14px 7px;
-  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 8px 16px 7px;
   background: linear-gradient(180deg, #f97316 0%, #ef4444 100%);
   color: #fffdfd;
   border: 4px solid var(--stroke);
@@ -714,6 +724,18 @@ a {
   font-size: 15px;
   line-height: 1.9;
   color: #4c1d95;
+}
+
+@media (max-width: 720px) {
+  .screenGuardTopRow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .screenGuardBadge {
+    width: 100%;
+    max-width: 320px;
+  }
 }
 
 .btn:disabled,

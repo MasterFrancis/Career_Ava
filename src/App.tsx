@@ -220,11 +220,13 @@ export default function App() {
         {isNarrowScreen && (
           <div className="screenGuardOverlay" role="dialog" aria-modal="true" aria-labelledby="screen-guard-title">
             <div className="screenGuardCard">
-              <div className="screenGuardIcon" aria-hidden="true">!</div>
-              <div className="screenGuardBadge">Wide Screen Required</div>
-              <h2 id="screen-guard-title" className="screenGuardTitle">请使用宽屏打开</h2>
+              <div className="screenGuardTopRow">
+                <div className="screenGuardIcon" aria-hidden="true">!</div>
+                <div className="screenGuardBadge">宽屏模式限定</div>
+              </div>
+              <h2 id="screen-guard-title" className="screenGuardTitle">当前窗口太窄了</h2>
               <p className="screenGuardText">
-                当前页面为桌面宽屏体验优化版本。请改用电脑访问，或将浏览器窗口扩展到至少 {MIN_DESKTOP_WIDTH}px 宽度后继续。
+                这张职业冒险地图更适合在电脑宽屏中展开。请改用电脑访问，或把浏览器窗口拉宽到至少 {MIN_DESKTOP_WIDTH}px 后继续探索。
               </p>
             </div>
           </div>
