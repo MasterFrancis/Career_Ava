@@ -60,98 +60,100 @@ export default function App() {
   return (
     <div className="appShell">
       <PixelSkyCanvas />
-      {complete && (
-        <div className="topBar">
-          <nav className="navPills" aria-label="Main">
-            {pills.map((p) => {
-              const active =
-                location.pathname === p.to || location.pathname.startsWith(`${p.to}/`)
-              const disabled = (p.to === '/results' || p.to === '/paths' || p.to === '/matrix') && !complete
-              return (
-                <NavLink
-                  key={p.to}
-                  to={disabled ? '/quiz' : p.to}
-                  className={() => `pill ${active ? 'pillActive' : ''}`}
-                >
-                  {p.label}
-                </NavLink>
-              )
-            })}
-          </nav>
-        </div>
-      )}
-
-      <div className="page">
-        <div className="pageInner">
-          <Routes>
-            <Route path="/" element={<WelcomePage />} />
-            <Route path="/quiz" element={<QuizPage />} />
-            <Route
-              path="/results"
-              element={
-                <Guard requireQuizComplete>
-                  <ResultsPage />
-                </Guard>
-              }
-            />
-            <Route
-              path="/paths"
-              element={
-                <Guard requireQuizComplete>
-                  <PathsPage />
-                </Guard>
-              }
-            />
-            <Route
-              path="/paths/:pathId"
-              element={
-                <Guard requireQuizComplete>
-                  <PathDetailPage />
-                </Guard>
-              }
-            />
-            <Route
-              path="/matrix"
-              element={
-                <Guard requireQuizComplete>
-                  <MatrixPage />
-                </Guard>
-              }
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </div>
-      </div>
-
-      <div className="footer">
-        <span>数据仅存浏览器本地，刷新自动恢复</span>
-        <button type="button" className="linkBtn" onClick={() => setShowReset(true)}>
-          重置
-        </button>
-      </div>
-
-      {showReset && (
-        <Modal title="确认重置？" onClose={() => setShowReset(false)}>
-          <div style={{ color: 'var(--accent3)' }}>将清空所有本地数据：问卷答案、结果、矩阵、备注与偏好。</div>
-          <div className="modalActions">
-            <button type="button" className="btn btnGhost" onClick={() => setShowReset(false)}>
-              取消
-            </button>
-            <button
-              type="button"
-              className="btn btnPrimary"
-              onClick={() => {
-                resetAll()
-                dispatch({ type: 'reset' })
-                setShowReset(false)
-                navigate('/', { replace: true })
-              }}
-            >
-              清空并重启
-            </button>
+      <div className="uiScale">
+        {complete && (
+          <div className="topBar">
+            <nav className="navPills" aria-label="Main">
+              {pills.map((p) => {
+                const active =
+                  location.pathname === p.to || location.pathname.startsWith(`${p.to}/`)
+                const disabled = (p.to === '/results' || p.to === '/paths' || p.to === '/matrix') && !complete
+                return (
+                  <NavLink
+                    key={p.to}
+                    to={disabled ? '/quiz' : p.to}
+                    className={() => `pill ${active ? 'pillActive' : ''}`}
+                  >
+                    {p.label}
+                  </NavLink>
+                )
+              })}
+            </nav>
           </div>
-        </Modal>
-      )}
+        )}
+
+        <div className="page">
+          <div className="pageInner">
+            <Routes>
+              <Route path="/" element={<WelcomePage />} />
+              <Route path="/quiz" element={<QuizPage />} />
+              <Route
+                path="/results"
+                element={
+                  <Guard requireQuizComplete>
+                    <ResultsPage />
+                  </Guard>
+                }
+              />
+              <Route
+                path="/paths"
+                element={
+                  <Guard requireQuizComplete>
+                    <PathsPage />
+                  </Guard>
+                }
+              />
+              <Route
+                path="/paths/:pathId"
+                element={
+                  <Guard requireQuizComplete>
+                    <PathDetailPage />
+                  </Guard>
+                }
+              />
+              <Route
+                path="/matrix"
+                element={
+                  <Guard requireQuizComplete>
+                    <MatrixPage />
+                  </Guard>
+                }
+              />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </div>
+        </div>
+
+        <div className="footer">
+          <span>数据仅存浏览器本地，刷新自动恢复</span>
+          <button type="button" className="linkBtn" onClick={() => setShowReset(true)}>
+            重置
+          </button>
+        </div>
+
+        {showReset && (
+          <Modal title="确认重置？" onClose={() => setShowReset(false)}>
+            <div style={{ color: 'var(--accent3)' }}>将清空所有本地数据：问卷答案、结果、矩阵、备注与偏好。</div>
+            <div className="modalActions">
+              <button type="button" className="btn btnGhost" onClick={() => setShowReset(false)}>
+                取消
+              </button>
+              <button
+                type="button"
+                className="btn btnPrimary"
+                onClick={() => {
+                  resetAll()
+                  dispatch({ type: 'reset' })
+                  setShowReset(false)
+                  navigate('/', { replace: true })
+                }}
+              >
+                清空并重启
+              </button>
+            </div>
+          </Modal>
+        )}
+      </div>
     </div>
   )
 }

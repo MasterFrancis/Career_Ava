@@ -95,6 +95,23 @@ a {
   display: flex;
   flex-direction: column;
   min-height: 100svh;
+  overflow-x: clip;
+}
+
+.uiScale {
+  width: 100%;
+  min-height: 100svh;
+  zoom: 0.8;
+}
+
+@supports not (zoom: 1) {
+  .uiScale {
+    width: calc(100% / 0.8);
+    min-height: calc(100svh / 0.8);
+    margin-left: -12.5%;
+    transform: scale(0.8);
+    transform-origin: top left;
+  }
 }
 
 .topBar {
@@ -1653,6 +1670,5 @@ body::after {
   image-rendering: pixelated;
   z-index: -1;
 }
-
 
 

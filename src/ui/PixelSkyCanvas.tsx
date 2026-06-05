@@ -1,331 +1,307 @@
 import { useEffect, useRef } from 'react'
 
-type Cluster = {
-  x: number
-  y: number
-  w: number
-  h: number
-}
+const SCENE_W = 320
+const SCENE_H = 180
 
-type CloudSpec = {
-  id: string
-  baseX: number
-  yRatio: number
-  speed: number
-  gap: number
-  pixel: number
-  clusters: Cluster[]
-  shadowBias?: number
-}
-
-type PreparedCloud = CloudSpec & {
-  width: number
-  height: number
-  cells: Set<string>
-  minX: number
-  maxX: number
-  minY: number
-  maxY: number
-  topByColumn: Map<number, number>
-  bottomByColumn: Map<number, number>
-}
-
-const HIGHLIGHT = '#f4d9ef'
-const CORE = '#e7b5e1'
-const SHADOW = '#e58ad6'
-
-const SKY_STOPS = [
-  { t: 0, color: '#4421a6' },
-  { t: 0.35, color: '#6f42c1' },
-  { t: 0.65, color: '#9c68d9' },
-  { t: 0.85, color: '#d1a8f0' },
-  { t: 1, color: '#e8daf9' },
-]
-
-const CLOUD_SPECS: CloudSpec[] = [
-  {
-    id: 'thin-drifter',
-    baseX: 120,
-    yRatio: 0.1,
-    speed: 0.12,
-    gap: 320,
-    pixel: 8,
-    clusters: [
-      { x: 0, y: 8, w: 6, h: 2 },
-      { x: 3, y: 5, w: 7, h: 4 },
-      { x: 8, y: 2, w: 7, h: 5 },
-      { x: 13, y: 3, w: 6, h: 4 },
-      { x: 17, y: 5, w: 6, h: 3 },
-      { x: 22, y: 7, w: 6, h: 1 },
-      { x: 28, y: 7, w: 4, h: 1 },
-    ],
-    shadowBias: 0.8,
-  },
-  {
-    id: 'small-puff',
-    baseX: 620,
-    yRatio: 0.18,
-    speed: -0.08,
-    gap: 300,
-    pixel: 8,
-    clusters: [
-      { x: 1, y: 7, w: 6, h: 2 },
-      { x: 4, y: 4, w: 6, h: 4 },
-      { x: 9, y: 1, w: 7, h: 5 },
-      { x: 14, y: 3, w: 8, h: 4 },
-      { x: 20, y: 5, w: 6, h: 3 },
-    ],
-    shadowBias: 1,
-  },
-  {
-    id: 'medium-left',
-    baseX: 260,
-    yRatio: 0.32,
-    speed: 0.06,
-    gap: 340,
-    pixel: 9,
-    clusters: [
-      { x: 1, y: 8, w: 8, h: 2 },
-      { x: 5, y: 5, w: 8, h: 4 },
-      { x: 10, y: 2, w: 9, h: 6 },
-      { x: 17, y: 1, w: 8, h: 6 },
-      { x: 23, y: 4, w: 7, h: 4 },
-      { x: 28, y: 7, w: 5, h: 2 },
-    ],
-    shadowBias: 1,
-  },
-  {
-    id: 'right-mass',
-    baseX: 760,
-    yRatio: 0.46,
-    speed: -0.05,
-    gap: 380,
-    pixel: 10,
-    clusters: [
-      { x: 1, y: 10, w: 8, h: 2 },
-      { x: 5, y: 6, w: 9, h: 5 },
-      { x: 11, y: 3, w: 10, h: 6 },
-      { x: 18, y: 0, w: 11, h: 8 },
-      { x: 26, y: 3, w: 8, h: 6 },
-      { x: 31, y: 7, w: 6, h: 3 },
-    ],
-    shadowBias: 1.15,
-  },
-  {
-    id: 'wide-bottom-left',
-    baseX: 160,
-    yRatio: 0.58,
-    speed: 0.05,
-    gap: 420,
-    pixel: 10,
-    clusters: [
-      { x: 0, y: 12, w: 7, h: 2 },
-      { x: 4, y: 8, w: 9, h: 5 },
-      { x: 10, y: 5, w: 9, h: 6 },
-      { x: 17, y: 1, w: 11, h: 8 },
-      { x: 26, y: 4, w: 10, h: 6 },
-      { x: 34, y: 9, w: 7, h: 3 },
-    ],
-    shadowBias: 1.1,
-  },
-  {
-    id: 'bottom-right',
-    baseX: 960,
-    yRatio: 0.72,
-    speed: -0.04,
-    gap: 420,
-    pixel: 11,
-    clusters: [
-      { x: 1, y: 11, w: 7, h: 2 },
-      { x: 5, y: 7, w: 9, h: 5 },
-      { x: 11, y: 4, w: 10, h: 6 },
-      { x: 18, y: 0, w: 10, h: 8 },
-      { x: 25, y: 4, w: 9, h: 6 },
-      { x: 32, y: 8, w: 7, h: 3 },
-    ],
-    shadowBias: 1.05,
-  },
-  {
-    id: 'hero-bottom',
-    baseX: 420,
-    yRatio: 0.84,
-    speed: 0.03,
-    gap: 520,
-    pixel: 12,
-    clusters: [
-      { x: 0, y: 13, w: 8, h: 2 },
-      { x: 5, y: 9, w: 10, h: 5 },
-      { x: 12, y: 5, w: 11, h: 7 },
-      { x: 20, y: 0, w: 12, h: 9 },
-      { x: 29, y: 4, w: 11, h: 7 },
-      { x: 38, y: 10, w: 8, h: 3 },
-    ],
-    shadowBias: 1.2,
-  },
-]
-
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value))
-}
-
-function hexToRgb(hex: string) {
-  const normalized = hex.replace('#', '')
-  return {
-    r: parseInt(normalized.slice(0, 2), 16),
-    g: parseInt(normalized.slice(2, 4), 16),
-    b: parseInt(normalized.slice(4, 6), 16),
-  }
-}
-
-function mixColor(a: string, b: string, t: number) {
-  const from = hexToRgb(a)
-  const to = hexToRgb(b)
-  const amt = clamp(t, 0, 1)
-  const r = Math.round(from.r + (to.r - from.r) * amt)
-  const g = Math.round(from.g + (to.g - from.g) * amt)
-  const bValue = Math.round(from.b + (to.b - from.b) * amt)
-  return `rgb(${r}, ${g}, ${bValue})`
-}
-
-function getSkyColor(yRatio: number) {
-  const t = clamp(yRatio, 0, 1)
-  for (let i = 0; i < SKY_STOPS.length - 1; i += 1) {
-    const start = SKY_STOPS[i]
-    const end = SKY_STOPS[i + 1]
-    if (t >= start.t && t <= end.t) {
-      const local = (t - start.t) / (end.t - start.t)
-      return mixColor(start.color, end.color, local)
-    }
-  }
-  return SKY_STOPS[SKY_STOPS.length - 1].color
-}
-
-function prepareCloud(spec: CloudSpec): PreparedCloud {
-  const cells = new Set<string>()
-  let minX = Number.POSITIVE_INFINITY
-  let maxX = Number.NEGATIVE_INFINITY
-  let minY = Number.POSITIVE_INFINITY
-  let maxY = Number.NEGATIVE_INFINITY
-  const topByColumn = new Map<number, number>()
-  const bottomByColumn = new Map<number, number>()
-
-  for (const cluster of spec.clusters) {
-    for (let gx = cluster.x; gx < cluster.x + cluster.w; gx += 1) {
-      for (let gy = cluster.y; gy < cluster.y + cluster.h; gy += 1) {
-        const key = `${gx},${gy}`
-        cells.add(key)
-        minX = Math.min(minX, gx)
-        maxX = Math.max(maxX, gx)
-        minY = Math.min(minY, gy)
-        maxY = Math.max(maxY, gy)
-        topByColumn.set(gx, Math.min(topByColumn.get(gx) ?? gy, gy))
-        bottomByColumn.set(gx, Math.max(bottomByColumn.get(gx) ?? gy, gy))
-      }
-    }
-  }
-
-  return {
-    ...spec,
-    cells,
-    minX,
-    maxX,
-    minY,
-    maxY,
-    topByColumn,
-    bottomByColumn,
-    width: (maxX - minX + 1) * spec.pixel,
-    height: (maxY - minY + 1) * spec.pixel,
-  }
-}
-
-function fillPixel(
+function fillCell(
   ctx: CanvasRenderingContext2D,
+  ox: number,
+  oy: number,
+  unit: number,
   x: number,
   y: number,
-  size: number,
+  w: number,
+  h: number,
   color: string,
 ) {
   ctx.fillStyle = color
-  ctx.fillRect(Math.round(x), Math.round(y), size, size)
+  ctx.fillRect(ox + x * unit, oy + y * unit, w * unit, h * unit)
 }
 
-function drawCloud(
+function pointInPolygon(x: number, y: number, points: Array<[number, number]>) {
+  let inside = false
+  for (let i = 0, j = points.length - 1; i < points.length; j = i++) {
+    const [xi, yi] = points[i]
+    const [xj, yj] = points[j]
+    const intersect = yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi
+    if (intersect) inside = !inside
+  }
+  return inside
+}
+
+function fillPolygon(
   ctx: CanvasRenderingContext2D,
-  cloud: PreparedCloud,
-  originX: number,
-  originY: number,
-  viewportHeight: number,
+  ox: number,
+  oy: number,
+  unit: number,
+  points: Array<[number, number]>,
+  color: string,
 ) {
-  const { pixel } = cloud
+  let minX = SCENE_W
+  let maxX = 0
+  let minY = SCENE_H
+  let maxY = 0
 
-  for (let gx = cloud.minX; gx <= cloud.maxX; gx += 1) {
-    const top = cloud.topByColumn.get(gx)
-    const bottom = cloud.bottomByColumn.get(gx)
-    if (top === undefined || bottom === undefined) continue
+  for (const [x, y] of points) {
+    minX = Math.min(minX, x)
+    maxX = Math.max(maxX, x)
+    minY = Math.min(minY, y)
+    maxY = Math.max(maxY, y)
+  }
 
-    for (let gy = top; gy <= bottom; gy += 1) {
-      const key = `${gx},${gy}`
-      if (!cloud.cells.has(key)) continue
-
-      const px = originX + (gx - cloud.minX) * pixel
-      const py = originY + (gy - cloud.minY) * pixel
-      const topDepth = gy - top
-      const bottomDepth = bottom - gy
-      const height = bottom - top + 1
-      const yRatio = (py + pixel * 0.5) / viewportHeight
-      const skyColor = getSkyColor(yRatio)
-      const shadowBias = cloud.shadowBias ?? 1
-      const columnHeight = height
-      const columnCenter = (top + bottom) * 0.5
-      const softnessBand = Math.max(2, Math.floor(columnHeight * 0.22))
-
-      let color = CORE
-
-      // Keep the top cap clean and bright like the reference.
-      if (topDepth === 0) {
-        color = HIGHLIGHT
-      } else if (topDepth === 1) {
-        color = (gx + gy) % 2 === 0 ? HIGHLIGHT : CORE
-      } else if (topDepth <= softnessBand && gy < columnCenter) {
-        color = (gx + gy) % 4 === 0 ? HIGHLIGHT : CORE
-      } else {
-        // The belly holds together as a soft core, with the shadow staying attached
-        // to the bottom edge rather than dripping downward.
-        if (bottomDepth >= 3) {
-          color = CORE
-        } else if (bottomDepth === 2) {
-          color = (gx + gy) % 3 === 0 ? SHADOW : CORE
-        } else if (bottomDepth === 1) {
-          color = (gx + gy) % 2 === 0 ? SHADOW : CORE
-        } else {
-          color = (gx + gy + Math.floor(shadowBias * 2)) % 3 === 0 ? skyColor : SHADOW
-        }
-      }
-
-      if (height <= 4 && topDepth === 0) {
-        color = HIGHLIGHT
-      }
-
-      fillPixel(ctx, px, py, pixel, color)
-    }
-
-    // Dissolve the bottom edge into the sky with a decreasing-density matrix.
-    for (let spill = 1; spill <= 3; spill += 1) {
-      const py = originY + (bottom - cloud.minY + spill) * pixel
-      const px = originX + (gx - cloud.minX) * pixel
-      const parity = (gx + bottom + spill) % 2
-      const sparse = (gx * 3 + bottom + spill) % 5
-      const verySparse = (gx * 5 + bottom + spill) % 8
-
-      if (spill === 1 && parity === 0) {
-        fillPixel(ctx, px, py, pixel, SHADOW)
-      } else if (spill === 2 && sparse === 0) {
-        fillPixel(ctx, px, py, pixel, SHADOW)
-      } else if (spill === 3 && verySparse === 0) {
-        fillPixel(ctx, px, py, pixel, SHADOW)
+  for (let y = Math.floor(minY); y <= Math.ceil(maxY); y += 1) {
+    for (let x = Math.floor(minX); x <= Math.ceil(maxX); x += 1) {
+      if (pointInPolygon(x + 0.5, y + 0.5, points)) {
+        fillCell(ctx, ox, oy, unit, x, y, 1, 1, color)
       }
     }
   }
+}
+
+function drawSky(ctx: CanvasRenderingContext2D, ox: number, oy: number, unit: number) {
+  fillCell(ctx, ox, oy, unit, 0, 0, SCENE_W, SCENE_H, '#4a3a82')
+  fillCell(ctx, ox, oy, unit, 0, 18, SCENE_W, 26, '#5c4795')
+  fillCell(ctx, ox, oy, unit, 0, 44, SCENE_W, 34, '#78539f')
+  fillCell(ctx, ox, oy, unit, 0, 78, SCENE_W, 28, '#4a4da0')
+
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [0, 22], [28, 20], [50, 22], [70, 18], [92, 20], [120, 24], [148, 30], [176, 28],
+      [210, 22], [246, 24], [280, 20], [320, 18], [320, 34], [0, 34],
+    ],
+    '#6b63b7',
+  )
+
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [0, 32], [20, 38], [40, 36], [62, 42], [88, 36], [114, 44], [138, 40], [162, 48],
+      [188, 44], [214, 40], [238, 44], [264, 38], [288, 44], [320, 40], [320, 56], [0, 56],
+    ],
+    '#ff7f8b',
+  )
+
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [10, 40], [36, 46], [58, 44], [84, 54], [112, 46], [136, 58], [160, 50], [186, 60],
+      [212, 52], [240, 58], [270, 50], [298, 56], [320, 52], [320, 74], [10, 74],
+    ],
+    '#f36c8c',
+  )
+
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [118, 34], [136, 30], [154, 32], [170, 28], [188, 30], [206, 26], [222, 30], [240, 28],
+      [256, 32], [248, 40], [228, 38], [206, 42], [184, 38], [164, 40], [142, 36], [124, 40],
+    ],
+    '#ffd27e',
+  )
+
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [100, 46], [116, 50], [136, 48], [154, 52], [172, 46], [190, 50], [208, 46], [228, 50],
+      [244, 46], [258, 50], [246, 56], [224, 54], [202, 58], [176, 54], [152, 58], [126, 54],
+      [108, 58], [96, 54],
+    ],
+    '#ffb071',
+  )
+}
+
+function drawMountains(ctx: CanvasRenderingContext2D, ox: number, oy: number, unit: number) {
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [0, 106], [0, 82], [22, 68], [40, 62], [58, 60], [78, 66], [92, 76], [104, 90], [116, 106],
+    ],
+    '#1f295d',
+  )
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [0, 106], [16, 98], [34, 94], [54, 96], [74, 88], [86, 90], [100, 104],
+    ],
+    '#30417d',
+  )
+
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [88, 106], [112, 92], [138, 84], [160, 88], [182, 82], [204, 92], [224, 106],
+    ],
+    '#352768',
+  )
+
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [170, 106], [190, 84], [214, 70], [244, 60], [274, 58], [300, 64], [320, 76], [320, 106],
+    ],
+    '#1e2b66',
+  )
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [192, 104], [208, 94], [230, 92], [252, 86], [276, 84], [300, 88], [320, 94], [320, 106],
+    ],
+    '#34498b',
+  )
+}
+
+function drawForest(ctx: CanvasRenderingContext2D, ox: number, oy: number, unit: number) {
+  for (let x = 0; x < SCENE_W; x += 4) {
+    const baseY = 118 + ((x * 7) % 5)
+    const height = 12 + ((x * 13) % 16)
+    const crown = 2 + ((x * 11) % 3)
+    for (let i = 0; i < crown; i += 1) {
+      const rowWidth = 1 + i * 2
+      fillCell(ctx, ox, oy, unit, x + 2 - i, baseY - height + i * 3, rowWidth, 3, '#16273d')
+    }
+    fillCell(ctx, ox, oy, unit, x + 1, baseY - 4, 1, 6, '#16273d')
+  }
+}
+
+function drawLandAndWater(ctx: CanvasRenderingContext2D, ox: number, oy: number, unit: number) {
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [0, 124], [28, 126], [56, 124], [86, 120], [116, 122], [144, 120], [174, 122], [204, 118],
+      [234, 120], [266, 118], [296, 120], [320, 118], [320, 136], [0, 136],
+    ],
+    '#575727',
+  )
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [0, 130], [36, 132], [68, 130], [100, 128], [134, 130], [166, 126], [200, 128], [236, 126],
+      [272, 128], [320, 126], [320, 140], [0, 140],
+    ],
+    '#6e6a2c',
+  )
+
+  fillCell(ctx, ox, oy, unit, 0, 136, SCENE_W, 22, '#27345f')
+  fillCell(ctx, ox, oy, unit, 0, 138, SCENE_W, 6, '#364788')
+  fillCell(ctx, ox, oy, unit, 0, 144, SCENE_W, 7, '#6c62b4')
+
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [78, 144], [102, 142], [124, 144], [146, 142], [168, 144], [188, 142], [210, 144], [230, 142],
+      [228, 150], [206, 152], [184, 150], [162, 152], [138, 150], [114, 152], [92, 150], [76, 148],
+    ],
+    '#ff9c8f',
+  )
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [110, 146], [126, 144], [140, 146], [154, 144], [166, 146], [176, 144], [174, 148], [160, 150],
+      [144, 148], [128, 150], [112, 148],
+    ],
+    '#ffd27e',
+  )
+
+  const sparkleXs = [12, 18, 22, 94, 98, 102, 108, 204, 208, 214, 222, 246, 252]
+  for (const x of sparkleXs) {
+    fillCell(ctx, ox, oy, unit, x, 131 + (x % 2), 1, 1, '#ffb890')
+  }
+}
+
+function drawForeground(ctx: CanvasRenderingContext2D, ox: number, oy: number, unit: number) {
+  fillPolygon(
+    ctx,
+    ox,
+    oy,
+    unit,
+    [
+      [0, 156], [18, 162], [34, 152], [56, 164], [74, 154], [96, 162], [118, 150], [140, 160],
+      [164, 152], [184, 164], [206, 152], [228, 162], [248, 154], [270, 166], [292, 154], [320, 162],
+      [320, 180], [0, 180],
+    ],
+    '#19293b',
+  )
+
+  for (let x = 0; x < SCENE_W; x += 6) {
+    const bladeHeight = 10 + ((x * 9) % 18)
+    const baseY = 180 - ((x * 5) % 4)
+    fillCell(ctx, ox, oy, unit, x, baseY - bladeHeight, 1, bladeHeight, '#15273a')
+    if (x % 18 === 0) {
+      fillCell(ctx, ox, oy, unit, x + 1, baseY - bladeHeight - 4, 1, 6, '#15273a')
+    }
+  }
+
+  const flowers: Array<[number, number]> = [
+    [26, 166], [44, 160], [78, 168], [112, 162], [242, 164], [266, 170], [292, 160],
+  ]
+  for (const [x, y] of flowers) {
+    fillCell(ctx, ox, oy, unit, x, y, 1, 1, '#ffb6d8')
+    fillCell(ctx, ox, oy, unit, x - 1, y + 1, 1, 1, '#c98cff')
+    fillCell(ctx, ox, oy, unit, x + 1, y + 1, 1, 1, '#c98cff')
+    fillCell(ctx, ox, oy, unit, x, y + 2, 1, 1, '#ff7fbe')
+  }
+}
+
+function drawScene(
+  ctx: CanvasRenderingContext2D,
+  width: number,
+  height: number,
+) {
+  const unit = Math.ceil(Math.max(width / SCENE_W, height / SCENE_H))
+  const drawW = SCENE_W * unit
+  const drawH = SCENE_H * unit
+  const ox = Math.floor((width - drawW) / 2)
+  const oy = Math.floor((height - drawH) / 2)
+
+  ctx.clearRect(0, 0, width, height)
+  drawSky(ctx, ox, oy, unit)
+  drawMountains(ctx, ox, oy, unit)
+  drawForest(ctx, ox, oy, unit)
+  drawLandAndWater(ctx, ox, oy, unit)
+  drawForeground(ctx, ox, oy, unit)
 }
 
 export function PixelSkyCanvas() {
@@ -335,13 +311,10 @@ export function PixelSkyCanvas() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext('2d', { alpha: true })
+    const ctx = canvas.getContext('2d', { alpha: false })
     if (!ctx) return
 
-    const clouds = CLOUD_SPECS.map(prepareCloud)
-    let frameId = 0
-
-    const resize = () => {
+    const render = () => {
       const ratio = window.devicePixelRatio || 1
       const width = window.innerWidth
       const height = window.innerHeight
@@ -352,34 +325,13 @@ export function PixelSkyCanvas() {
       ctx.setTransform(1, 0, 0, 1, 0, 0)
       ctx.scale(ratio, ratio)
       ctx.imageSmoothingEnabled = false
+      drawScene(ctx, width, height)
     }
 
-    const draw = (time: number) => {
-      const width = window.innerWidth
-      const height = window.innerHeight
-      ctx.clearRect(0, 0, width, height)
-
-      for (const cloud of clouds) {
-        const travelWidth = width + cloud.width + cloud.gap
-        const offset = ((cloud.baseX + time * cloud.speed) % travelWidth + travelWidth) % travelWidth
-        const x = offset - cloud.width
-        const y = Math.round(height * cloud.yRatio)
-
-        drawCloud(ctx, cloud, x, y, height)
-        drawCloud(ctx, cloud, x - travelWidth, y, height)
-        drawCloud(ctx, cloud, x + travelWidth, y, height)
-      }
-
-      frameId = window.requestAnimationFrame(draw)
-    }
-
-    resize()
-    frameId = window.requestAnimationFrame(draw)
-    window.addEventListener('resize', resize)
-
+    render()
+    window.addEventListener('resize', render)
     return () => {
-      window.cancelAnimationFrame(frameId)
-      window.removeEventListener('resize', resize)
+      window.removeEventListener('resize', render)
     }
   }, [])
 
