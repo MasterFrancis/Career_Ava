@@ -1028,17 +1028,50 @@ details[open] .accordionChevron {
 
 .pixelDimIcon {
   --pixel-cell: 3px;
+  --pixel-on: #fff7fb;
   display: grid;
-  grid-template-columns: repeat(8, var(--pixel-cell));
-  grid-template-rows: repeat(8, var(--pixel-cell));
+  grid-template-columns: repeat(var(--pixel-cols), var(--pixel-cell));
+  grid-template-rows: repeat(var(--pixel-rows), var(--pixel-cell));
   gap: 0;
-  width: calc(var(--pixel-cell) * 8);
-  height: calc(var(--pixel-cell) * 8);
+  width: calc(var(--pixel-cell) * var(--pixel-cols));
+  height: calc(var(--pixel-cell) * var(--pixel-rows));
   filter: drop-shadow(1px 1px 0 rgba(46, 16, 101, 0.32));
 }
 
 .pixelDimIconCompact {
   --pixel-cell: 2px;
+}
+
+.pixelDimIconA {
+  --pixel-on: #fff7d6;
+}
+
+.pixelDimIconB {
+  --pixel-on: #fff4fb;
+}
+
+.pixelDimIconC {
+  --pixel-on: #f7fffb;
+}
+
+.pixelDimIconD {
+  --pixel-on: #fff1e8;
+}
+
+.pixelDimIconE {
+  --pixel-on: #f3ffea;
+}
+
+.pixelDimIconF {
+  --pixel-on: #eef6ff;
+}
+
+.pixelDimIconG {
+  --pixel-on: #f0fff6;
+}
+
+.pixelDimIconH {
+  --pixel-on: #fff5cf;
 }
 
 .pixelDimCell {
@@ -1048,7 +1081,7 @@ details[open] .accordionChevron {
 }
 
 .pixelDimCellOn {
-  background: #fff7fb;
+  background: var(--pixel-on);
   box-shadow:
     inset -1px -1px 0 rgba(251, 207, 232, 0.45),
     inset 1px 1px 0 rgba(255, 255, 255, 0.18);
