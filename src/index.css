@@ -1027,82 +1027,63 @@ details[open] .accordionChevron {
 }
 
 .pixelDimIcon {
-  --pixel-cell: 2px;
-  --pixel-on: #fff7fb;
-  --pixel-hi: #ffffff;
-  --pixel-edge-dark: rgba(46, 16, 101, 0.34);
-  --pixel-edge-light: rgba(255, 255, 255, 0.58);
-  display: grid;
-  grid-template-columns: repeat(var(--pixel-cols), var(--pixel-cell));
-  grid-template-rows: repeat(var(--pixel-rows), var(--pixel-cell));
-  gap: 0;
-  width: calc(var(--pixel-cell) * var(--pixel-cols));
-  height: calc(var(--pixel-cell) * var(--pixel-rows));
-  filter: drop-shadow(1px 1px 0 rgba(46, 16, 101, 0.32));
+  --emoji-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  filter: contrast(1.15) saturate(1.1) drop-shadow(1px 1px 0 rgba(46, 16, 101, 0.32));
 }
 
 .pixelDimIconCompact {
-  --pixel-cell: 1.5px;
+  --emoji-size: 14px;
 }
 
 .pixelDimIconA {
-  --pixel-on: #f5b942;
-  --pixel-hi: #fff0a8;
+  filter: contrast(1.15) saturate(1.1) drop-shadow(1px 1px 0 rgba(137, 84, 9, 0.28));
 }
 
 .pixelDimIconB {
-  --pixel-on: #f472b6;
-  --pixel-hi: #ffd4ee;
+  filter: contrast(1.15) saturate(1.1) drop-shadow(1px 1px 0 rgba(131, 24, 67, 0.28));
 }
 
 .pixelDimIconC {
-  --pixel-on: #34d399;
-  --pixel-hi: #c7ffeb;
+  filter: contrast(1.15) saturate(1.1) drop-shadow(1px 1px 0 rgba(6, 95, 70, 0.28));
 }
 
 .pixelDimIconD {
-  --pixel-on: #fb923c;
-  --pixel-hi: #ffd9b5;
+  filter: contrast(1.15) saturate(1.1) drop-shadow(1px 1px 0 rgba(154, 52, 18, 0.28));
 }
 
 .pixelDimIconE {
-  --pixel-on: #84cc16;
-  --pixel-hi: #e7ffb0;
+  filter: contrast(1.15) saturate(1.1) drop-shadow(1px 1px 0 rgba(77, 124, 15, 0.28));
 }
 
 .pixelDimIconF {
-  --pixel-on: #60a5fa;
-  --pixel-hi: #d7e9ff;
+  filter: contrast(1.15) saturate(1.1) drop-shadow(1px 1px 0 rgba(30, 64, 175, 0.28));
 }
 
 .pixelDimIconG {
-  --pixel-on: #2dd4bf;
-  --pixel-hi: #c6fff6;
+  filter: contrast(1.15) saturate(1.1) drop-shadow(1px 1px 0 rgba(15, 118, 110, 0.28));
 }
 
 .pixelDimIconH {
-  --pixel-on: #facc15;
-  --pixel-hi: #fff2a6;
+  filter: contrast(1.15) saturate(1.1) drop-shadow(1px 1px 0 rgba(161, 98, 7, 0.28));
 }
 
-.pixelDimCell {
-  width: var(--pixel-cell);
-  height: var(--pixel-cell);
-  background: transparent;
-}
-
-.pixelDimCellOn {
-  background: var(--pixel-on);
-  box-shadow:
-    inset -1px -1px 0 var(--pixel-edge-dark),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-.pixelDimCellHi {
-  background: var(--pixel-hi);
-  box-shadow:
-    inset -1px -1px 0 rgba(46, 16, 101, 0.2),
-    inset 1px 1px 0 var(--pixel-edge-light);
+.pixelDimEmoji {
+  display: inline-block;
+  font-size: var(--emoji-size);
+  line-height: 1;
+  transform: translateY(0.5px);
+  image-rendering: pixelated;
+  text-shadow:
+    1px 0 0 rgba(255, 255, 255, 0.18),
+    0 1px 0 rgba(255, 255, 255, 0.18),
+    -1px 0 0 rgba(46, 16, 101, 0.18),
+    0 -1px 0 rgba(46, 16, 101, 0.18),
+    1px 1px 0 rgba(46, 16, 101, 0.12);
 }
 
 .pathCardHead {
