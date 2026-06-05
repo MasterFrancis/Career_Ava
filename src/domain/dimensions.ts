@@ -21,19 +21,19 @@ export type DimensionMeta = {
 export const DIMENSIONS: Record<DimensionKey, DimensionMeta> = {
   A: {
     key: 'A',
-    name: '结构化',
+    name: '结构拆解',
     shortName: '拆解',
     oneLiner: '把模糊问题拆成边界清晰的步骤，并推动对齐。',
   },
   B: {
     key: 'B',
-    name: '深挖',
+    name: '深度追问',
     shortName: '追问',
     oneLiner: '对动机与机制保持好奇，愿意追到更底层的解释。',
   },
   C: {
     key: 'C',
-    name: '协作',
+    name: '协作共创',
     shortName: '共创',
     oneLiner: '通过讨论整合观点，把分歧变成可执行的共识。',
   },
@@ -51,13 +51,13 @@ export const DIMENSIONS: Record<DimensionKey, DimensionMeta> = {
   },
   F: {
     key: 'F',
-    name: '节奏压力',
+    name: '节奏交付',
     shortName: '交付',
     oneLiner: '在不完整信息与快节奏里交付可用版本并快速迭代。',
   },
   G: {
     key: 'G',
-    name: '价值取向',
+    name: '公共价值',
     shortName: '公共',
     oneLiner: '对公平、伦理与公共利益更敏感，愿意对齐长期外部性。',
   },
@@ -72,4 +72,3 @@ export const DIMENSIONS: Record<DimensionKey, DimensionMeta> = {
 export function createEmptyDimensionScores(): Record<DimensionKey, number> {
   return { A: 0, B: 0, C: 0, D: 0, E: 0, F: 0, G: 0, H: 0 }
 }
-
