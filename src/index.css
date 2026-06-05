@@ -1722,20 +1722,21 @@ body::after {
 }
 
 .cloudTrackRight {
-  animation: cloud-slide-right 52s linear infinite;
+  animation: cloud-slide-right 68s linear infinite;
 }
 
 .cloudTrackLeft {
-  animation: cloud-slide-left 68s linear infinite;
+  animation: cloud-slide-left 87s linear infinite;
 }
 
 .cloudTrackRightSlow {
-  animation: cloud-slide-right 84s linear infinite;
+  animation: cloud-slide-right 106s linear infinite;
 }
 
 .cloudSprite {
   flex: 0 0 auto;
   image-rendering: pixelated;
+  filter: contrast(1.12) saturate(1.08) brightness(1.02);
   user-select: none;
   -webkit-user-drag: none;
 }
