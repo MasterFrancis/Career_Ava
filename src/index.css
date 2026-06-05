@@ -1027,8 +1027,9 @@ details[open] .accordionChevron {
 }
 
 .pixelDimIcon {
-  --pixel-cell: 3px;
+  --pixel-cell: 2px;
   --pixel-on: #fff7fb;
+  --pixel-hi: #ffffff;
   display: grid;
   grid-template-columns: repeat(var(--pixel-cols), var(--pixel-cell));
   grid-template-rows: repeat(var(--pixel-rows), var(--pixel-cell));
@@ -1039,39 +1040,47 @@ details[open] .accordionChevron {
 }
 
 .pixelDimIconCompact {
-  --pixel-cell: 2px;
+  --pixel-cell: 1.5px;
 }
 
 .pixelDimIconA {
   --pixel-on: #fff7d6;
+  --pixel-hi: #fffdf2;
 }
 
 .pixelDimIconB {
   --pixel-on: #fff4fb;
+  --pixel-hi: #ffffff;
 }
 
 .pixelDimIconC {
   --pixel-on: #f7fffb;
+  --pixel-hi: #ffffff;
 }
 
 .pixelDimIconD {
   --pixel-on: #fff1e8;
+  --pixel-hi: #fff8f3;
 }
 
 .pixelDimIconE {
   --pixel-on: #f3ffea;
+  --pixel-hi: #fbfff7;
 }
 
 .pixelDimIconF {
   --pixel-on: #eef6ff;
+  --pixel-hi: #ffffff;
 }
 
 .pixelDimIconG {
   --pixel-on: #f0fff6;
+  --pixel-hi: #ffffff;
 }
 
 .pixelDimIconH {
   --pixel-on: #fff5cf;
+  --pixel-hi: #fffdf1;
 }
 
 .pixelDimCell {
@@ -1085,6 +1094,13 @@ details[open] .accordionChevron {
   box-shadow:
     inset -1px -1px 0 rgba(251, 207, 232, 0.45),
     inset 1px 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.pixelDimCellHi {
+  background: var(--pixel-hi);
+  box-shadow:
+    inset -1px -1px 0 rgba(251, 207, 232, 0.28),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.42);
 }
 
 .pathCardHead {
