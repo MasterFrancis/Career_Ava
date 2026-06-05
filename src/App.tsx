@@ -221,9 +221,6 @@ export default function App() {
           <div className="screenGuardOverlay" role="dialog" aria-modal="true" aria-labelledby="screen-guard-title">
             <div className="screenGuardCard">
               <div className="screenGuardTopRow">
-                <div className="screenGuardIcon" aria-hidden="true">
-                  <span className="screenGuardIconMark">!</span>
-                </div>
                 <div className="screenGuardBadge">宽屏模式限定</div>
               </div>
               <h2 id="screen-guard-title" className="screenGuardTitle">当前窗口太窄了</h2>
