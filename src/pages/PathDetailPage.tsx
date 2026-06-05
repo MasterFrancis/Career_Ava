@@ -86,7 +86,7 @@ export function PathDetailPage() {
             </div>
           </div>
           <div className="cardBody splitChartXL" style={{ display: 'grid', gap: 24 }}>
-            <div className="chartWrap" style={{ position: 'relative', top: 'auto', background: 'transparent', padding: 0 }}>
+            <div className="chartWrap chartWrapCrop" style={{ position: 'relative', top: 'auto', background: 'transparent', padding: 0 }}>
               <RadarChart size={400} values={state.dimensionScores} compareValues={roleProfile} />
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>

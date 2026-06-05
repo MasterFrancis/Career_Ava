@@ -1208,6 +1208,16 @@ details[open] .accordionChevron {
   margin-bottom: 0;
 }
 
+.chartWrapCrop {
+  height: 360px;
+  overflow: hidden;
+}
+
+.chartWrapCrop > svg {
+  display: block;
+  transform: translateY(-20px);
+}
+
 .chartSide {
   display: grid;
   gap: 10px;

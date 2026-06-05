@@ -46,7 +46,7 @@ export function ResultsPage() {
             </div>
           </div>
           <div className="cardBody splitChart">
-            <div className="chartWrap" style={{ gridRow: 1, display: 'flex', justifyContent: 'center' }}>
+            <div className="chartWrap chartWrapCrop" style={{ gridRow: 1, display: 'flex', justifyContent: 'center' }}>
               <RadarChart size={400} values={state.dimensionScores} />
             </div>
             <div className="chartSide">
