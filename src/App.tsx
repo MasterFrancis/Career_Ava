@@ -50,7 +50,7 @@ export default function App() {
 
   const pills = useMemo(
     () => [
-      { to: '/', label: '开始' },
+      { to: '/', label: '主页' },
       { to: '/quiz', label: '问卷' },
       { to: '/results', label: '结果' },
       { to: '/paths', label: '岗位浏览' },
