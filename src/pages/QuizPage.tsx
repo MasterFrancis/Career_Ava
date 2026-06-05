@@ -55,7 +55,7 @@ export function QuizPage() {
         <div className="stepperDots" aria-label="Progress">
           {QUIZ_QUESTIONS.map((qq, idx) => {
             const v = state.quizAnswers[idx]
-            const active = idx === cursor
+            const active = !complete && idx === cursor
             const done = v != null
             return (
               <button
