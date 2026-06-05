@@ -220,7 +220,7 @@ export default function App() {
         {isNarrowScreen && (
           <div className="screenGuardOverlay" role="dialog" aria-modal="true" aria-labelledby="screen-guard-title">
             <div className="screenGuardCard">
-              <div className="screenGuardBadge">Desktop Only</div>
+              <div className="screenGuardBadge">Wide Screen Required</div>
               <h2 id="screen-guard-title" className="screenGuardTitle">请使用宽屏打开</h2>
               <p className="screenGuardText">
                 当前页面为桌面宽屏体验优化版本。请改用电脑访问，或将浏览器窗口扩展到至少 {MIN_DESKTOP_WIDTH}px 宽度后继续。
