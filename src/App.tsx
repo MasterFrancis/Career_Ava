@@ -187,9 +187,9 @@ export default function App() {
 
         <div className="footerRevealZone">
           <div className="footer">
-            <span>数据仅存浏览器本地，刷新自动恢复</span>
+            <span>冒险进度已本地存档，刷新不会掉档</span>
             <button type="button" className="linkBtn" onClick={() => setShowReset(true)}>
-              重置
+              重开一局
             </button>
           </div>
         </div>

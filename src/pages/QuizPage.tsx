@@ -140,7 +140,7 @@ export function QuizPage() {
 
       {showLockedModal && (
         <Modal title="测评已完成" onClose={() => setShowLockedModal(false)}>
-          <div style={{ color: 'var(--accent3)' }}>测评已锁定。如需重新测试，请点击页面底部的“重置”按钮清空数据。</div>
+          <div style={{ color: 'var(--accent3)' }}>测评已锁定。如需重新测试，请点击页面底部的“重开一局”按钮清空数据。</div>
           <div className="modalActions">
             <button type="button" className="btn btnPrimary" onClick={() => setShowLockedModal(false)}>
               知道了
