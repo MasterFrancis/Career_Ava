@@ -1735,25 +1735,32 @@ body::after {
 
 .cloudSprite {
   flex: 0 0 auto;
+  display: block;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
   image-rendering: pixelated;
   filter: contrast(1.28) saturate(1.14) brightness(1.03);
+  transform-origin: left center;
   user-select: none;
   -webkit-user-drag: none;
 }
 
 .cloudSpriteOne {
-  height: 72%;
-  margin-right: 118vw;
-}
-
-.cloudSpriteTwo {
-  height: 76%;
+  height: 38px;
+  transform: scale(1.72);
   margin-right: 126vw;
 }
 
+.cloudSpriteTwo {
+  height: 44px;
+  transform: scale(1.58);
+  margin-right: 132vw;
+}
+
 .cloudSpriteThree {
-  height: 74%;
-  margin-right: 122vw;
+  height: 48px;
+  transform: scale(1.46);
+  margin-right: 128vw;
 }
 
 @keyframes cloud-slide-left {
