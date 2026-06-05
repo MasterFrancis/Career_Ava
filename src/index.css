@@ -1959,14 +1959,30 @@ details[open] .accordionChevron {
 }
 
 
+.tagGood,
+.tagRisk {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 6px 12px 5px !important;
+  border-width: 3px !important;
+  border-style: solid !important;
+  border-radius: 0 !important;
+  box-shadow:
+    3px 3px 0 rgba(46, 16, 101, 0.62),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16) !important;
+  font-family: var(--pixel-cjk);
+  font-size: 13px !important;
+  line-height: 1.05;
+  letter-spacing: 0.3px;
+  text-shadow: none !important;
+}
+
 .tagGood {
-  font-size: 15px !important;
-  background: #dcfce7 !important; /* light green */
-  color: #15803d !important;      /* deep green */
-  border: none !important;
-  border-radius: 99px !important; /* Badge / pill */
-  box-shadow: none !important;
-  padding: 4px 12px !important;
+  background: linear-gradient(180deg, #dcfce7 0%, #86efac 100%) !important;
+  color: #166534 !important;
+  border-color: #f0fdf4 #15803d #15803d #f0fdf4 !important;
 }
 
 
@@ -1988,14 +2004,11 @@ details[open] .accordionChevron {
 
 
 .tagRisk {
-  font-size: 15px !important;
-  background: #ffedd5 !important; /* light orange red */
-  color: #ea580c !important;
-  border: none !important;
+  background: linear-gradient(180deg, #ffedd5 0%, #fdba74 100%) !important;
+  color: #9a3412 !important;
+  border: 3px solid !important;
   border-image: none !important;
-  border-radius: 99px !important;
-  box-shadow: none !important;
-  padding: 4px 12px !important;
+  border-color: #fff7ed #c2410c #c2410c #fff7ed !important;
 }
 
 /* NEW PIXEL BACKGROUND */
