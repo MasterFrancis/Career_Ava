@@ -21,10 +21,12 @@ export function MatrixPage() {
 
   return (
     <div>
-      <h1 className="h1">决策矩阵</h1>
-      <p className="lead">
-        把“权衡”显性化：你可以把测评推荐的 2–4 条路径带到这里，按你在意的列权重与评分计算总分并排序。
-      </p>
+      <div className="pageIntro">
+        <h1 className="h1">决策矩阵</h1>
+        <p className="lead">
+          把“权衡”显性化：你可以把测评推荐的 2–4 条路径带到这里，按你在意的列权重与评分计算总分并排序。
+        </p>
+      </div>
 
       <Accordion title="怎么用" defaultOpen className="pageAccordion">
         <div className="meta" style={{ display: 'grid', gap: 8 }}>

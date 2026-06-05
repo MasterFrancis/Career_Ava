@@ -38,10 +38,12 @@ export function QuizPage() {
 
   return (
     <div>
-      <h1 className="h1">问卷测评</h1>
-      <p className="lead">
-        逐题作答（1–5 分）。每次选择会立即保存到本地；你可以刷新或下次打开继续。
-      </p>
+      <div className="pageIntro">
+        <h1 className="h1">问卷测评</h1>
+        <p className="lead">
+          逐题作答（1–5 分）。每次选择会立即保存到本地；你可以刷新或下次打开继续。
+        </p>
+      </div>
 
       <div className="stepper">
         <div className="stepperLeft">

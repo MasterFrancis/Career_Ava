@@ -22,10 +22,12 @@ export function PathsPage() {
 
   return (
     <div>
-      <h1 className="h1">岗位浏览 · 用户 vs 岗位画像</h1>
-      <p className="lead">
-        每张卡片右上角是迷你雷达：粉色=你，紫色=岗位倾向。下面的标签是“优势维度/风险维度”的短提示（点击进入详情看完整解释与大图对比）。
-      </p>
+      <div className="pageIntro">
+        <h1 className="h1">岗位浏览 · 用户 vs 岗位画像</h1>
+        <p className="lead">
+          每张卡片右上角是迷你雷达：粉色=你，紫色=岗位倾向。下面的标签是“优势维度/风险维度”的短提示（点击进入详情看完整解释与大图对比）。
+        </p>
+      </div>
 
       <Accordion title="对比规则（为什么是优势/风险）" className="pageAccordion">
         <div className="meta">

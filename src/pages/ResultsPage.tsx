@@ -29,11 +29,13 @@ export function ResultsPage() {
 
   return (
     <div>
-      <h1 className="h1">结果总览</h1>
-      <p className="lead">
-        你得到的是“工作偏好画像”（不是能力高低）。接下来会用透明权重算法推荐 2–3
-        条路径，并展示匹配来源。
-      </p>
+      <div className="pageIntro">
+        <h1 className="h1">结果总览</h1>
+        <p className="lead">
+          你得到的是“工作偏好画像”（不是能力高低）。接下来会用透明权重算法推荐 2–3
+          条路径，并展示匹配来源。
+        </p>
+      </div>
 
       <div className="grid2" style={{ marginTop: 16 }}>
         <div className="card">
