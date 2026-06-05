@@ -1149,12 +1149,12 @@ details[open] .accordionChevron {
 }
 
 .homeHero {
-  padding: 6px 0;
+  padding: 34px 0 12px;
 }
 
 .homeHeroGrid {
   background: transparent;
-  padding: 20px 0;
+  padding: 40px 0 24px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 24px;
@@ -1165,6 +1165,7 @@ details[open] .accordionChevron {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding-top: 20px;
 }
 
 @media (max-width: 920px) {
@@ -1174,7 +1175,7 @@ details[open] .accordionChevron {
 }
 
 .homeTitle {
-  margin: 14px 0 0;
+  margin: 0;
   display: inline-block;
   font-family: var(--pixel-cjk);
   letter-spacing: 1px;
@@ -1204,7 +1205,7 @@ details[open] .accordionChevron {
 }
 
 .homeSub {
-  margin-top: 20px;
+  margin-top: 30px;
   font-family: var(--pixel-cjk);
   color: rgba(255, 247, 255, 0.96);
   font-size: 16px;
@@ -1229,7 +1230,7 @@ details[open] .accordionChevron {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin-top: 22px;
+  margin-top: 34px;
 }
 
 .homePixelBtn {
