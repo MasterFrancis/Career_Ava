@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { NavLink, Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { WelcomePage } from './pages/WelcomePage'
 import { QuizPage } from './pages/QuizPage'
@@ -33,6 +33,9 @@ export default function App() {
   const navigate = useNavigate()
   const [showReset, setShowReset] = useState(false)
   const [showTopBar, setShowTopBar] = useState(true)
+  const lastScrollYRef = useRef(0)
+  const tickingRef = useRef(false)
+  const frameRef = useRef<number | null>(null)
 
   useEffect(() => {
     dispatch({ type: 'ui/setLastRoute', route: location.pathname })
@@ -61,17 +64,16 @@ export default function App() {
   useEffect(() => {
     if (!complete) return
     setShowTopBar(true)
+    lastScrollYRef.current = window.scrollY
   }, [complete, location.pathname])
 
   useEffect(() => {
     if (!complete) return
-
-    let lastScrollY = window.scrollY
-    let ticking = false
+    lastScrollYRef.current = window.scrollY
 
     const updateTopBar = () => {
       const currentScrollY = window.scrollY
-      const delta = currentScrollY - lastScrollY
+      const delta = currentScrollY - lastScrollYRef.current
       const nearTop = currentScrollY <= 24
 
       if (nearTop || delta < -6) {
@@ -80,19 +82,25 @@ export default function App() {
         setShowTopBar(false)
       }
 
-      lastScrollY = currentScrollY
-      ticking = false
+      lastScrollYRef.current = currentScrollY
+      tickingRef.current = false
     }
 
     const handleScroll = () => {
-      if (ticking) return
-      ticking = true
-      window.requestAnimationFrame(updateTopBar)
+      if (tickingRef.current) return
+      tickingRef.current = true
+      frameRef.current = window.requestAnimationFrame(updateTopBar)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [complete])
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (frameRef.current != null) {
+        window.cancelAnimationFrame(frameRef.current)
+      }
+      tickingRef.current = false
+    }
+  }, [complete, location.pathname])
 
   return (
     <div className="appShell">
