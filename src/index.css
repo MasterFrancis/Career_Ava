@@ -324,6 +324,16 @@ a {
   margin-top: 14px;
 }
 
+.pageIntro .btnGhost {
+  background: rgba(255, 244, 252, 0.96);
+  color: var(--stroke);
+}
+
+.pageIntro .btnGhost:hover {
+  background: #ffe3f2 !important;
+  color: var(--stroke) !important;
+}
+
 .lead {
   margin-top: 10px;
   color: var(--muted);
