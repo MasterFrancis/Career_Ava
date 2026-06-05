@@ -1462,7 +1462,7 @@ details[open] .accordionChevron {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin-top: 56px;
+  margin-top: 96px;
 }
 
 .homePixelBtn {
@@ -2080,7 +2080,7 @@ body::after {
 .pixelSkyBackdrop {
   position: absolute;
   inset: 0;
-  background-position: center calc(50% - 40px);
+  background-position: center calc(50% - 60px);
   background-repeat: no-repeat;
   background-size: cover;
   image-rendering: pixelated;
