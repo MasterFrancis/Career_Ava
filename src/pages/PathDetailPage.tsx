@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { DIMENSIONS } from '../domain/dimensions'
 import { buildMatchExplanation, getMatchInsight } from '../domain/compare'
@@ -37,6 +37,10 @@ export function PathDetailPage() {
 
   const [allOpen, setAllOpen] = useState(false)
   const [forceOpen, setForceOpen] = useState<boolean | undefined>(undefined)
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [safePathId])
 
   if (invalid) return <Navigate to="/paths" replace />
 
