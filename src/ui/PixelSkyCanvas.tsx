@@ -7,6 +7,7 @@ export function PixelSkyCanvas() {
   return (
     <div className="pixelSkyCanvas" aria-hidden="true">
       <div className="pixelSkyBackdrop" style={{ backgroundImage: `url(${backgroundGif})` }} />
+      <div className="pixelSkyCornerMask" />
 
       <div className="cloudLane cloudLaneOne">
         <div className="cloudTrack cloudTrackRight">

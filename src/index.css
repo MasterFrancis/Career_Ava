@@ -2086,6 +2086,100 @@ body::after {
   image-rendering: pixelated;
 }
 
+.pixelSkyCornerMask {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: min(340px, 28vw);
+  height: 180px;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(38, 43, 56, 0) 0%, rgba(33, 39, 49, 0.72) 28%, rgba(24, 30, 38, 0.94) 54%, rgba(16, 21, 28, 0.98) 100%);
+  clip-path: polygon(
+    100% 100%,
+    0 100%,
+    0 62%,
+    8% 62%,
+    8% 56%,
+    16% 56%,
+    16% 52%,
+    24% 52%,
+    24% 48%,
+    34% 48%,
+    34% 44%,
+    46% 44%,
+    46% 40%,
+    58% 40%,
+    58% 35%,
+    72% 35%,
+    72% 30%,
+    86% 30%,
+    86% 22%,
+    100% 22%
+  );
+  image-rendering: pixelated;
+}
+
+.pixelSkyCornerMask::before {
+  content: '';
+  position: absolute;
+  inset: 24px 0 0 18%;
+  background:
+    linear-gradient(180deg, rgba(248, 168, 208, 0.18) 0%, rgba(248, 168, 208, 0) 18%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(14, 20, 27, 0.96) 0 8px,
+      rgba(30, 36, 45, 0.96) 8px 14px,
+      rgba(16, 22, 30, 0.98) 14px 22px
+    );
+  clip-path: polygon(
+    100% 100%,
+    0 100%,
+    0 72%,
+    8% 72%,
+    8% 48%,
+    14% 48%,
+    14% 64%,
+    22% 64%,
+    22% 38%,
+    30% 38%,
+    30% 58%,
+    38% 58%,
+    38% 32%,
+    48% 32%,
+    48% 52%,
+    58% 52%,
+    58% 24%,
+    68% 24%,
+    68% 48%,
+    78% 48%,
+    78% 18%,
+    88% 18%,
+    88% 40%,
+    100% 40%
+  );
+}
+
+.pixelSkyCornerMask::after {
+  content: '';
+  position: absolute;
+  right: 36px;
+  bottom: 20px;
+  width: 8px;
+  height: 8px;
+  background: #f9b0cb;
+  box-shadow:
+    -26px -18px 0 #b27be7,
+    -18px -46px 0 #ffca78,
+    20px -30px 0 #f9b0cb,
+    44px -12px 0 #b27be7,
+    66px -44px 0 #ffca78,
+    -42px -6px 0 #ffca78,
+    -4px -62px 0 #b27be7,
+    56px -64px 0 #f9b0cb;
+}
+
 .cloudLane {
   position: absolute;
   left: 0;
