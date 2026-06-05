@@ -168,8 +168,7 @@ a {
 }
 
 .topBarShellVisible .topBar,
-.topBarShell:hover .topBar,
-.topBarShell:focus-within .topBar {
+.topBarShell:hover .topBar {
   transform: translateY(0);
   opacity: 1;
 }
