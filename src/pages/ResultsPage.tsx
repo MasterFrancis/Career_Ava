@@ -47,7 +47,7 @@ export function ResultsPage() {
           </div>
           <div className="cardBody splitChart">
             <div className="chartWrap" style={{ gridRow: 1, display: 'flex', justifyContent: 'center' }}>
-              <RadarChart size={280} values={state.dimensionScores} />
+              <RadarChart size={360} values={state.dimensionScores} />
             </div>
             <div className="chartSide">
               {DIMENSION_ORDER.map((k) => {
